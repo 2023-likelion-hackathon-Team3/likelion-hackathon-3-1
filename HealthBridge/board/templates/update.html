@@ -1,0 +1,8 @@
+<form action="{%url 'board:board-update' update_list.pk %}" method="post">
+    {% csrf_token %}
+    <h3>수정하기</h3>
+    <input type="text" name="title" placeholder="제목을 입력하세요.">
+    <br><br>
+    <input type="text" name="content" placeholder="질문 내용을 입력해주세요.">
+    <input type="submit" value="등록" name="submit">
+</form>
