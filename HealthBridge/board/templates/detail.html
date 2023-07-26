@@ -1,0 +1,7 @@
+<h1>건강 관련 질문 게시판</h1>
+
+<p>제목: {{list.title}}</p>
+<p>내용: {{list.content}}</p>
+<a href = "{% url 'board:board-update' list.pk %}"><button>질문 수정하기</button></a>
+<br><br><br><br>
+<p>전문가 답변: {{list.answer}}</p>
