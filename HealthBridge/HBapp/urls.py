@@ -5,5 +5,5 @@ app_name = 'HBapp'
 
 urlpatterns = [
     path('', views.index, name='index'),
-
+    path('upload/', views.text_extraction, name='text_extraction'),
 ]

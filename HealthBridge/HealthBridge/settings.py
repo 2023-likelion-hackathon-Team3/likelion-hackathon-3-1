@@ -131,3 +131,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+
+# settings.py
+GOOGLE_CLOUD_DOCUMENT_AI_API_KEY = 'AIzaSyAkJA2jmINMwar5RtFJlGV9bCVm8P4tM3Q'
+
+# 인증 정보가 있는 서비스 계정의 JSON 키 파일 경로
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/LEEKYUMIN/likelion/중앙 해커톤/likelion-hackathon-3/herethon-5-392807-0d6795b69421.json"
+

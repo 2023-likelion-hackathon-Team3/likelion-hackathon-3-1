@@ -1,13 +1,21 @@
+<!-- upload.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <title>Upload Document</title>
 </head>
 <body>
-  메인입니다.
-  <br><br>
-  <a href="{% url 'board:board-main' %}">게시판</a>
+    <h1>Upload Document</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+    </form>
+    <br>
+    {% if result %}
+        <h2>Extracted Text:</h2>
+        <pre>{{ result }}</pre>
+    {% endif %}
 </body>
 </html>
