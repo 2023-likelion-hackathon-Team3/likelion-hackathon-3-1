@@ -1,0 +1,9 @@
+<h1>건강 관련 질문 게시판</h1>
+
+<a href="{% url 'board:board-create' %}">새 질문 등록</a>
+
+<h2> 질문 목록 </h2>
+{% for list in question_list %}
+    <a href="{% url 'board:board-detail' list.pk %}">제목:{{list.title}}</a>
+    <br><br>
+{% endfor %}
