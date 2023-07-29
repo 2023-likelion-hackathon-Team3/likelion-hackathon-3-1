@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('HBapp.urls', namespace='HBapp')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('board/', include('board.urls', namespace='board')),
+    path('mypage/', include('mypage.urls', namespace='mypage')),
+    
 ]

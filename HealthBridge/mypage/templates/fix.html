@@ -1,0 +1,17 @@
+<h1>내 정보 수정</h1>
+{% if error_message %}
+  <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+<form method="POST" action="{% url 'mypage:fix' %}">
+    {% csrf_token %}
+    <br>
+    <input type="text" name="new_username" value="" placeholder="아이디 | username">
+    <br>
+    <br>
+    <input type="password" name="new_password" value="" placeholder="비밀번호 | password">
+    <br>
+    <br>
+    <input type="password" name="new_password2" value="" placeholder="비밀번호 확인 | password">
+    <input type="submit" value="저장하기" >
+</form>

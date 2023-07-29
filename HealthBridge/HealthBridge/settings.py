@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'HBapp',
     'accounts',
     'board',
+    'mypage',
 ]
 
 MIDDLEWARE = [
