@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/board_write.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nanum+Gothic&display=swap"
+            rel="stylesheet"
+        />
+        <title>새 글 작성하기</title>
+    </head>
+    <body>
+        <a href="./main.html"><img src="./img/back.png" id="back" /></a>
+        <div id="pageName">새 글 작성하기</div>
+        <form action="{% url 'board:board-write' %}" method="post" class="form">
+            <!--{% csrf_token %}-->
+            <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="제목을 입력해주세요."
+            />
+            <input
+                type="text"
+                name="content"
+                id="content"
+                placeholder="내용을 입력해주세요."
+            />
+            <input type="submit" name="photo" id="photo" value="" />
+            <input type="submit" value="등록" name="submit" id="submit" />
+        </form>
+    </body>
+</html>
