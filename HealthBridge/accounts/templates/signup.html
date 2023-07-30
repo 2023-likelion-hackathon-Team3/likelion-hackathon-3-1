@@ -1,0 +1,21 @@
+<body>    
+    <h1>회원가입</h1>    
+    <form method="POST" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+        <br>
+        <input type="text" name="userid" value="" placeholder="아이디를 입력하세요">
+        <br>
+        <br>
+        <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
+        <br>
+        <br>
+        <input type="password" name="password2" value="" placeholder="비밀번호를 다시 한 번 입력하세요">
+        <input type="submit" value="가입" >
+    </form>
+    <script>
+        var error = "{{ error }}";
+        if (error) {
+            alert(error);
+        }
+    </script>
+</body>
