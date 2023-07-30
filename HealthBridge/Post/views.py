@@ -8,10 +8,12 @@ def postList(request):
     tags = Tag.objects.all()
     user = request.user
 
-    if MyUser.objects.get(user=user).tags == None:
-        user_tags == tags
-    else :
+    if user.is_authenticated and MyUser.objects.get(user=user).tags.exists():
         user_tags = MyUser.objects.get(user=user).tags
+        posts = posts.filter(tags__in=user_tags.iterator()).distinct()
+        print(posts)
+    else:
+        user_tags = tags
 
     return render(request, 'postList.html', {'posts' : posts, 'tags':tags, 'user_tags':user_tags})
 

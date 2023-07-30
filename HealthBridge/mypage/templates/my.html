@@ -6,7 +6,9 @@
 {% endif %}
 <br><br><br>
 <h2>나의 건강 키워드</h2>
-
+    {% for t in tags.iterator %}
+    <span>{{ t }}</span>
+    {% endfor %}
 
 <br><br><br>
 <h2>내 질문과 답변</h2>
