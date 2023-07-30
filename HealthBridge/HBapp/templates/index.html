@@ -6,16 +6,9 @@
     <title>Upload Document</title>
 </head>
 <body>
-    <h1>Upload Document</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="image">
-        <input type="submit" value="Upload">
-    </form>
-    <br>
-    {% if result %}
-        <h2>Extracted Text:</h2>
-        <pre>{{ result }}</pre>
-    {% endif %}
+  메인입니다.
+  <br><br>
+  <a href="{% url 'mypage:my' %}">내정보</a>
+  <a href="{% url 'board:board-main' %}">게시판</a>
 </body>
 </html>
