@@ -1,14 +1,74 @@
 <!-- upload.html -->
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Upload Document</title>
-</head>
-<body>
-  메인입니다.
-  <br><br>
-  <a href="{% url 'mypage:my' %}">내정보</a>
-  <a href="{% url 'board:board-main' %}">게시판</a>
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/index.css" rel="stylesheet" />
+        <title>Main</title>
+    </head>
+    <body>
+        <img src="./img/bg_main.png" id="bg" />
+        <a href=""
+            ><img src="./img/logo_purple2.png" alt="logo_purple2" id="logo"
+        /></a>
+        <div class="add">
+            <h3>내 건강 등록하기</h3>
+            <div class="add_content">
+                <a href=""> <img src="./img/plus2.svg" alt="add" /></a>
+                <p>
+                    건강검진표를 등록하고 <br />
+                    나의 건강 키워드를 확인하세요
+                </p>
+            </div>
+        </div>
+        <div class="info">
+            <h3>오늘의 건강 정보</h3>
+            <p>맞춤형 건강정보를 얻고 퀴즈도 풀어보세요!</p>
+            <div class="info_img">
+                <a href=""><img src="" alt="info_img1" /></a>
+                <a href=""><img src="" alt="info_img2" /></a>
+                <a href=""><img src="" alt="info_img3" /></a>
+            </div>
+        </div>
+        <div class="board">
+            <h3>건강 질문하기</h3>
+            <div class="board_content">
+                <a href=""><img src="./img/qa.svg" alt="board" /></a>
+                <p>
+                    내 건강에 대해 질문하고 <br />
+                    전문가에게 답변을 받아보세요
+                </p>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home_purple.svg" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
+    </body>
 </html>

@@ -1,0 +1,141 @@
+#bg {
+    position: fixed;
+    z-index: -20;
+    top: 0px;
+    left: 0px;
+}
+
+#logo {
+    width: 53px;
+    height: 53px;
+    float: right;
+}
+
+h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #414141;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+p {
+    display: inline-flex;
+    margin: 0;
+}
+
+.board_content {
+    width: 323px;
+    height: 210px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board_content a {
+    margin-top: 30px;
+}
+
+.board_content p {
+    width: 323px;
+    height: 68px;
+    border-radius: 0px 0px 20px 20px;
+    background: #b5bbfb;
+}
+
+.add_content {
+    width: 323px;
+    height: 210px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_content a {
+    margin-top: 32px;
+}
+
+.add_content p {
+    width: 323px;
+    height: 68px;
+    border-radius: 0px 0px 20px 20px;
+    background: #ffd4b8;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    top: 80px;
+    left: 0px;
+    position: relative;
+    z-index: 3;
+}
+
+#add {
+    position: fixed;
+    top: 734px;
+    left: 160px;
+    z-index: 2;
+}
+
+#nav {
+    position: fixed;
+    top: 765px;
+    left: 0;
+    z-index: 2;
+}
+
+.nav_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    left: 29px;
+}
+.nav_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 782px;
+    left: 95px;
+}
+
+.nav_board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 783px;
+    right: 95px;
+}
+
+.nav_my {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    right: 29px;
+}
+
+.nav p {
+    color: #ffffff;
+}
+
+.nav_main p {
+    color: #525fe1;
+}
