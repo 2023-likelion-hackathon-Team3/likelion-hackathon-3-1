@@ -4,11 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
+from accounts.models import MyUser
+from board.models import Board
 
 # Create your views here.
 
 def my(request):
-    return render(request, 'my.html')
+    tags = MyUser.objects.get(user=request.user).tags
+    now_user=request.user
+    user_questions = Board.objects.filter(hb_user=now_user)
+    return render(request, 'my.html', {'tags':tags, 'questions': user_questions})
 
 @login_required
 def check(request):
