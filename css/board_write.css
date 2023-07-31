@@ -1,14 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #back {
     width: 41px;
     height: 40px;
-    margin: 20px;
+    margin: 20px 25px;
 }
 
 #pageName {
     color: #414141;
     font-size: 25px;
     font-weight: 600;
-    margin: 20px;
+    margin: 25px;
 }
 
 .form {
@@ -19,7 +24,7 @@
 }
 
 #title {
-    width: 318px;
+    width: 300px;
     height: 52px;
     border-radius: 30px;
     border: none;
@@ -29,7 +34,7 @@
 }
 
 #content {
-    width: 318px;
+    width: 300px;
     height: 292px;
     border-radius: 30px;
     border: none;
@@ -46,7 +51,7 @@ input[type="text"].styled-input::placeholder {
 }
 
 #photo {
-    width: 318px;
+    width: 300px;
     height: 43px;
     border-radius: 20px;
     border: none;
