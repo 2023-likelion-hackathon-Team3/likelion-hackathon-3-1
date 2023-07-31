@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
+from accounts.models import *
 
 # Create your views here.
 
@@ -15,6 +16,7 @@ def write(request):
         new_question.content = request.POST.get('content')
         new_question.hb_user = now_user
         new_question.save()
+        
         return redirect('board:board-main')
     return render(request, 'write.html')
 

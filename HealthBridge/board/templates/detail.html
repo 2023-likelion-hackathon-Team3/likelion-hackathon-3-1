@@ -4,3 +4,16 @@
 <p>내용: {{list.content}}</p>
 <br><br><br>
 <p>전문가 답변: {{list.answer}}</p>
+<br><br><br>
+
+{% with prev_list=list.get_previous_by_created_at %}
+{% if prev_list %}
+<p>이전 글: <a href="{% url 'board:board-detail' prev_list.pk %}">{{ prev_list.title }}</a></p>
+{% endif %}
+{% endwith %}
+
+{% with next_list=list.get_next_by_created_at %}
+{% if next_list %}
+<p>다음 글: <a href="{% url 'board:board-detail' next_list.pk %}">{{ next_list.title }}</a></p>
+{% endif %}
+{% endwith %}
