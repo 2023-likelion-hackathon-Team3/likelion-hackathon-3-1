@@ -4,7 +4,8 @@ from urllib.parse import quote
 from accounts.models import MyUser, Tag
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    tags = MyUser.objects.get(user=request.user).tags
+    return render(request, 'index.html', {'tags':tags})
 
 from django.conf import settings
 from django.shortcuts import render
@@ -41,7 +42,7 @@ def text_extraction(request):
         extracted_text = ""
 
         for text_annotation in response.text_annotations:
-            tags = Tag.objects.all();
+            tags = Tag.objects.all()
             for t in tags:
                 if text_annotation.description == t.name:
                     #tag, created = Tag.objects.update_or_create(name=text_annotation.description, slug=text_annotation.description)
