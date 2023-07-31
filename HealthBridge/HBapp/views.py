@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import os
 from urllib.parse import quote
+from accounts.models import MyUser, Tag
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -40,11 +41,18 @@ def text_extraction(request):
         extracted_text = ""
 
         for text_annotation in response.text_annotations:
+            tags = Tag.objects.all();
+            for t in tags:
+                if text_annotation.description == t.name:
+                    #tag, created = Tag.objects.update_or_create(name=text_annotation.description, slug=text_annotation.description)
+                    user = MyUser.objects.get(user=request.user)
+                    update_tags = user.tags.add(t)
+                    user.save()
             extracted_text += text_annotation.description + "\n"
 
         # 이미지 파일을 삭제 (임시로 저장한 이미지를 사용하지 않을 경우)
         os.remove(image_path)
 
-        return render(request, 'result.html', {'extracted_text': extracted_text})
+        return render(request, 'result.html', {'response':response, 'extracted_text': extracted_text})
 
     return render(request, 'upload.html')

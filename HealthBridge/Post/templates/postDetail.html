@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <p>{{post.title}}</p>
+    <p>{{post.created_at}}</p>
+    <p>{{post.content}}</p>
+
+    {% if post.tags.exists %} {{p.pk}}글의 태그:
+    {% for tag in post.tags.iterator %}
+      <a href="{{tag.get_absolute_url }}">{{tag}}</a>
+    {% endfor %}
+  {% endif %}
+
+  <br/>
+  <br/>
+    {% if user.is_authenticated and user.is_superuser%}
+    <!--수정과 삭제를 최상위 사용자만 할 수 있도록-->
+    <a href="{% url 'post:postUpdate' post.pk %}">수정</a>
+    <a href="{% url 'post:postDelete' post.pk %}">삭제</a>
+    {% endif %}
+  </body>
+</html>

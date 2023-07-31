@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if user.is_authenticated and user_tags.exists %}
+    {% for t in user_tags.iterator %}
+      <a href="{{t.get_absolute_url }}">{{t}}</a>
+    {% endfor %}
+  {% else %}
+    모든 태그: {% for t in tags %}
+      <a href="{{t.get_absolute_url }}">{{t}}</a>
+    {% endfor %}
+  {% endif %}
+  <br/>
+  <br/>
+  <br/>
+
+  {% if posts.exists %}
+    {% for p in posts %}
+      {% if p.tags.exists %} {{p.pk}}글의 태그:
+        {% for tag in p.tags.iterator %}
+          <a href="{{tag.get_absolute_url }}">{{tag}}</a>
+        {% endfor %}
+      {% endif %}
+      <!--p.tags가 user.tags에도 있어야 함-->
+      <a href="{% url 'post:postDetail' p.pk %}"><p>{{p.pk}}-{{p.title}}</p></a>
+    {% endfor %}
+  {% else %}
+  <p>아직 게시물이 없습니다.</p>
+  {% endif %}
+</body>
+</html>
