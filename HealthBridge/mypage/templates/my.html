@@ -12,3 +12,7 @@
 
 <br><br><br>
 <h2>내 질문과 답변</h2>
+    {% for question in questions %}
+    <a href="{% url 'board:board-detail' question.pk %}">{{ question.title }}</a>
+    <br>
+    {% endfor %}
