@@ -1,0 +1,131 @@
+<!-- upload.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/explain.css" rel="stylesheet" />
+        <title>explain</title>
+    </head>
+    <body>
+        <div class="explain">
+            <div class="black"></div>
+            <div class="explain_img">
+                <img src="./img/explain1.png" id="ex1" />
+                <img src="./img/explain2.png" id="ex2" />
+                <img src="./img/explain3.png" id="ex3" />
+                <img src="./img/explain4.png" id="ex4" />
+                <img src="./img/explain5.png" id="ex5" />
+                <img src="./img/explain6.png" id="ex6" />
+                <img src="./img/explain7.png" id="ex7" />
+            </div>
+        </div>
+        <img src="./img/bg_main.png" id="bg" />
+        <a href=""
+            ><img src="./img/logo_purple2.png" alt="logo_purple2" id="logo"
+        /></a>
+        <div cladd="content">
+            <div class="add">
+                <h3>내 건강 등록하기</h3>
+                <div class="add_content">
+                    <a href=""> <img src="./img/plus2.svg" alt="add" /></a>
+                    <div class="add_text">
+                        <p>
+                            건강검진표를 등록하고 <br />
+                            나의 건강 키워드를 확인하세요
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <h3>오늘의 건강 정보</h3>
+                <p>맞춤형 건강정보를 얻고 퀴즈도 풀어보세요!</p>
+                <div class="info_img">
+                    <a href=""
+                        ><img src="./img/image14.png" alt="info_img1"
+                    /></a>
+                    <a href=""
+                        ><img src="./img/image14.png" alt="info_img2"
+                    /></a>
+                    <a href=""
+                        ><img src="./img/image14.png" alt="info_img3"
+                    /></a>
+                </div>
+            </div>
+            <div class="board">
+                <h3>건강 질문하기</h3>
+                <div class="board_content">
+                    <a href=""><img src="./img/qa.svg" alt="board" /></a>
+                    <div class="board_text">
+                        <p>
+                            내 건강에 대해 질문하고 <br />
+                            전문가에게 답변을 받아보세요
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home_purple.svg" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                window.addEventListener("scroll", function () {
+                    var ex1 = document.getElementById("ex1");
+                    var ex2 = document.getElementById("ex2");
+                    var ex3 = document.getElementById("ex3");
+                    var ex4 = document.getElementById("ex4");
+                    var ex5 = document.getElementById("ex5");
+                    var ex6 = document.getElementById("ex6");
+                    var ex7 = document.getElementById("ex7");
+
+                    var scrollY = window.scrollY;
+
+                    if (scrollY >= 300) {
+                        ex1.style.display = "none";
+                        ex2.style.display = "none";
+                        ex3.style.display = "none";
+                        ex4.style.display = "none";
+                        ex5.style.display = "none";
+                        ex6.style.display = "block";
+                        ex7.style.display = "block";
+                    } else {
+                        ex1.style.display = "block";
+                        ex2.style.display = "block";
+                        ex3.style.display = "block";
+                        ex4.style.display = "block";
+                        ex5.style.display = "block";
+                        ex6.style.display = "none";
+                        ex7.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
