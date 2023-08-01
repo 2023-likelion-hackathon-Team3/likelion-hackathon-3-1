@@ -1,35 +1,6 @@
 <!-- upload.html -->
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-<head>
-    <title>Upload Document</title>
-</head>
-<body>
-  메인입니다.
-  <h2>내 건강 등록하기</h2>
-  <br>
-  <!-- tag에 데이터 있을 경우 -->
-  {% if tags.exists %}
-    {% for t in tags.iterator %}
-      <span>{{ t }}</span>
-    {% endfor %}
-  {% else %}
-  <!-- tag에 데이터 없을 경우 -->
-    <a href="{% url 'HBapp:text_extraction' %}">추가</a>
-  {% endif %}
-  <br><br>
-  <h2>오늘의 건강 정보</h2>
-  <br>
-  <h2>건강 질문하기</h2>
-  <a href="{% url 'board:board-main' %}">게시판</a>
-  <br><br>
-  <a href="{% url 'mypage:my' %}">내정보</a>
-  <a href="{% url 'board:board-main' %}">게시판</a>
-  <a href="{% url 'post:postList' %}">포스트</a>
-</body>
-=======
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -42,33 +13,45 @@
         <a href=""
             ><img src="./img/logo_purple2.png" alt="logo_purple2" id="logo"
         /></a>
-        <div class="add">
-            <h3>내 건강 등록하기</h3>
-            <div class="add_content">
-                <a href=""> <img src="./img/plus2.svg" alt="add" /></a>
-                <p>
-                    건강검진표를 등록하고 <br />
-                    나의 건강 키워드를 확인하세요
-                </p>
+        <div cladd="content">
+            <div class="add">
+                <h3>내 건강 등록하기</h3>
+                <div class="add_content">
+                    <a href=""> <img src="./img/plus2.svg" alt="add" /></a>
+                    <div class="add_text">
+                        <p>
+                            건강검진표를 등록하고 <br />
+                            나의 건강 키워드를 확인하세요
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="info">
-            <h3>오늘의 건강 정보</h3>
-            <p>맞춤형 건강정보를 얻고 퀴즈도 풀어보세요!</p>
-            <div class="info_img">
-                <a href=""><img src="" alt="info_img1" /></a>
-                <a href=""><img src="" alt="info_img2" /></a>
-                <a href=""><img src="" alt="info_img3" /></a>
+            <div class="info">
+                <h3>오늘의 건강 정보</h3>
+                <p>맞춤형 건강정보를 얻고 퀴즈도 풀어보세요!</p>
+                <div class="info_img">
+                    <a href=""
+                        ><img src="img/image 14.png" alt="info_img1"
+                    /></a>
+                    <a href=""
+                        ><img src="img/image 14.png" alt="info_img2"
+                    /></a>
+                    <a href=""
+                        ><img src="img/image 14.png" alt="info_img3"
+                    /></a>
+                </div>
             </div>
-        </div>
-        <div class="board">
-            <h3>건강 질문하기</h3>
-            <div class="board_content">
-                <a href=""><img src="./img/qa.svg" alt="board" /></a>
-                <p>
-                    내 건강에 대해 질문하고 <br />
-                    전문가에게 답변을 받아보세요
-                </p>
+            <div class="board">
+                <h3>건강 질문하기</h3>
+                <div class="board_content">
+                    <a href=""><img src="./img/qa.svg" alt="board" /></a>
+                    <div class="board_text">
+                        <p>
+                            내 건강에 대해 질문하고 <br />
+                            전문가에게 답변을 받아보세요
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="nav">
@@ -82,7 +65,7 @@
                 <p>건강정보</p>
             </div>
 
-            <a href=""><img src="./img/plus.png" alt="plus" id="add" /></a>
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
 
             <div class="nav_board">
                 <a href="{% url 'board:board-main' %}"
@@ -100,5 +83,4 @@
         </div>
         <img src="./img/nav.svg" id="nav" />
     </body>
->>>>>>> fc4d1bc0d837cbd13126f441b458cd111fda2e29
 </html>
