@@ -1,0 +1,41 @@
+<!-- upload.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/index.css" rel="stylesheet" />
+        <title>Main</title>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home_purple.svg" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
+    </body>
+</html>

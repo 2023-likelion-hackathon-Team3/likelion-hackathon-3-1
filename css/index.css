@@ -8,7 +8,9 @@
 #logo {
     width: 53px;
     height: 53px;
-    float: right;
+    position: absolute;
+    top: 35px;
+    right: 26px;
 }
 
 h3 {
@@ -21,6 +23,8 @@ h3 {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin: 0;
+    display: inline-flex;
 }
 
 p {
@@ -28,27 +32,29 @@ p {
     margin: 0;
 }
 
-.board_content {
-    width: 323px;
-    height: 210px;
-    background-color: #d9d9d9;
-    border-radius: 20px;
-    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+.content {
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
+    overflow-y: auto;
 }
 
-.board_content a {
-    margin-top: 30px;
+.add,
+.info,
+.board {
+    margin-top: 50px;
+    margin-left: 20px;
+    align-items: center;
+    max-width: 323px;
 }
 
-.board_content p {
-    width: 323px;
-    height: 68px;
-    border-radius: 0px 0px 20px 20px;
-    background: #b5bbfb;
+.add {
+    margin-top: 150px;
+}
+
+.board {
+    margin-bottom: 120px;
 }
 
 .add_content {
@@ -65,13 +71,59 @@ p {
 
 .add_content a {
     margin-top: 32px;
+    display: flex;
 }
 
-.add_content p {
+.add_text {
     width: 323px;
     height: 68px;
     border-radius: 0px 0px 20px 20px;
     background: #ffd4b8;
+    margin-top: 30px;
+}
+
+.add_text p {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.info_img {
+    display: flex;
+    overflow-x: auto;
+}
+
+.info_img img {
+    margin: 10px 5px;
+}
+
+.board_content {
+    width: 323px;
+    height: 210px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board_content a {
+    margin-top: 30px;
+    display: flex;
+}
+
+.board_text {
+    width: 323px;
+    height: 68px;
+    border-radius: 0px 0px 20px 20px;
+    background: #b5bbfb;
+    margin-top: 30px;
+}
+
+.board_text p {
+    margin-top: 15px;
+    margin-left: 20px;
 }
 
 .nav {
@@ -83,7 +135,7 @@ p {
     z-index: 3;
 }
 
-#add {
+#nav_add {
     position: fixed;
     top: 734px;
     left: 160px;
