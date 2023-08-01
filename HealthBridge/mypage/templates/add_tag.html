@@ -1,0 +1,12 @@
+<h1>건강정보키워드 수정하기</h1>
+<form action="{% url 'mypage:addTag' %}" method="post">
+    {% csrf_token %}
+        {% for tag in all_tags %}
+            {% if tag in user_tags %}
+                <input type="checkbox" name="addTag" value="{{ tag.pk }}" checked>{{ tag.name }}<br>
+            {% else %}
+                <input type="checkbox" name="addTag" value="{{ tag.pk }}">{{ tag.name }}<br>
+            {% endif %}
+        {% endfor %}
+    <button type="submit">수정하기</button>
+</form>

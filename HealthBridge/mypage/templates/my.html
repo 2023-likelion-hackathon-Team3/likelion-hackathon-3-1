@@ -6,9 +6,14 @@
 {% endif %}
 <br><br><br>
 <h2>나의 건강 키워드</h2>
+    <a href="{% url 'mypage:addTag' %}">수정</a>
     {% for t in tags.iterator %}
     <span>{{ t }}</span>
     {% endfor %}
 
 <br><br><br>
 <h2>내 질문과 답변</h2>
+    {% for question in questions %}
+    <a href="{% url 'board:board-detail' question.pk %}">{{ question.title }}</a>
+    <br>
+    {% endfor %}

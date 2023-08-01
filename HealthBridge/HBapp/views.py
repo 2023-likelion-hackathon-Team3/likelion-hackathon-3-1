@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import os
 from urllib.parse import quote
 from accounts.models import MyUser, Tag
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    tags = MyUser.objects.get(user=request.user).tags
+    return render(request, 'index.html', {'tags':tags})
 
 from django.conf import settings
 from django.shortcuts import render
@@ -41,7 +43,7 @@ def text_extraction(request):
         extracted_text = ""
 
         for text_annotation in response.text_annotations:
-            tags = Tag.objects.all();
+            tags = Tag.objects.all()
             for t in tags:
                 if text_annotation.description == t.name:
                     #tag, created = Tag.objects.update_or_create(name=text_annotation.description, slug=text_annotation.description)
@@ -56,3 +58,19 @@ def text_extraction(request):
         return render(request, 'result.html', {'response':response, 'extracted_text': extracted_text})
 
     return render(request, 'upload.html')
+
+@login_required
+def keyword_add(request):
+    if request.method == 'POST':
+        user = MyUser.objects.get(user=request.user)
+        user_tags = request.POST.getlist('tags')
+
+        tags = request.POST.getlist('tags')
+        for user_tag in tags:
+            tag, created = Tag.objects.get_or_create(name=user_tag)
+            user.tags.add(tag)
+
+        return redirect('HBapp:index')
+
+    tags = Tag.objects.all()
+    return render(request, 'add.html', {'tags': tags})

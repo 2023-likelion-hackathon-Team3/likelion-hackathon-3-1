@@ -1,0 +1,10 @@
+<a href="{% url 'HBapp:keyword_add' %}">직접키워드 선택</a>
+<a href="{% url 'HBapp:text_extraction' %}">스캔하기</a>
+
+<form action="{% url 'HBapp:keyword_add' %}" method="post">
+    {% csrf_token %}
+    {% for tag in tags %}
+        <input type="checkbox" name="tags" value="{{ tag.name }}"> {{ tag.name }}<br>
+    {% endfor %}
+    <input type="submit" value="저장">
+</form>
