@@ -56,26 +56,24 @@ def fix(request):
 
 def addTag(request):
     user = request.user
-    my_user = MyUser.objects.get(user=user)
+    my_user = MyUser.objects.get(user=request.user)
     user_tags = my_user.tags.all()
     all_tags = Tag.objects.all()
     if request.method == 'POST':
         addTag = request.POST.getlist('addTag')
-        for tag_id in addTag:
-            tag = Tag.objects.get(id=tag_id)
-            my_user.tags.add(tag)
+        my_user.tags.set(addTag)
         return redirect('mypage:my')
     return render(request, 'add_tag.html', {'user_tags': user_tags, 'all_tags': all_tags})
 
-def deleteTag(request):
-    user = request.user
-    my_user = MyUser.objects.get(user=user)
-    user_tags = my_user.tags.all()
-    all_tags = Tag.objects.all()
-    if request.method == 'POST':
-        deleteTag = request.POST.getlist('deleteTag')
-        for tag_id in deleteTag:
-            tag = Tag.objects.get(id=tag_id)
-            my_user.tags.remove(tag)
-        return redirect('mypage:my')
-    return render(request, 'delete_tag.html', {'user_tags': user_tags, 'all_tags': all_tags})
+# def deleteTag(request):
+#     user = request.user
+#     my_user = MyUser.objects.get(user=user)
+#     user_tags = my_user.tags.all()
+#     all_tags = Tag.objects.all()
+#     if request.method == 'POST':
+#         deleteTag = request.POST.getlist('deleteTag')
+#         for tag_id in deleteTag:
+#             tag = Tag.objects.get(id=tag_id)
+#             my_user.tags.remove(tag)
+#         return redirect('mypage:my')
+#     return render(request, 'delete_tag.html', {'user_tags': user_tags, 'all_tags': all_tags})
