@@ -1,0 +1,12 @@
+<h1>건강정보키워드 추가하기</h1>
+<form action="{% url 'mypage:addTag' %}" method="post">
+    {% csrf_token %}
+    <select name="addTag" multiple>
+        {% for tag in all_tags %}
+            {% if tag not in user_tags %}
+                <option value="{{ tag.id }}">{{ tag.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <button type="submit">추가하기</button>
+</form>
