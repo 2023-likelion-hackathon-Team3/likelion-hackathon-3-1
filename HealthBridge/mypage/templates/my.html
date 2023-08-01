@@ -6,6 +6,7 @@
 {% endif %}
 <br><br><br>
 <h2>나의 건강 키워드</h2>
+    <a href="{% url 'mypage:addTag' %}">수정</a>
     {% for t in tags.iterator %}
     <span>{{ t }}</span>
     {% endfor %}
