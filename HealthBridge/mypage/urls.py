@@ -8,6 +8,6 @@ urlpatterns = [
     path('check/', views.check , name='check'),
     path('fix/', views.fix , name='fix'),
     path('add/tag/', views.addTag , name='addTag'),
-    path('delete/tag/', views.deleteTag, name='deleteTag'),
+    #path('delete/tag/', views.deleteTag, name='deleteTag'),
     
 ]
