@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,12 +7,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nanum+Gothic&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
             rel="stylesheet"
         />
         <title>새 글 작성하기</title>
     </head>
     <body>
+        <!--배경-->
+        <img src="./img/bg_main.png" id="bg" />
         <a href="./main.html"><img src="./img/back.png" id="back" /></a>
         <div id="pageName">새 글 작성하기</div>
         <form action="{% url 'board:board-write' %}" method="post" class="form">
@@ -32,5 +34,34 @@
             <input type="submit" name="photo" id="photo" value="" />
             <input type="submit" value="등록" name="submit" id="submit" />
         </form>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home.png" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board_purple.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
     </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,14 +7,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nanum+Gothic&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
             rel="stylesheet"
         />
         <title>건강 질문 게시판</title>
     </head>
     <body>
         <!--배경-->
-
         <!--뒤로가기 버튼-->
         <a href="./main.html"><img src="./img/back.png" id="back" /></a>
         <!--페이지 제목-->
@@ -67,7 +66,34 @@
             ><img src="./img/write.png" id="write"
         /></a>
         <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home.png" alt="home" /></a>
+                <p>홈</p>
+            </div>
 
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board_purple.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
         <script>
             let answer = document.getElementsByClassName("answer");
 

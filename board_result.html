@@ -7,12 +7,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nanum+Gothic&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
             rel="stylesheet"
         />
         <title>게시글 보기</title>
     </head>
     <body>
+        <!--배경-->
+        <img src="./img/bg_main.png" id="bg" />
         <a href="./main.html"><img src="./img/back.png" id="back" /></a>
         <div class="titleBox">
             <img src="./img/Q.png" />
@@ -40,5 +42,34 @@
                 >모기 물린 곳에 침바르면 ...</a
             >
         </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home.png" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board_purple.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my.png" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
     </body>
 </html>
