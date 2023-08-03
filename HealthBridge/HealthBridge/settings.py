@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'board',
     'mypage',
     'Post',
+    'Quiz',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,9 @@
+<form method="GET" action="{% url 'quiz:search' %}">
+    <input id="search" name="search" type="title" placeholder="퀴즈를 검색하세요." />
+</form>
+
+{% for temp in temps %}
+    <h2>{{temp.question}}</h2>
+    <a href="{% url 'quiz:answer' temp.id %}">O</a>
+    <a href="{% url 'quiz:answer' temp.id %}">X</a>
+{% endfor %}
