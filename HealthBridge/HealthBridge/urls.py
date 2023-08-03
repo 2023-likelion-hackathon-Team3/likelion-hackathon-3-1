@@ -24,5 +24,6 @@ urlpatterns = [
     path('board/', include('board.urls', namespace='board')),
     path('mypage/', include('mypage.urls', namespace='mypage')),
     path('post/', include('Post.urls', namespace='post')),
+    path('quiz/', include('Quiz.urls', namespace='quiz')),
 
 ]
