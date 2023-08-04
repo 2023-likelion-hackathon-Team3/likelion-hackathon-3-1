@@ -1,3 +1,8 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #bg {
     position: fixed;
     z-index: -20;

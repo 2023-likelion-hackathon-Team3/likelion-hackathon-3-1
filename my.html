@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/my.css" rel="stylesheet" />
+        <title>My</title>
+    </head>
+    <body>
+        <img src="./img/bg_basic.png" id="bg" />
+        <div class="content">
+            <div class="profile">
+                <img src="./img/Rectangle.png" id="profile_img" />
+                <div class="profile_fix">
+                    <p>user name</p>
+                    <a href=""> <img src="./img/pencil.png" alt="fix" /></a>
+                </div>
+            </div>
+
+            <div class="add">
+                <h3>나의 건강 키워드</h3>
+                <a href=""
+                    ><div class="add_btn">내 건강 키워드 등록하기</div>
+                </a>
+            </div>
+            <div class="board">
+                <h3>나의 질문과 답변</h3>
+                <a href=""><div class="board_btn">질문하러 가기</div> </a>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href=""><img src="./img/home.png" alt="home" /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="./img/board.png" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="./img/my_purple.svg" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
+    </body>
+</html>
