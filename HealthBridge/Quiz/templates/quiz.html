@@ -2,6 +2,12 @@
     <input id="search" name="search" type="title" placeholder="퀴즈를 검색하세요." />
 </form>
 
+{% if search_nouns %}
+    {% for noun in search_nouns %}
+        {{ noun }}
+    {% endfor %}
+{% endif %}
+
 {% for temp in temps %}
     <h2>{{temp.question}}</h2>
     <a href="{% url 'quiz:answer' temp.id %}">O</a>
