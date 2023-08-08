@@ -21,9 +21,12 @@ def searchView(request):
     search = request.GET.get('search', '')
     
     search_nouns = extract_nouns_from_query(search)
-    search_temps = Quiz.objects.filter(
-        question__icontains=search
-    )
+    
+    query = Q()
+    for noun in search_nouns:
+        query &= Q(question__icontains=noun)
+    
+    search_temps = Quiz.objects.filter(query)
     
     return render(request, 'quiz.html', {'temps': search_temps, 'search_nouns' : search_nouns})
 

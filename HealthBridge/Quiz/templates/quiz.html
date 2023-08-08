@@ -9,7 +9,9 @@
 {% endif %}
 
 {% for temp in temps %}
-    <h2>{{temp.question}}</h2>
-    <a href="{% url 'quiz:answer' temp.id %}">O</a>
-    <a href="{% url 'quiz:answer' temp.id %}">X</a>
+    {% if forloop.first %}
+        <h2>{{temp.question}}</h2>
+        <a href="{% url 'quiz:answer' temp.id %}">O</a>
+        <a href="{% url 'quiz:answer' temp.id %}">X</a>
+    {% endif %}
 {% endfor %}
