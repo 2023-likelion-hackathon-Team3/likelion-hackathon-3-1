@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <h1>로그인</h1>
 <form action="{% url 'accounts:login' %}" method="POST">
     {% csrf_token %}
@@ -11,6 +13,7 @@
     <input type="submit" type="submit" value="Login">
 </form>
 <a href="{% url 'accounts:signup' %}" method="POST">회원가입</a>
+<a href="{% provider_login_url 'kakao' %}">카카오톡 로그인</a>
 {% if error %}
 <script>
     alert("{{ error }}");
