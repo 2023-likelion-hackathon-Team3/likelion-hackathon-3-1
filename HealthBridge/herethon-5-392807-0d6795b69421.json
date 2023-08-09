@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "herethon-5-392807",
+  "private_key_id": "0d6795b69421954b109d6c21e2e14c0b78e18680",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDGlEcOEIG5ubm0\nCEhNqda+xJt6tXerpkWRe0RcCetjNVxwx6xLi1hTcTcugHDiA4G+DgJXCztMGpNt\noNse7KNSJll9QN/4aUp46qv+ugHbx9c7LYX22UhGhNWpdQpM5GwwJdEVveV3R7YS\nukING6yFGGpKqwLqZ+g5If8vaEfqQmDp0lqBLEwtYaXi2tRv05FSfJBzNT9BtuVy\neCQ0b4KlWUhD5sId+wu3FlKFAjbjIY6hxJ5xTUoU0NnlJ81bbxBgAYmLSkGWq6Se\nX1Lam1dR3X0l1EJYqqjFiZbBxz+bZCOPGIwbCv1sp5PPyp08hJgPedwbn1JjNlbv\nwEUaeYYLAgMBAAECggEAJVeU1Qw9mNNYHIbCMfiSLWWDZ1vgmSK3SlhHzpb+8LUE\nISErQTl+7pIHsnLsx1OpfjfcMMon6HPG7YKmMfaF79jOU0Nz2p7SJlLa7RfFabL2\nwmYZHwZVFQ29sBQWT8dUoOk7nD8Ne5S8pGDqMtTVaGHi+w+ViMbpYHUIK74MZ/ym\nO/oI3tT9832ad23D7TCJAK+XGZKcV3dPmWpzl0NMEJS0WUwq2yw9uq4blTMY720i\n/7Hzw8dL/rCilkAgoH4hMYz0wBITHqVoV6XdTI/UUKpfXcAeJCH+yDkWREaRUqVj\nPYqSUPHLgzOfZcDDXhcujsRAMAO+xMTSl22+pNTBgQKBgQD67xmKqAkSu+Baqndg\nrjbXrsdo4tY0PuufxJcdhsY40ny/LQQbAfcpuESZx2JySNNF5aWar5FQbZWv8ogC\nZp2TZsSRC0NlVXfyu32leXF40CE6fXbItEfkE2AvMw61W6uLBZdsdgnDyKoubUEd\nq0nXpnSL2WKJfxjXTtqWqEiecQKBgQDKlpfOwAF5PxQn9/0ukGnUHqsa6P4e04Xp\nWepk8yXFYYLHcsWmtSsqY5xUtwEa4XiGySWBxKlza/mUU3Nc7rILkABu9wk0JhqK\nJbkcFoZ/BrTdXle+hLnJOEWFMTo1zeopTU9Fyvl9AXvjUhT7pPOyPpYpM3LmyvKN\n6izt9NIiOwKBgQCjzcLxlWFe3k/FP7Pv46mfP9OiLzk/H7e2MqGmv5zT6OtP7LXa\nX30VudjmPZaRHeL0pMVm5abJRs/I7FxGnO/OEe7M8/pJwvIq/KM3isA86jhWsyIA\nQFcRlmhaR00ZrD6d4MeJIMCdEnetGNrB4Feys1EvHXfKY7I2kp30bOQCsQKBgCyM\n6V1iA/Dx2jDf7CFtSJiJFf+Y9Sk6QtyKFW2VutypEOVja+u5M4Di3uISTH/ozWR2\nn3TmFo13VS81Gs15AFZimHXOhYueRX/Tw91VZsZQZz23HXycG28QnNkpdi+W1MO4\naJJkjHDc/q2Cw3KDV8P+127ADaiLQMPMl4zMpdk5AoGBAOcPzHYFlRz+a5gg+aSJ\ni88JlYdXNqqML8tP7MlfU9bs9f547OZOu1QHlllo46u3oMzMjF14hWvH6Vtu3xGF\nxHElX270HfN7VluMWyhAO+tVsFdzUn3yFX8PsdTDGUVQDZZcbBVxwBeI5gWnD3Vd\nv9YY13/SlrSwqjdcH/I3+kYd\n-----END PRIVATE KEY-----\n",
+  "client_email": "health-bridge@herethon-5-392807.iam.gserviceaccount.com",
+  "client_id": "105936669793265155556",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/health-bridge%40herethon-5-392807.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
