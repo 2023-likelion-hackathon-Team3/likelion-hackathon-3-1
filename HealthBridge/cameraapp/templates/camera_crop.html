@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Photo Capture and Crop</title>
+</head>
+<body>
+    <h1>Webcam Photo Capture and Crop</h1>
+    <video id="webcam" autoplay></video>
+    <button id="capture">Capture Photo</button>
+
+    <div>
+        <h2>Crop Image</h2>
+        <p>Click and drag to select the area to crop:</p>
+        <div id="crop-area" style="position: relative;">
+            <div id="crop-selector" style="position: absolute; border: 3px dashed red;"><canvas id="crop-canvas" style="border: 1px solid black;"></canvas></div>
+        </div>
+        
+    </div>
+    <button id="crop">Crop and Save</button>
+
+    <script>
+        const video = document.getElementById('webcam');
+        const captureButton = document.getElementById('capture');
+        const cropCanvas = document.getElementById('crop-canvas');
+        const cropSelector = document.getElementById('crop-selector');
+        const cropButton = document.getElementById('crop');
+        const constraints = { video: true };
+
+        let cropStartX, cropStartY, cropping = false;
+
+        // Initialize webcam
+        async function initWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = stream;
+            } catch (error) {
+                console.error('Error accessing webcam:', error);
+            }
+        }
+
+        // Capture photo
+        function capturePhoto() {
+            cropCanvas.width = video.videoWidth;
+            cropCanvas.height = video.videoHeight;
+            cropCanvas.getContext('2d').drawImage(video, 0, 0, cropCanvas.width, cropCanvas.height);
+        }
+
+        // Initialize webcam when the page loads
+        window.onload = () => {
+            initWebcam();
+            captureButton.onclick = capturePhoto;
+        };
+
+        // Crop and Save button click event
+        cropButton.addEventListener('click', () => {
+            const cropImageCanvas = document.createElement('canvas');
+            const cropImageCtx = cropImageCanvas.getContext('2d');
+
+            const x = parseInt(cropSelector.style.left) - cropCanvas.getBoundingClientRect().left;
+            const y = parseInt(cropSelector.style.top) - cropCanvas.getBoundingClientRect().top;
+            const width = parseInt(cropSelector.style.width);
+            const height = parseInt(cropSelector.style.height);
+
+            cropImageCanvas.width = width;
+            cropImageCanvas.height = height;
+
+            const capturedImage = cropCanvas.getContext('2d').getImageData(x, y, width, height);
+            cropImageCtx.putImageData(capturedImage, 0, 0);
+
+            // Convert cropped image to data URL
+            const croppedImageData = cropImageCanvas.toDataURL('image/jpeg');
+
+            // Send cropped image data to the server
+            const formData = new FormData();
+            formData.append('cropped_photo_data', croppedImageData);
+
+            fetch('/camera/save_cropped_photo/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(data.message);
+                } else {
+                    console.error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('An error occurred:', error);
+            });
+        });
+
+        // Crop area interaction
+        cropArea.addEventListener('mousedown', (event) => {
+            cropStartX = event.clientX - cropCanvas.getBoundingClientRect().left;
+            cropStartY = event.clientY - cropCanvas.getBoundingClientRect().top;
+            cropSelector.style.width = '0px';
+            cropSelector.style.height = '0px';
+            cropSelector.style.left = cropStartX + 'px';
+            cropSelector.style.top = cropStartY + 'px';
+            cropping = true;
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            if (!cropping) return;
+
+            const currentX = event.clientX - cropCanvas.getBoundingClientRect().left;
+            const currentY = event.clientY - cropCanvas.getBoundingClientRect().top;
+
+            const width = currentX - cropStartX;
+            const height = currentY - cropStartY;
+
+            cropSelector.style.width = Math.abs(width) + 'px';
+            cropSelector.style.height = Math.abs(height) + 'px';
+
+            cropSelector.style.left = width < 0 ? currentX + 'px' : cropStartX + 'px';
+            cropSelector.style.top = height < 0 ? currentY + 'px' : cropStartY + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cropping = false;
+        });
+    </script>
+</body>
+</html>
