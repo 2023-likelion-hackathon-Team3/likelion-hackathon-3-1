@@ -1,14 +1,24 @@
+#bg {
+    position: fixed;
+    z-index: -20;
+    top: 0;
+    left: 0;
+    animation: waveAnimation 10s infinite linear;
+}
+
+@keyframes waveAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
     letter-spacing: -1.3px;
-}
-
-#bg {
-    position: fixed;
-    z-index: -20;
-    top: 0px;
-    left: 0px;
 }
 
 .logo {
@@ -33,6 +43,17 @@ body {
 #logo_text {
     width: 138px;
     height: 61px;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
 }
 
 .btns {
@@ -62,6 +83,8 @@ body {
     background-repeat: no-repeat;
     background-position: 15px 9px;
     background-size: 20px;
+    animation: fadeInUp 2s;
+    animation-delay: 0s;
 }
 
 #login {
@@ -75,6 +98,8 @@ body {
     font-weight: 400;
     padding: 10.5px;
     box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.1s;
 }
 
 #signup {
@@ -88,4 +113,6 @@ body {
     font-weight: 400;
     padding: 10.5px;
     box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.2s;
 }

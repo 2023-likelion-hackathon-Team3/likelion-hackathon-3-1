@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-wrap {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    transform: translate3d(0, 0, 0);
+}
+
+.circle {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave-one {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: -65%;
+    left: -30%;
+    border-radius: 45%;
+    background: #ffffff;
+    animation: move 5s infinite linear reverse;
+}
+
+.wave-two {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: -90%;
+    left: -30%;
+    border-radius: 45%;
+    background: #525fe1;
+    animation: move 5s infinite linear reverse;
+}
+
+.wave-three {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: -100%;
+    left: -30%;
+    border-radius: 45%;
+    background: #ffa41b;
+    animation: move 5s infinite linear reverse;
+}
+
+@keyframes move {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.frame {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    border-radius: 2px;
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.wrap {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: #ffa41b;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave2 {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: 30%;
+    left: -100px;
+    border-radius: 43%;
+    border: none;
+    animation: drift 4s infinite linear reverse;
+    background: #525fe1;
+}
+
+.wave3 {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: 40%;
+    left: -100px;
+    border-radius: 43%;
+    border: none;
+    animation: drift 4s infinite linear reverse;
+    background: #ffffff;
+}
+
+@keyframes drift {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
