@@ -7,17 +7,46 @@
 </head>
 <body>
     <p>{{post.title}}</p>
-    <p>{{post.created_at}}</p>
+    <!-- <p>{{post.created_at}}</p> -->
     <p>{{post.content}}</p>
 
     {% if post.tags.exists %} {{p.pk}}글의 태그:
-    {% for tag in post.tags.iterator %}
-      <a href="{{tag.get_absolute_url }}">{{tag}}</a>
-    {% endfor %}
-  {% endif %}
+      {% for tag in post.tags.iterator %}
+        <a href="{{tag.get_absolute_url }}">{{tag}}</a>
+      {% endfor %}
+    {% endif %}
 
   <br/>
   <br/>
+
+  <button id="shareButton">공유</button>
+    
+  <script>
+    const shareButton = document.getElementById('shareButton');
+    shareButton.addEventListener('click', function() {
+        const urlToCopy = window.location.href;
+
+        // Create a new input element
+        const inputElement = document.createElement('input');
+        inputElement.value = urlToCopy;
+
+        // Append the input element to the DOM
+        document.body.appendChild(inputElement);
+
+        // Select the input element's content
+        inputElement.select();
+        inputElement.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the content to the clipboard
+        document.execCommand('copy');
+
+        // Remove the input element from the DOM
+        document.body.removeChild(inputElement);
+
+        alert('해당 게시물 URL이 복사되었습니다: ' + urlToCopy);
+    });
+  </script>
+  <br><br>
     {% if user.is_authenticated and user.is_superuser%}
     <!--수정과 삭제를 최상위 사용자만 할 수 있도록-->
     <a href="{% url 'post:postUpdate' post.pk %}">수정</a>
