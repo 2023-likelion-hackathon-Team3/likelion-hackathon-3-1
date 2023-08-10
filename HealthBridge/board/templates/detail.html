@@ -1,8 +1,16 @@
 
 <h1>건강 관련 질문 게시판</h1>
 
+{% if list.hb_user == request.user %}
+수정 및 삭제?
+{% endif %}
 <p>제목: {{list.title}}</p>
+{% if list.image %}
+<P><img src="{{ list.image.url }}"></P>
+{% endif %}
+
 <p>내용: {{list.content}}</p>
+
 <br><br><br>
 
 전문가 답변:
