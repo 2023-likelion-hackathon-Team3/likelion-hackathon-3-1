@@ -16,6 +16,10 @@ def write(request):
         new_question = Board()
         new_question.title = request.POST.get("title")
         new_question.content = request.POST.get("content")
+        try:
+            new_question.image = request.FILES["image"]
+        except:
+            new_question.image = None
         new_question.hb_user = now_user
         new_question.save()
 
@@ -25,6 +29,7 @@ def write(request):
 
 def detail(request, id):
     list = get_object_or_404(Board, pk=id)
+    myuser = MyUser.objects.get(user=request.user)
     if request.method == "POST":
         new_answer = DoctorAnswer()
         new_answer.doctor = Doctor.objects.get(doctor_user=request.user)
@@ -40,13 +45,19 @@ def detail(request, id):
     if request.method == "GET":
         if list.answer == False:
             print(list.answer)
-            return render(request, "detail.html", {"list": list})
+            return render(request, "detail.html", {"list": list, "myuser": myuser})
 
         else:
             answer = DoctorAnswer.objects.get(board=list)
-            return render(request, "detail.html", {"list": list, "answer": answer})
+            return render(
+                request,
+                "detail.html",
+                {"list": list, "answer": answer, "myuser": myuser},
+            )
 
-    return render(request, "detail.html", {"list": list, "answer": new_answer})
+    return render(
+        request, "detail.html", {"list": list, "answer": new_answer, "myuser": myuser}
+    )
 
 
 def updateAnswer(request, id, ansid):

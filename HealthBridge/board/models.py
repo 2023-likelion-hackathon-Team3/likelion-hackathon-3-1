@@ -12,6 +12,7 @@ class Board(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     answer = models.BooleanField(default=False)
     my_question = models.BooleanField(default=False)
+    image = models.ImageField(upload_to="board/", blank=True, null=True)
     hb_user = models.ForeignKey(User, related_name="con_user", on_delete=models.CASCADE)
 
     def __str__(self):
