@@ -1,9 +1,11 @@
 #bg {
     position: fixed;
     z-index: -20;
-    top: 0;
-    left: 0;
-    animation: waveAnimation 10s infinite linear;
+    right: 0;
+    top: -10px;
+    height: 860px;
+    overflow: hidden;
+    animation: waveAnimation 10s ease-out;
 }
 
 @keyframes waveAnimation {
@@ -11,7 +13,38 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(100%);
+        transform: translateX(80%);
+    }
+}
+
+#newbg {
+    position: fixed;
+    z-index: -19;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    animation: showNewImage 4s ease-in-out forwards,
+        fadeIn ease-in-out 4s forwards;
+    animation-delay: 8s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showNewImage {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    10%,
+    90% {
+        opacity: 1;
     }
 }
 
