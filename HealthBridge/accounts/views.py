@@ -56,3 +56,7 @@ def set_password(request):
 
         return redirect('HBapp:index')  # 로그인 후 리다이렉트할 페이지
     return render(request, 'set_password.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'login.html')
