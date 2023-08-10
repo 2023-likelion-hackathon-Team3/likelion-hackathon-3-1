@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/scan.css" rel="stylesheet" />
+    <title>scan</title>
+  </head>
+  <body>
+    <div id="container">
+        <video id="camera" autoplay></video>
+        <button id="captureBtn">사진 찍기</button>
+        <img id="capturedImage" style="display: none;">
+    </div>
+
+    <script>
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('camera');
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error('카메라 접근 오류:', error);
+            }
+        }
+
+        async function capturePhoto() {
+            const videoElement = document.getElementById('camera');
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            const capturedImage = document.getElementById('capturedImage');
+            capturedImage.src = canvas.toDataURL('image/png');
+            capturedImage.style.display = 'block';
+        }
+
+        document.getElementById('captureBtn').addEventListener('click', capturePhoto);
+
+        startCamera();
+    </script>
+  </body>
+</html>
