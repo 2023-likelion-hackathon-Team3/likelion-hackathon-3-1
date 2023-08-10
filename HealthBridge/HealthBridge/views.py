@@ -5,4 +5,4 @@ from django.contrib import auth
 
 
 def index(request):
-    return render(request, "index.html")
+    return redirect("HBapp:index")

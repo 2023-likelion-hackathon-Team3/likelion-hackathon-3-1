@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "cameraapp",
     "doctor",
 ]
-#LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = "/"
 SITE_ID = 3
 LOGIN_REDIRECT_URL = "accounts:set_password"
 AUTHENTICATION_BACKENDS = [
@@ -149,7 +149,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "_media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # settings.py
 GOOGLE_CLOUD_DOCUMENT_AI_API_KEY = "AIzaSyAkJA2jmINMwar5RtFJlGV9bCVm8P4tM3Q"
@@ -157,7 +157,7 @@ GOOGLE_CLOUD_DOCUMENT_AI_API_KEY = "AIzaSyAkJA2jmINMwar5RtFJlGV9bCVm8P4tM3Q"
 # 인증 정보가 있는 서비스 계정의 JSON 키 파일 경로
 os.environ[
     "GOOGLE_APPLICATION_CREDENTIALS"
-] = "C:/LEEKYUMIN/likelion/중앙 해커톤/likelion-hackathon-3/HealthBridge/herethon-5-392807-0d6795b69421.json"
+] = "C:/LEEKYUMIN/likelion/2023 hackathon/likelion-hackathon-3/HealthBridge/herethon-5-392807-0d6795b69421.json"
 
 
 AUTHENTICATION_BACKENDS = [
