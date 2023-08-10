@@ -16,8 +16,10 @@
         <div cladd="content">
             <div class="add">
                 <h3>내 건강 등록하기</h3>
-                <div class="add_content">
-                    <a href=""> <img src="./img/plus2.svg" alt="add" /></a>
+                <div class="add_container">
+                    <a href="#" class="add_link">
+                        <img src="./img/plus2.svg" alt="add" class="add_img"
+                    /></a>
                     <div class="add_text">
                         <p>
                             건강검진표를 등록하고 <br />
@@ -37,7 +39,7 @@
             </div>
             <div class="board">
                 <h3>건강 질문하기</h3>
-                <div class="board_content">
+                <div class="board_container">
                     <a href=""><img src="./img/qa.svg" alt="board" /></a>
                     <div class="board_text">
                         <p>
@@ -77,4 +79,48 @@
         </div>
         <img src="./img/nav.svg" id="nav" />
     </body>
+    <script>
+        const add_delete1 = document.querySelector(".add_link");
+        const add_delete2 = document.querySelector(".add_img");
+        const add_delete3 = document.querySelector(".add_text");
+        const add_delete4 = document.querySelector(".add_text p");
+        const add_button = document.querySelector(".board"); //result와 연결해야함
+        add_button.addEventListener("click", () => {
+            const add_content = document.createElement("div");
+            add_content.className = "add_content";
+            const add_bg = document.createElement("div");
+            add_bg.className = "add_bg";
+
+            const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
+            const randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
+            add_bg.style.backgroundColor = randomColor;
+
+            const add_title = document.createElement("div");
+            add_title.className = "add_title";
+            add_title.textContent = "키워드";
+            add_content.appendChild(add_bg);
+            add_bg.appendChild(add_title);
+            document.querySelector(".add_container").appendChild(add_content);
+
+            const addContainer = document.querySelector(".add");
+
+            if (addContainer) {
+                addContainer.appendChild(add_content);
+                const addContents =
+                    addContainer.querySelectorAll(".add_content");
+                if (addContents.length % 3 === 0) {
+                    const lineBreak = document.createElement("br");
+                    addContainer.appendChild(lineBreak);
+                }
+
+                if (add_delete1 && add_delete2 && add_delete3 && add_delete4) {
+                    add_delete1.remove();
+                    add_delete2.remove();
+                    add_delete3.remove();
+                    add_delete4.remove();
+                }
+            }
+        });
+    </script>
 </html>
