@@ -5,6 +5,11 @@ body {
     letter-spacing: -1.3px;
 }
 
+body {
+    background-image: url(/img/bg_main.png);
+    background-repeat: no-repeat;
+}
+
 #back {
     width: 41px;
     height: 40px;
@@ -70,7 +75,7 @@ body {
     color: #414141;
     font-size: 12px;
     font-weight: 600;
-    margin: 150px 50px 10px 50px;
+    margin: 100px 50px 10px 50px;
 }
 
 #prev_text {
@@ -96,7 +101,7 @@ body {
     color: #414141;
     font-size: 12px;
     font-weight: 600;
-    margin: 0px 50px 0px 50px;
+    margin: 0px 50px 130px 50px;
 }
 
 #next_text {
@@ -116,12 +121,6 @@ body {
 }
 
 /*나브바 고정*/
-#bg {
-    position: fixed;
-    z-index: -20;
-    top: 0px;
-    left: 0px;
-}
 
 .nav {
     display: flex;
