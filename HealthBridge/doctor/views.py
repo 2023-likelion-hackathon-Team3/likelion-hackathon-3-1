@@ -19,14 +19,11 @@ def doctor_signup(request):
         full_name = request.POST["fullname"]  # 이름
         hospital_id = request.POST["hospital"]  # 병원
 
-        first_name, last_name = full_name.split()
-
         hospital = Hospital.objects.get(id=hospital_id)
         user = User.objects.create_user(
             username=username,
             password=password,
-            first_name=first_name,
-            last_name=last_name,
+            first_name=full_name,
             is_staff=True,
         )
         doctor = Doctor(
