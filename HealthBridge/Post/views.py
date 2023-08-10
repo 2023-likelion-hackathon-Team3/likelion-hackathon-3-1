@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Post, Tag
 from accounts.models import MyUser, User
+from django.urls import reverse
 
 
 def postList(request):

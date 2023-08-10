@@ -51,8 +51,9 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.auth0",
     "cameraapp",
 ]
-LOGIN_REDIRECT_URL = "/"
+#LOGIN_REDIRECT_URL = "/"
 SITE_ID = 3
+LOGIN_REDIRECT_URL = "accounts:set_password"
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
