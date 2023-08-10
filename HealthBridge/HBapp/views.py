@@ -4,7 +4,6 @@ import os
 from urllib.parse import quote
 from accounts.models import MyUser, Tag
 from django.contrib.auth.decorators import login_required
-from .models import hospital
 
 
 # Create your views here.
@@ -89,7 +88,3 @@ def keyword_add(request):
             "all_tags": all_tags,
         },
     )
-
-
-def test(request):
-    return render(request, "test.html")
