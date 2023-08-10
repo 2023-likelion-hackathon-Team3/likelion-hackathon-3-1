@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import os
 from urllib.parse import quote
@@ -15,6 +16,7 @@ from django.conf import settings
 from django.shortcuts import render
 from google.cloud import vision_v1
 from google.cloud.vision_v1 import types
+import requests
 
 
 def text_extraction(request):
