@@ -20,6 +20,8 @@ import requests
 
 
 def text_extraction(request):
+    user = MyUser.objects.get(user=request.user)
+
     if request.method == "POST":
         # 이미지 파일을 사용자로부터 받아옴
         image_file = request.FILES["image"]
@@ -44,17 +46,17 @@ def text_extraction(request):
 
         # 텍스트 감지 수행
         response = client.text_detection(image=image)
-
+        update_tags = {}
         # 텍스트 추출 결과
         extracted_text = ""
-
         for text_annotation in response.text_annotations:
             tags = Tag.objects.all()
             for t in tags:
                 if text_annotation.description == t.name:
                     # tag, created = Tag.objects.update_or_create(name=text_annotation.description, slug=text_annotation.description)
                     user = MyUser.objects.get(user=request.user)
-                    update_tags = user.tags.add(t)
+                    user.tags.add(t)
+                    update_tags[t.pk] = t.name
                     user.save()
             extracted_text += text_annotation.description + "\n"
 
@@ -64,7 +66,12 @@ def text_extraction(request):
         return render(
             request,
             "result.html",
-            {"response": response, "extracted_text": extracted_text},
+            {
+                "response": response,
+                "extracted_text": extracted_text,
+                "update_tags": update_tags,
+                "user": user,
+            },
         )
 
     return render(request, "upload.html")

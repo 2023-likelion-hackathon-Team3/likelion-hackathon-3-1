@@ -1,4 +1,10 @@
 {% if user.is_authenticated %}
+    {% if myuser.image %}
+        <img src="{{myuser.image.url}}" width="300px" alt="프로필 사진">
+    {% else %}
+    없을 때 넣는 사진
+    {% endif %}
+    
     {{ user.username }}
     <a href="{% url 'mypage:check' %}">수정</a>
 {% else %}

@@ -1,10 +1,32 @@
+
 <h1>건강 관련 질문 게시판</h1>
 
 <p>제목: {{list.title}}</p>
 <p>내용: {{list.content}}</p>
 <br><br><br>
-<p>전문가 답변: {{list.answer}}</p>
-<br><br><br>
+
+전문가 답변:
+{% if list.answer == True %}
+        {% if answer.board == list %}
+        <p>{{answer.answer}} - {{ answer.doctor }} {{ answer.doctor.hospital }} {{ answer.created_at }}</p>
+            {% if request.user == answer.doctor.doctor_user %}
+                <a href="{% url 'board:answer-update' answer.board.id answer.id%}">수정</a>
+                <a href="{% url 'board:answer-delete' answer.board.id answer.id%}">삭제</a>
+            {% endif %}
+        <br><br><br>
+        {% endif %}
+{% endif %}
+
+{% if user.is_staff == True and list.answer == False %}
+<form action="{% url 'board:board-detail' list.id %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="answer" placeholder="내용을 입력해주세요.">
+  <br><br>
+  <input type="submit" value="등록" name="submit">
+</form>
+
+{% endif %}
+
 
 {% with prev_list=list.get_previous_by_created_at %}
 {% if prev_list %}

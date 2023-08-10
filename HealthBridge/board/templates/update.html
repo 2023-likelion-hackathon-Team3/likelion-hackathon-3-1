@@ -1,0 +1,26 @@
+<h1>건강 관련 질문 게시판</h1>
+
+<p>제목: {{list.title}}</p>
+<p>내용: {{list.content}}</p>
+<br><br><br>
+
+전문가 답변:
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="answer" value="{{ answer.answer }}">
+  <br><br>
+  <input type="submit" value="등록" name="submit">
+</form>
+  <br><br><br>
+
+{% with prev_list=list.get_previous_by_created_at %}
+{% if prev_list %}
+<p>이전 글: <a href="{% url 'board:board-detail' prev_list.pk %}">{{ prev_list.title }}</a></p>
+{% endif %}
+{% endwith %}
+
+{% with next_list=list.get_next_by_created_at %}
+{% if next_list %}
+<p>다음 글: <a href="{% url 'board:board-detail' next_list.pk %}">{{ next_list.title }}</a></p>
+{% endif %}
+{% endwith %}

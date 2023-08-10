@@ -3,8 +3,9 @@
   <p style="color: red;">{{ error_message }}</p>
 {% endif %}
 
-<form method="POST" action="{% url 'mypage:fix' %}">
+<form method="POST" action="{% url 'mypage:fix' %}" enctype="multipart/form-data">
     {% csrf_token %}
+    <input type="file" name="image" value="{{myuser.image.url}}">
     <br>
     <input type="text" name="new_username" value="" placeholder="아이디 | username">
     <br>
