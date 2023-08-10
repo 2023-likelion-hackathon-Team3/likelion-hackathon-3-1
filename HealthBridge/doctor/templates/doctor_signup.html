@@ -1,0 +1,17 @@
+<body>    
+    <h1>회원가입</h1>    
+    <form method="POST" action="{% url 'doctor:doctor_signup' %}">
+        {% csrf_token %}
+        <br>
+        <input type="text" name="fullname" value="" placeholder="이름을 입력하세요">
+        <br><br>
+        <input type="text" name="username" value="" placeholder="아이디를 입력하세요">
+        <br><br>
+        <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
+        <br><br>
+        <input type="text" name="license_number" value="" placeholder="면허번호를 입력하세요">
+        <br><br>
+        <a href="{% url 'doctor:select_hospital' %}">병원 정보 입력하러 가기</a>
+        <input type="submit" value="가입" >
+    </form>
+</body>

@@ -29,4 +29,5 @@ urlpatterns = [
     path("quiz/", include("Quiz.urls", namespace="quiz")),
     path("authaccounts/", include("allauth.urls")),
     path("camera/", include("cameraapp.urls", namespace="cameraapp")),
+    path("accounts/doctor/", include("doctor.urls", namespace="doctor")),
 ]
