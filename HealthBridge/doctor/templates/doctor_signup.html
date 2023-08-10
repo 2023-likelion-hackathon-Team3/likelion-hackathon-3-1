@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.min.css">
+</head>
 <body>    
     <h1>회원가입</h1>    
     <form method="POST" action="{% url 'doctor:doctor_signup' %}">
@@ -9,8 +12,25 @@
         <br><br>
         <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
         <br><br>
+        <input type="password" name="password2" value="" placeholder="비밀번호 확인">
+        <br><br>
         <input type="text" name="license_number" value="" placeholder="면허번호를 입력하세요">
         <br><br>
+        <select id="id_hospital" name="hospital" class="chosen-select">
+            <option value="">병원 이름 | 병원 주소</option>
+            {% for hospital in hospitals %}
+            <option value="{{ hospital.id }}">{{ hospital.hospital_name }}  {{ hospital.address }}</option>
+            {% endfor %}
+        </select>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.chosen-select').chosen({
+                    search_contains: true,  // 부분 일치 검색
+                });
+            });
+        </script>
         <a href="{% url 'doctor:select_hospital' %}">병원 정보 입력하러 가기</a>
         <input type="submit" value="가입" >
     </form>

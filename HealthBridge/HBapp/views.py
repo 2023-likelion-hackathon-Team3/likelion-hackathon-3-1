@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import os
 from urllib.parse import quote
 from accounts.models import MyUser, Tag
 from django.contrib.auth.decorators import login_required
+from .models import hospital
 
 
 # Create your views here.
@@ -15,6 +17,7 @@ from django.conf import settings
 from django.shortcuts import render
 from google.cloud import vision_v1
 from google.cloud.vision_v1 import types
+import requests
 
 
 def text_extraction(request):
@@ -86,3 +89,7 @@ def keyword_add(request):
             "all_tags": all_tags,
         },
     )
+
+
+def test(request):
+    return render(request, "test.html")
