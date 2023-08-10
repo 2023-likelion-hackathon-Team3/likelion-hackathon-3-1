@@ -1,0 +1,15 @@
+<select name="hospital" required>
+    {% for hospital in hospitals %}
+        <option value="{{ hospital.id }}">{{ hospital.hospital_name }}</option>
+    {% endfor %}
+</select><br>
+
+{% comment %} <form method="post" action="{% url 'doctor:select_hospital' %}">
+    {% csrf_token %}
+    <select name="hospital" required>
+        {% for hospital in hospitals %}
+            <option value="{{ hospital.id }}">{{ hospital.hospital_name }}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">저장</button>
+</form> {% endcomment %}

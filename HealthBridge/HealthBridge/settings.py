@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.kakao",
     "allauth.socialaccount.providers.auth0",
     "cameraapp",
+    "doctor",
 ]
 #LOGIN_REDIRECT_URL = "/"
 SITE_ID = 3

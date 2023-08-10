@@ -12,6 +12,8 @@
         <input type="password" name="password2" value="" placeholder="비밀번호를 다시 한 번 입력하세요">
         <input type="submit" value="가입" >
     </form>
+    <br><br>
+    <a href="{% url 'doctor:doctor_signup' %}">의사로 회원가입하기</a>
     <script>
         var error = "{{ error }}";
         if (error) {
