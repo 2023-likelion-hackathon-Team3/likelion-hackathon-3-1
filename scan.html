@@ -1,44 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./css/scan.css" rel="stylesheet" />
     <title>scan</title>
-  </head>
-  <body>
-    <div id="container">
-        <video id="camera" autoplay></video>
-        <button id="captureBtn">사진 찍기</button>
-        <img id="capturedImage" style="display: none;">
+</head>
+<body>
+    <video id="webcam" autoplay></video>
+    <button id="capture">Capture Photo</button>
+    
+    <div>
+        <div id="crop-area" style="width: 150; height: 150px; border: 3px solid red;"><canvas id="canvas"></canvas></div>
+        <button id="crop">Crop</button>
+    </div>
+
+    <div class="camnav">
+        <div class="camnav_back">
+        <a href="./scan_explain.html"><img src="./img/cam_back.png" alt="back" /></a>
+        </div>
+
+        <div class="camnav_capture">
+            <button id="capture"><img src="./img/cam_button.png" alt="capture" /></button>
+        </div>
+
+        <div class="camnav_gallery">
+            <a href=""><img src="./img/gallery.png" alt="gallery" /></a>
+        </div>
     </div>
 
     <script>
-        async function startCamera() {
+        const video = document.getElementById('webcam');
+        const captureButton = document.getElementById('capture');
+        const canvas = document.getElementById('canvas');
+        const constraints = { video: true };
+
+        // Initialize webcam
+        async function initWebcam() {
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                const videoElement = document.getElementById('camera');
-                videoElement.srcObject = stream;
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = stream;
             } catch (error) {
-                console.error('카메라 접근 오류:', error);
+                console.error('Error accessing webcam:', error);
             }
         }
 
-        async function capturePhoto() {
-            const videoElement = document.getElementById('camera');
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        // Capture photo
+        function capturePhoto() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const photoData = canvas.toDataURL('image/jpeg');
 
-            const capturedImage = document.getElementById('capturedImage');
-            capturedImage.src = canvas.toDataURL('image/png');
-            capturedImage.style.display = 'block';
+            // You can send 'photoData' to the server using AJAX or other methods
+            // For this example, let's just log the base64-encoded image data
+            console.log(photoData);
         }
 
-        document.getElementById('captureBtn').addEventListener('click', capturePhoto);
+        // Initialize webcam when the page loads
+        window.onload = () => {
+            initWebcam();
+            captureButton.onclick = capturePhoto;
+        };
 
-        startCamera();
+        const cropArea = document.getElementById('crop-area');
+    const cropButton = document.getElementById('crop');
+
+    let startX, startY, cropping = false;
+
+    cropArea.addEventListener('mousedown', (event) => {
+        startX = event.clientX - cropArea.getBoundingClientRect().left;
+        startY = event.clientY - cropArea.getBoundingClientRect().top;
+        cropping = true;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+        if (!cropping) return;
+
+        const width = event.clientX - cropArea.getBoundingClientRect().left - startX;
+        const height = event.clientY - cropArea.getBoundingClientRect().top - startY;
+
+        cropArea.style.width = `${width}px`;
+        cropArea.style.height = `${height}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        cropping = false;
+    });
+
+
+    cropButton.addEventListener('click', () => {
+        const croppedCanvas = document.createElement('canvas');
+        const ctx = croppedCanvas.getContext('2d');
+
+        const x = startX;
+        const y = startY;
+        const width = parseInt(cropArea.style.width);
+        const height = parseInt(cropArea.style.height);
+
+        croppedCanvas.width = width;
+        croppedCanvas.height = height;
+
+        ctx.drawImage(canvas, x, y, width, height, 0, 0, width, height);
+
+        const croppedPhotoData = croppedCanvas.toDataURL('image/jpeg');
+
+        // Send cropped image data to the server
+        const formData = new FormData();
+        formData.append('cropped_photo_data', croppedPhotoData);
+
+        fetch('/camera/save_cropped_photo/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(data.message);
+            } else {
+                console.error(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+    });
     </script>
-  </body>
+</body>
 </html>
+
