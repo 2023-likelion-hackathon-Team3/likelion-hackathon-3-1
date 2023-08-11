@@ -115,7 +115,8 @@ p {
   margin: 0;
 }
 
-/* nav */
+/*나브바 고정*/
+
 .nav {
   display: flex;
   justify-content: space-around;
@@ -123,10 +124,9 @@ p {
   left: 0px;
   position: relative;
   z-index: 3;
-  background-color: #ffa41b;
 }
 
-#plus {
+#nav_add {
   position: fixed;
   top: 734px;
   left: 160px;
@@ -135,7 +135,7 @@ p {
 
 #nav {
   position: fixed;
-  top: 765px;
+  bottom: 0px;
   left: 0;
   z-index: 2;
 }
@@ -177,8 +177,10 @@ p {
 
 .nav p {
   color: #ffffff;
+  margin-top: 2px;
+  font-size: small;
 }
 
-.nav_info p {
+.nav_board p {
   color: #525fe1;
 }
