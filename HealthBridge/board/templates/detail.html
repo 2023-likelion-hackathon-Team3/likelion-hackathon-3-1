@@ -1,4 +1,3 @@
-
 <h1>건강 관련 질문 게시판</h1>
 
 {% if list.hb_user == request.user %}
@@ -13,8 +12,16 @@
 
 <br><br><br>
 
-전문가 답변:
-{% if list.answer == True %}
+{% if list.has_answer %}
+    {% for ans in answer %}
+        {% if ans.board_list == list %}
+            <p>{{ ans.doctor }} 의사</p>
+            답변: {{ ans.answer }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<!-- {% if list.answer == True %}
         {% if answer.board == list %}
         <p>{{answer.answer}} - {{ answer.doctor }} {{ answer.doctor.hospital }} {{ answer.created_at }}</p>
             {% if request.user == answer.doctor.doctor_user %}
@@ -23,7 +30,7 @@
             {% endif %}
         <br><br><br>
         {% endif %}
-{% endif %}
+{% endif %} -->
 
 {% if user.is_staff == True and list.answer == False %}
 <form action="{% url 'board:board-detail' list.id %}" method="post">

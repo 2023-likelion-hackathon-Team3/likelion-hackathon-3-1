@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
-from .models import Doctor, Hospital
+from .models import Doctor, Hospital, DoctorAnswer
 from django.contrib.auth.models import User
-
-# Create your models here.
+from django.contrib import auth
+from django.contrib.auth import authenticate
+from board.models import *
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -33,7 +35,7 @@ def doctor_signup(request):
         doctor.save()
 
         login(request, user, backend="django.contrib.auth.backends.ModelBackend")
-        return redirect("HBapp:index")
+        return redirect("doctor:doctor_main")
 
     return render(request, "doctor_signup.html", {"hospitals": hospitals})
 
@@ -46,3 +48,43 @@ def doctor_signup(request):
 def dropdown_view(request):
     hospitals = Hospital.objects.all()  # 모든 병원 정보를 가져옴
     return render(request, "select_hospital.html", {"hospitals": hospitals})
+
+def doctor_login(request):
+    if request.method == "POST":
+        userid = request.POST['username']
+        pwd = request.POST['password']
+        user = auth.authenticate(request, username=userid, password=pwd)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('doctor:doctor_main')
+        else:
+            return render(request, 'doctor_login.html')
+    else: 
+        return render(request, 'doctor_login.html')
+    
+def doctor_main(request):
+    question_list = Board.objects.all()
+    return render(request, "doctor_main.html", {"question_list": question_list})
+
+def doctor_result(request, id):
+    list = get_object_or_404(Board, pk=id)
+    answer = DoctorAnswer.objects.filter(board_list=list)
+    
+    if request.method == 'POST':
+        new_answer = DoctorAnswer()
+        doctor = Doctor.objects.get(doctor_user=request.user)
+        new_answer.doctor = doctor
+        new_answer.answer = request.POST.get("doctor_answer")
+        new_answer.board_list = list
+        list.has_answer = True
+        list.save()
+        new_answer.save()
+        
+        return redirect('doctor:doctor_main')
+    
+    try:
+        answer = DoctorAnswer.objects.filter(board_list=list)
+    except DoctorAnswer.DoesNotExist:
+        answer = None
+
+    return render(request, "doctor_result.html", {"list": list, "answer":answer})

@@ -31,7 +31,7 @@ urlpatterns = [
     path("quiz/", include("Quiz.urls", namespace="quiz")),
     path("authaccounts/", include("allauth.urls")),
     path("camera/", include("cameraapp.urls", namespace="cameraapp")),
-    path("accounts/doctor/", include("doctor.urls", namespace="doctor")),
+    path("doctor/", include("doctor.urls", namespace="doctor")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

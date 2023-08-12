@@ -1,0 +1,20 @@
+<p>제목: {{list.title}}</p>
+<p>질문 내용: {{list.content}}</p>
+<br><br><br>
+{% if list.has_answer %}
+    {% for ans in answer %}
+        <p>{{ans.doctor}}의사</p>
+        <p>전문가 답변: {{ans.answer}}</p>
+    {% endfor %}
+{% endif %}
+
+{% if not list.has_answer %}
+    <form method="post" action = "{% url 'doctor:doctor_result' list.pk %}">
+        {% csrf_token %}
+        {{new_answer.doctor}}
+        <textarea name="doctor_answer" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="등록">
+    </form>
+{% endif %}
+
+<a href="{% url 'doctor:doctor_main' %}">질문목록</a>

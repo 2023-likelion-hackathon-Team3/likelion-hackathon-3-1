@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Board, DoctorAnswer
+from .models import Board
 
 # Register your models here.
 
 admin.site.register(Board)
-admin.site.register(DoctorAnswer)
