@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/doctor_main.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+            rel="stylesheet"
+        />
+        <title>Health Bridge +</title>
+    </head>
+    <body>
+        <!--페이지 제목-->
+        <div id="pageName">당신을 기다리는 질문들</div>
+        <!--게시글-->
+        <section class="postBox">
+            <div class="post">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </div>
+            <div class="post">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </div>
+            <div class="post">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </div>
+            <div class="post">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </div>
+            <div class="post">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            let answer = document.getElementsByClassName("answer");
+
+            if (answer == "답변 완료된 상태") {
+                answer.innerHtml = "• 답변 완료";
+                answer.style.color = "#035956";
+            }
+        </script>
+    </body>
+</html>

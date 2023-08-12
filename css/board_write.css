@@ -108,6 +108,7 @@ input[type="text"].styled-input::placeholder {
     left: 0px;
     position: relative;
     z-index: 3;
+    letter-spacing: 0;
 }
 
 #nav_add {
