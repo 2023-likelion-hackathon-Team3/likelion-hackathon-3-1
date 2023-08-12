@@ -1,21 +1,8 @@
 #bg {
     position: fixed;
     z-index: -20;
-    right: 0;
-    top: -10px;
-    height: 860px;
-    overflow: hidden;
-    animation: waveAnimation 20s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes waveAnimation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(73%);
-    }
+    left: 0;
+    top: 0;
 }
 
 body {
@@ -24,28 +11,12 @@ body {
     letter-spacing: -1.3px;
 }
 
-.logo {
-    width: 138px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#logo {
+    width: 157px;
     position: fixed;
     z-index: 3;
     top: 295px;
-    left: 126px;
-}
-
-#logo_white {
-    width: 117.074px;
-    height: 96px;
-    margin-bottom: 20px;
-}
-
-#logo_text {
-    width: 138px;
-    height: 61px;
+    left: 116.5px;
 }
 
 @keyframes fadeInUp {
@@ -65,29 +36,10 @@ body {
     flex-direction: column;
     justify-content: space-between;
     width: 258px;
-    height: 135px;
+    height: 85px;
     z-index: 3;
     bottom: 40px;
     left: 66px;
-}
-
-#kakao {
-    width: 258px;
-    height: 35px;
-    border-radius: 20px;
-    background: #fee500;
-    color: #423630;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 400;
-    padding: 10.5px;
-    box-sizing: border-box;
-    background-image: url(/img/kakao_logo.png);
-    background-repeat: no-repeat;
-    background-position: 15px 9px;
-    background-size: 20px;
-    animation: fadeInUp 2s;
-    animation-delay: 0s;
 }
 
 #login {
