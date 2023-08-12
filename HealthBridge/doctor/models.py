@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from board.models import Board
+from django.utils import timezone
 
 class Hospital(models.Model):
     hospital_name = models.CharField(max_length=100)
@@ -13,10 +14,18 @@ class Hospital(models.Model):
 
 class Doctor(models.Model):
     doctor_user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="doctor"
+        User, on_delete=models.CASCADE, related_name="doctor_user"
     )
     license_number = models.PositiveIntegerField(default=0)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.doctor_user.username
+    
+class DoctorAnswer(models.Model):
+    answer = models.CharField(max_length=300, blank=True, null=True)
+    board_list = models.ForeignKey(Board, on_delete=models.CASCADE, null=True)
+    doctor = models.ForeignKey(Doctor, related_name="doctor", on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"[{self.answer}]-{self.doctor}"

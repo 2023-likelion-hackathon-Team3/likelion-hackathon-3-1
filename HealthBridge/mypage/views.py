@@ -10,9 +10,12 @@ from Post.models import Tag
 
 # Create your views here.
 
-
+@login_required
 def my(request):
-    tags = MyUser.objects.get(user=request.user).tags
+    if request.user.is_authenticated:
+        tags = MyUser.objects.get(user=request.user).tags
+    else:
+        tags=None #로그인 하지 않았을 경우
     now_user = request.user
     myuser = MyUser.objects.get(user=request.user)
     user_questions = Board.objects.filter(hb_user=now_user)

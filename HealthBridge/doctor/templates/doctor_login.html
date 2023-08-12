@@ -1,0 +1,12 @@
+<h1>의사 로그인</h1>
+<form action="{% url 'doctor:doctor_login' %}" method="POST">
+    {% csrf_token %}
+    <br>
+    <input type="text" name="username" value="" placeholder="아이디를 입력하세요">
+    <br>
+    <br>
+    <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
+    <br>
+    <br>
+    <input type="submit" type="submit" value="Login">
+</form>

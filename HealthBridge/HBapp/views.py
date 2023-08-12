@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def index(request):
     tags = MyUser.objects.get(user=request.user).tags
     return render(request, "index.html", {"tags": tags})

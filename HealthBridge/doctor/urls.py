@@ -5,6 +5,9 @@ from doctor.views import *
 app_name = "doctor"
 
 urlpatterns = [
-    path("signup/", views.doctor_signup, name="doctor_signup"),
-    path("select_hospital/", views.dropdown_view, name="select_hospital"),
+    path("accounts/signup/", views.doctor_signup, name="doctor_signup"),
+    path("accounts/login/", views.doctor_login, name="doctor_login"),
+    path("accounts/select_hospital/", views.dropdown_view, name="select_hospital"),
+    path("main/", views.doctor_main, name="doctor_main"),
+    path("result/<int:id>/", views.doctor_result, name="doctor_result"),
 ]
