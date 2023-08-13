@@ -10,4 +10,5 @@ urlpatterns = [
     path("accounts/select_hospital/", views.dropdown_view, name="select_hospital"),
     path("main/", views.doctor_main, name="doctor_main"),
     path("result/<int:id>/", views.doctor_result, name="doctor_result"),
+    path("info/<int:id>/", views.map_view, name="doctor-info"),
 ]

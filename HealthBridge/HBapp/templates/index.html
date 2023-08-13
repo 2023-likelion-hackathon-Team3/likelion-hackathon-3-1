@@ -24,7 +24,11 @@
   <h2>건강 질문하기</h2>
   <a href="{% url 'board:board-main' %}">게시판</a>
   <br><br>
+  {% if request.user.is_staff %}
+  <a href="{% url 'doctor:doctor-info' request.user.id %}">내정보</a>
+  {% else %}
   <a href="{% url 'mypage:my' %}">내정보</a>
+  {% endif %}
   <a href="{% url 'board:board-main' %}">게시판</a>
   <a href="{% url 'post:postList' %}">포스트</a>
 </body>
