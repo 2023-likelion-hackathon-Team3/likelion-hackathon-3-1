@@ -8,7 +8,7 @@
     <br>
     {{ question.created_at|timesince|cut:", " }}전
     <span style="margin-left: 70px;">
-        {% if not question.has_answer %}
+        {% if question.answer == False %}
         답변 대기
         {% else %}
         답변 완료

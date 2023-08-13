@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Map</title>
+    {% if myuser.image %}
+    <h1>이미지</h1>
+    <img src="{{myuser.image.url}}">
+    {% else %}
+    <!--프사 없다면 기본 이미지-->
+    기본 이미지
+    {% endif %}
+    username : {{doctor.doctor_user}}<a href="{% url 'mypage:check' %}">수정</a>
+
+
+    <!--소개글이 있다면 소개글이 보이게, 아니라면 작성하세요 문구-->
+    <!--나라면 수정할 수 있도록 만들기-->
+    <form action="{% url 'doctor:doctor-info' request.user.id %}" method="POST">
+    {% csrf_token %}
+        <h2>내 소개글</h2>
+      <!--내가 이 의사인데, 글이 없다면-->
+      {% if doctor.introduction is None and request.user == doctor.doctor_user %}
+      <input type="text" placeholder="작성하세요" name="introduction">
+      <!--내가 의사인데 글이 있다면-->
+      {% elif doctor.introduction and request.user == doctor.doctor_user %}
+      <input type="text" value="{{doctor.introduction}}"  name="introduction">
+      {% elif doctor.introduction is None %}
+      작성하지 않았습니다.
+      {% else %}
+      {{doctor.introduction}}
+      {% endif %}
+
+      <h2>이력</h2>
+      <!--내가 이 의사인데, 글이 없다면-->
+      {% if doctor.history is None and request.user == doctor.doctor_user %}
+      <input type="text" placeholder="작성하세요" name="history">
+      <!--내가 의사인데 글이 있다면-->
+      {% elif doctor.history and request.user == doctor.doctor_user %}
+      <input type="text" value="{{doctor.history}}" name="history">
+      {% elif doctor.history is None %}
+      작성하지 않았습니다.
+      {% else %}
+      {{doctor.history}}
+      {% endif %}
+
+      {% if request.user == doctor.doctor_user %}
+      <input type="submit">
+      {% endif %}
+    </form>
+    
+    <script>
+        function initMap() {
+            var mapOptions = {
+                center: {lat: 37.5665, lng: 126.9780}, // 서울의 중심 좌표
+                zoom: 18, // 초기 줌 레벨
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var hospitalAddress = '{{ address|escapejs }}'; // Django 주소 변수를 가져오기
+            var hospitalName = '{{ hospital_name|escapejs }}'; // Django 병원 이름 변수를 가져오기
+
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': hospitalAddress }, function(results, status) {
+                if (status === 'OK') {
+                    var hospitalLocation = results[0].geometry.location;
+                    var marker = new google.maps.Marker({
+                        position: hospitalLocation,
+                        map: map,
+                        title: hospitalAddress
+                    });
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: '<strong>' + hospitalName + '</strong><br>' + hospitalAddress
+                    });
+
+                    marker.addListener('click', function() {
+                        infoWindow.open(map, marker);
+                    });
+
+                    map.setCenter(hospitalLocation); // 마커가 있는 위치로 지도 중심 이동
+                } else {
+                    console.error('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ context.GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+</body>
+</html>

@@ -6,6 +6,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from board.models import *
 from django.http import HttpResponseRedirect
+from accounts.models import MyUser
 
 # Create your views here.
 
@@ -49,28 +50,31 @@ def dropdown_view(request):
     hospitals = Hospital.objects.all()  # 모든 병원 정보를 가져옴
     return render(request, "select_hospital.html", {"hospitals": hospitals})
 
+
 def doctor_login(request):
     if request.method == "POST":
-        userid = request.POST['username']
-        pwd = request.POST['password']
+        userid = request.POST["username"]
+        pwd = request.POST["password"]
         user = auth.authenticate(request, username=userid, password=pwd)
         if user is not None:
             auth.login(request, user)
-            return redirect('doctor:doctor_main')
+            return redirect("doctor:doctor_main")
         else:
-            return render(request, 'doctor_login.html')
-    else: 
-        return render(request, 'doctor_login.html')
-    
+            return render(request, "doctor_login.html")
+    else:
+        return render(request, "doctor_login.html")
+
+
 def doctor_main(request):
     question_list = Board.objects.all()
     return render(request, "doctor_main.html", {"question_list": question_list})
 
+
 def doctor_result(request, id):
     list = get_object_or_404(Board, pk=id)
     answer = DoctorAnswer.objects.filter(board_list=list)
-    
-    if request.method == 'POST':
+
+    if request.method == "POST":
         new_answer = DoctorAnswer()
         doctor = Doctor.objects.get(doctor_user=request.user)
         new_answer.doctor = doctor
@@ -79,12 +83,38 @@ def doctor_result(request, id):
         list.has_answer = True
         list.save()
         new_answer.save()
-        
-        return redirect('doctor:doctor_main')
-    
+
+        return redirect("doctor:doctor_main")
+
     try:
         answer = DoctorAnswer.objects.filter(board_list=list)
     except DoctorAnswer.DoesNotExist:
         answer = None
 
-    return render(request, "doctor_result.html", {"list": list, "answer":answer})
+    return render(request, "doctor_result.html", {"list": list, "answer": answer})
+
+
+def map_view(request, id):
+    context = {"GOOGLE_MAPS_API_KEY": "AIzaSyAkJA2jmINMwar5RtFJlGV9bCVm8P4tM3Q"}
+    doctor = Doctor.objects.get(pk=id)
+    myuser = MyUser.objects.get(pk=id)
+    address = doctor.hospital.address
+    hospital_name = doctor.hospital.hospital_name
+
+    if request.method == "POST":
+        doctor.introduction = request.POST.get("introduction")
+        doctor.history = request.POST.get("history")
+        doctor.save()
+        return redirect("doctor:doctor-info", id)
+
+    return render(
+        request,
+        "doctor_info.html",
+        {
+            "context": context,
+            "address": address,
+            "hospital_name": hospital_name,
+            "doctor": doctor,
+            "myuser": myuser,
+        },
+    )

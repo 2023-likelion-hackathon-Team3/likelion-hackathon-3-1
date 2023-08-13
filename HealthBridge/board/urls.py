@@ -9,12 +9,12 @@ urlpatterns = [
     path("", views.board, name="board-main"),
     path("write/", views.write, name="board-write"),
     path("detail/<int:id>/", views.detail, name="board-detail"),
-    # path(
-    #     "detail/<int:id>/update/<int:ansid>/", views.updateAnswer, name="answer-update"
-    # ),
-    # path(
-    #     "detail/<int:id>/delete/<int:ansid>/", views.deleteAnswer, name="answer-delete"
-    # ),
+    path(
+        "detail/<int:id>/update/<int:ansid>/", views.updateAnswer, name="answer-update"
+    ),
+    path(
+        "detail/<int:id>/delete/<int:ansid>/", views.deleteAnswer, name="answer-delete"
+    ),
 ]
 
 

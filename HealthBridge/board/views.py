@@ -31,42 +31,52 @@ def write(request):
 def detail(request, id):
     list = get_object_or_404(Board, pk=id)
     myuser = MyUser.objects.get(user=request.user)
-    answer = DoctorAnswer.objects.filter(board_list=list)
+    if request.method == "POST":
+        answer = DoctorAnswer()
+        answer.answer = request.POST.get("answer")
+        answer.doctor = Doctor.objects.get(doctor_user=request.user)
+        answer.board_list = list
+        answer.save()
+        list.answer = True
+        list.save()
+        return redirect("board:board-detail", list.id)
 
-    # if request.method == "GET":
-    #     if list.has_answer == False:
-    #         return render(request, "detail.html", {"list": list, "myuser": myuser})
+    if request.method == "GET":
+        if list.answer == False:
+            return render(request, "detail.html", {"list": list, "myuser": myuser})
 
-    #     else:
-    #         answer = DoctorAnswer.objects.filter(board_list=list)
-    #         return render(
-    #             request,
-    #             "detail.html",
-    #             {"list": list, "answer": answer, "myuser": myuser},
-    #         )
+        else:
+            answer = DoctorAnswer.objects.get(board_list=list)
+            doctor = User.objects.get(username=answer.doctor.doctor_user)
+            return render(
+                request,
+                "detail.html",
+                {"list": list, "answer": answer, "myuser": myuser, "doctor": doctor},
+            )
     return render(
-        request, "detail.html", {"list": list, "myuser": myuser, "answer":answer}
+        request, "detail.html", {"list": list, "myuser": myuser, "answer": answer}
     )
 
 
-# def updateAnswer(request, id, ansid):
-#     board = Board.objects.get(pk=id)
-#     doctor = Doctor.objects.get(doctor_user=request.user)
-#     answer = DoctorAnswer.objects.get(pk=ansid)
+def updateAnswer(request, id, ansid):
+    board = Board.objects.get(pk=id)
+    doctor = Doctor.objects.get(doctor_user=request.user)
+    answer = DoctorAnswer.objects.get(pk=ansid)
 
-#     print(answer)
+    print(answer)
 
-#     if request.method == "POST":
-#         answer.answer = request.POST.get("answer")
-#         answer.save()
-#         return redirect("board:board-detail", id=id)
-#     return render(request, "update.html", {"answer": answer, "list": board})
+    if request.method == "POST":
+        answer.answer = request.POST.get("answer")
+        answer.save()
+        return redirect("board:board-detail", id=id)
+    return render(request, "update.html", {"answer": answer, "list": board})
 
 
-# def deleteAnswer(request, id, ansid):
-#     board = Board.objects.get(id=id)
-#     answer = DoctorAnswer.objects.get(pk=ansid)
-#     answer.delete()
-#     board.answer = False
-#     board.save()
-#     return redirect("board:board-detail", id=id)
+def deleteAnswer(request, id, ansid):
+    board = Board.objects.get(id=id)
+    answer = DoctorAnswer.objects.get(pk=ansid)
+    board.answer = False
+    board.save()
+    answer.delete()
+
+    return redirect("board:board-detail", id=id)
