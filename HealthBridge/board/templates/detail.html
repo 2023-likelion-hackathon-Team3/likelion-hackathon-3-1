@@ -23,9 +23,9 @@
 
 <br><br><br>
 
-{% if list.has_answer == True %}
+{% if list.answer == True %}
         {% if answer.board_list == list %}
-            <p><a href="{% url 'doctor:doctor-mypage' doctor.id %}">{{ answer.doctor }} 의사</a></p>
+            <p><a href="{% url 'doctor:doctor-info' answer.doctor.id %}">{{ answer.doctor }} 의사</a></p>
             답변: {{ answer.answer }}
         {% endif %}
 {% endif %}
@@ -41,10 +41,10 @@
 
 {% if user.is_staff == True and list.answer == False %}
 <form action="{% url 'board:board-detail' list.id %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="answer" placeholder="내용을 입력해주세요.">
-  <br><br>
-  <input type="submit" value="등록" name="submit">
+    {% csrf_token %}
+    <input type="text" name="answer" placeholder="내용을 입력해주세요.">
+    <br><br>
+    <input type="submit" value="등록" name="submit">
 </form>
 
 {% endif %}
