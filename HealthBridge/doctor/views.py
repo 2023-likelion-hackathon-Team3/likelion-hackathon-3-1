@@ -80,7 +80,7 @@ def doctor_result(request, id):
         new_answer.doctor = doctor
         new_answer.answer = request.POST.get("doctor_answer")
         new_answer.board_list = list
-        list.has_answer = True
+        list.answer = True
         list.save()
         new_answer.save()
 

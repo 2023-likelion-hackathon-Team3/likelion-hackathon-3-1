@@ -39,7 +39,7 @@ def detail(request, id):
         answer.save()
         list.answer = True
         list.save()
-        return redirect("board:board-detail", list.id)
+        return redirect("board:board-detail", list.id, {"answer":answer})
 
     if request.method == "GET":
         if list.answer == False:
