@@ -4,11 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./css/add.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>내 건강 등록하기</title>
   </head>
   <body>
     <div id="container">
-      <img id="bg" src="./img/bg_main.png"/>
+      <img src="./img/bg_main.png" id="bg"/>
       <a href=""><img id="back" src="./img/back.png"/></a>
       <a href="add.html" id="select">직접 키워드 선택</a>
       <a href="scan_explain.html" id="scan">스캔하기</a>
@@ -154,11 +160,11 @@
         </div>
 
         <div class="nav_info">
-          <a href=""><img src="./img/report_b.png" alt="report" /></a>
+          <a href=""><img src="./img/report.png" alt="report" /></a>
           <p>건강정보</p>
         </div>
 
-        <a href=""><img src="./img/plus.png" alt="plus" id="plus" /></a> <!--이미지 변경-->
+        <a href=""><img src="./img/nav_X.png" alt="nav_X" id="nav_X" /></a> <!--이미지 변경-->
 
         <div class="nav_board">
           <a href="{% url 'board:board-main' %}"
@@ -188,10 +194,6 @@
           input.parentNode.classList.add("selected");
         }
       }
-      // function toggleButton(buttonId) {
-      //           const button = document.getElementById(buttonId);
-      //           button.classList.toggle('selected');
-      //       }
     </script>
   </body>
 </html>
