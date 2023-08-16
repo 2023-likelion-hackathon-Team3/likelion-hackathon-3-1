@@ -3,17 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/check.css" rel="stylesheet" />
-        <title>Check</title>
+        <link href="{% static 'css/check.css' %}" rel="stylesheet" />
+        <title>Kakao_login</title>
     </head>
     <body>
-        <img src="./img/bg_basic.png" id="bg" />
-        <a href=""> <img src="./img/back.png" id="back" /></a>
+        <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+        <a href="{% url ''%}">
+            <img src="{% static 'img/back.png' %}" id="back"
+        /></a>
         <div class="content">
-            <img src="./img/lock.png" alt="lock" />
+            <img src="{% static 'img/lock.png' %}" alt="lock" />
             <h3>비밀번호</h3>
         </div>
-        <form action="{% url 'mypage:check' %}" method="POST">
+        <form action="{% url 'accounts:signup' %}" method="POST">
             <input
                 type="password"
                 name="password"
