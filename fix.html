@@ -11,9 +11,13 @@
         <a href=""> <img src="./img/back.png" id="back" /></a>
         <div class="content">
             <h3>내 정보 수정하기</h3>
+            {% if error_message %}
+            <p style="color: red">{{ error_message }}</p>
+            {% endif %}
             <img src="./img/Rectangle.png" id="profile_img" />
         </div>
         <form method="POST" action="{% url 'mypage:fix' %}">
+            {% csrf_token %}
             <input
                 type="text"
                 name="new_username"

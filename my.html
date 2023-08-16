@@ -20,14 +20,16 @@
             <div class="add">
                 <h3>나의 건강 키워드</h3>
                 <div class="add_container">
-                    <a href="#" class="add_link"
+                    <a href="{% url 'mypage:addTag' %}" class="add_link"
                         ><div class="add_btn">내 건강 키워드 등록하기</div>
                     </a>
                 </div>
             </div>
             <div class="board">
                 <h3>나의 질문과 답변</h3>
-                <a href="#" class="board_link"
+                <a
+                    href="{% url 'board:board-detail' question.pk %}"
+                    class="board_link"
                     ><div class="board_btn">질문하러 가기</div></a
                 >
             </div>

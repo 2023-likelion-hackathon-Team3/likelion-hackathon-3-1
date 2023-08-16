@@ -11,10 +11,9 @@
         <a href=""> <img src="./img/back.png" id="back" /></a>
         <div class="content">
             <img src="./img/lock.png" alt="lock" />
-            <h3>비밀번호 확인</h3>
+            <h3>비밀번호</h3>
         </div>
         <form action="{% url 'mypage:check' %}" method="POST">
-            {% csrf_token %}
             <input
                 type="password"
                 name="password"
@@ -25,7 +24,7 @@
             <input
                 type="submit"
                 type="submit"
-                value="정보 수정하러 가기"
+                value="회원가입 완료하기"
                 id="submit"
             />
         </form>
