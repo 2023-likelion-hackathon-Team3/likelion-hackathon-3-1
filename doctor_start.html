@@ -3,21 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/doctor_start.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
-            rel="stylesheet"
-        />
+        {% load static %}
+        <link href="{% static 'css/doctor_start' %}" rel="stylesheet" />
         <title>Health Bridge</title>
     </head>
     <body>
-        <img src="./img/doctor_start.png" id="bg" />
-        <img src="./img/doctor_logo.png" id="logo" />
+        <img src="{% static 'img/doctor_start.png' %}" id="bg" />
+        <img src="{% static 'img/doctor_logo.png' %}" id="logo" />
         <div class="btns">
-            <a id="login">로그인</a>
-            <a id="signup">회원가입</a>
+            <a id="login" href="{% static 'doctor_login' %}">로그인</a>
+            <a id="signup" href="{% static 'doctor_signup' %}">회원가입</a>
         </div>
     </body>
 </html>

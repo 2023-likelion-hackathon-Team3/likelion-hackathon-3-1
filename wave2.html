@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/start2.css" rel="stylesheet" />
+        <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+}
+
+.wrap {    
+  width: 390px;
+  height: 800px;
+  overflow: hidden; 
+  background: #ffa41b;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+    z-index: -3;
+}
+
+.wave {
+  width: 650px;  
+  height: 650px;
+  position: fixed;
+    z-index: -3;
+  top: 60%;     
+  left: -100px;  
+  border-radius: 43%; 
+  animation: drift 8s infinite linear;
+  background: #525fe1;  
+}
+
+.wave_2 {
+  width: 650px;  
+  height: 650px;
+  position: absolute;
+  top: 65%;     
+  left: -100px;  
+  border-radius: 43%; 
+  animation: drift 8s infinite linear;
+  background: #ffffff;  
+}
+
+.wave_reverse {
+  width: 650px;  
+  height: 650px;
+  position: absolute;
+  top: -70%;     
+  right: -100px;  
+  border-radius: 43%; 
+  animation: drift_re 8s infinite linear;
+  background: #525fe1;
+}
+
+.wave_reverse2 {
+  width: 650px;  
+  height: 650px;
+  position: absolute;
+  top: -75%;     
+  right: -100px;  
+  border-radius: 43%; 
+  animation: drift_re 8s infinite linear;
+  background: #ffffff;
+}
+
+@keyframes drift_re {
+  100% { 
+    transform: rotate(-360deg); 
+  }
+}
+
+@keyframes drift {
+    0% {
+    transform: rotate(0deg);
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+</style>
+</head>
+        <title>Wave</title>
+    </head>
+    <body>
+            <div class="wrap">
+                <div class="wave_reverse"></div>
+                <div class="wave_reverse2"></div>
+                <div class="wave"></div>
+                <div class="wave_2"></div>
+            </div>
+
+    </body>
+</html>
+

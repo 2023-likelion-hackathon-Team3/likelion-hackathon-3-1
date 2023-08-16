@@ -74,7 +74,7 @@ input[type="text"].styled-input::placeholder {
     border: none;
     background: #525fe1;
     box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
-    background-image: url(/img/camera.png);
+    background-image: url('{% static "img/camera.png" %}');
     background-repeat: no-repeat;
     background-position: center;
     margin: 0px 0px 20px 0px;

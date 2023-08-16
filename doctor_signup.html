@@ -3,28 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/doctor_signup.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
-            rel="stylesheet"
-        />
+        {% load static %}
+        <link href="{% static 'css/doctor_signup' %}" rel="stylesheet" />
         <title>회원가입</title>
     </head>
     <body>
         <!--배경-->
-        <img src="./img/doctor_bg.png" id="bg" />
+        <img src="{% static 'img/doctor_bg.png' %}" id="bg" />
         <!--뒤로가기 버튼-->
-        <a href="./main.html"><img src="./img/doctor_back.png" id="back" /></a>
+        <a href="{% static 'doctor_start' %}"
+            ><img src="{% static 'img/doctor_back.png' %}" id="back"
+        /></a>
         <section class="box">
             <h1 id="title">회원가입</h1>
             <form
-                action="{% url 'accounts:signup' %}"
+                action="{% static 'accounts:signup' %}"
                 method="POST"
                 class="form"
             >
-                <!--{% csrf_token %}-->
+                {% csrf_token %}
                 <input
                     type="text"
                     name="userid"
@@ -68,12 +65,12 @@
                 />
             </form>
         </section>
-        <!--
+
         <script>
             var error = "{{ error }}";
             if (error) {
                 alert(error);
             }
         </script>
-    --></body>
+    </body>
 </html>
