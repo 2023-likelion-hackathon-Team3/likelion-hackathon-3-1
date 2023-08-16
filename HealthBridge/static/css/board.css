@@ -1,9 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url(/img/bg_main.png);
+    background-image: url("/static/img/bg_main.png");
     background-repeat: no-repeat;
     letter-spacing: -1.3px;
+}
+
+a {
+    text-decoration: none;
 }
 
 #back {

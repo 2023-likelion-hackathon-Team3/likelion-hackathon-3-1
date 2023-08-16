@@ -1,0 +1,20 @@
+<h1>건강 관련 질문 게시판</h1>
+
+<h2> 질문 목록 </h2>
+{% for question in question_list %}
+    <a href="{% url 'board:board-detail' question.pk %}">{{question.title}}</a>
+    <br>
+    {{ question.hb_user.username }}
+    <br>
+    {{ question.created_at|timesince|cut:", " }}전
+    <span style="margin-left: 70px;">
+        {% if question.answer == False %}
+        답변 대기
+        {% else %}
+        답변 완료
+        {% endif %}
+    </span>
+    <br><br>
+{% endfor %}
+
+<a href="{% url 'board:board-write' %}">새 질문 등록</a>

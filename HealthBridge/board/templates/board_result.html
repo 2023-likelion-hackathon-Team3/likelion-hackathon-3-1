@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/board_result.css' %}" rel="stylesheet" />
+        <title>게시글 보기</title>
+    </head>
+    <body>
+        <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/back.png' %}" id="back"
+        /></a>
+        <div class="titleBox">
+            <img src="{% static 'img/Q.png' %}" />
+            <div class="title">{{list.title}}</div>
+        </div>
+        <div class="content">
+            {{list.content}}
+            {% if list.image %}
+            <P><img src="{{ list.image.url }}" width="100px"></P>
+            {% endif %}
+        </div>
+        <img src="{% static 'img/connect.png' %}" id="connect" />
+    
+
+        {% if list.answer == True %}
+        {% if answer.board_list == list %}
+        <a href="{% url 'doctor:doctor-info' answer.doctor.id %}" class="doctor">
+            <img src="{% static 'img/doctor_img.png' %}" id="doctor_img" /><span
+                id="doctor_name"
+                >{{ answer.doctor }}</span
+            >
+        </a>
+        <div class="answer">
+            {{ answer.answer }}
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if user.is_staff == True and list.answer == False %}
+        <form action="{% url 'board:board-detail' list.id %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="answer" placeholder="내용을 입력해주세요.">
+            <br><br>
+            <input type="submit" value="등록" name="submit">
+        </form>
+
+        {% endif %}
+
+        <div class="prev">
+            {% with prev_list=list.get_previous_by_created_at %}
+            {% if prev_list %}
+            <span id="prev_text">이전</span>
+            <a href="{% url 'board:board-detail' prev_list.pk %}" id="prev_post"
+                >{{ prev_list.title }}</a
+            >
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="next">
+            {% with next_list=list.get_next_by_created_at %}
+            {% if next_list %}
+            <span id="next_text">다음</span>
+            <a href="{% url 'board:board-detail' next_list.pk %}" id="next_post"
+                >{{ next_list.title }}</a
+            >
+            {% endif %}
+            {% endwith %}
+        </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url 'post:postList' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </body>
+</html>

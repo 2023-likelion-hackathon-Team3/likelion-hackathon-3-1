@@ -7,7 +7,7 @@ from doctor.models import *
 
 
 def board(request):
-    question_list = Board.objects.all()
+    question_list = Board.objects.all().order_by("-pk")
     return render(request, "board.html", {"question_list": question_list})
 
 
@@ -25,7 +25,7 @@ def write(request):
         new_question.save()
 
         return redirect("board:board-main")
-    return render(request, "write.html")
+    return render(request, "board_write.html")
 
 
 def detail(request, id):
@@ -39,22 +39,24 @@ def detail(request, id):
         answer.save()
         list.answer = True
         list.save()
-        return redirect("board:board-detail", list.id, {"answer":answer})
+        return redirect("board:board-detail", list.id, {"answer": answer})
 
     if request.method == "GET":
         if list.answer == False:
-            return render(request, "detail.html", {"list": list, "myuser": myuser})
+            return render(
+                request, "board_result.html", {"list": list, "myuser": myuser}
+            )
 
         else:
             answer = DoctorAnswer.objects.get(board_list=list)
             doctor = User.objects.get(username=answer.doctor.doctor_user)
             return render(
                 request,
-                "detail.html",
+                "board_result.html",
                 {"list": list, "answer": answer, "myuser": myuser, "doctor": doctor},
             )
     return render(
-        request, "detail.html", {"list": list, "myuser": myuser, "answer": answer}
+        request, "board_result.html", {"list": list, "myuser": myuser, "answer": answer}
     )
 
 
