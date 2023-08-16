@@ -269,3 +269,12 @@ p {
     top: 445px;
     left: 206px;
 }
+
+#check {
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    cursor: pointer;
+}

@@ -17,14 +17,19 @@
             <div class="add">
                 <h3>내 건강 등록하기</h3>
                 <div class="add_container">
-                    <a href="#" class="add_link">
-                        <img src="./img/plus2.svg" alt="add" class="add_img"
-                    /></a>
-                    <div class="add_text">
-                        <p>
-                            건강검진표를 등록하고 <br />
-                            나의 건강 키워드를 확인하세요
-                        </p>
+                    <div class="add_con">
+                        <a href="#" class="add_link">
+                            <img
+                                src="./img/plus2.svg"
+                                alt="add"
+                                class="add_img"
+                        /></a>
+                        <div class="add_text">
+                            <p>
+                                건강검진표를 등록하고 <br />
+                                나의 건강 키워드를 확인하세요
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,7 +91,8 @@
         const add_delete2 = document.querySelector(".add_img");
         const add_delete3 = document.querySelector(".add_text");
         const add_delete4 = document.querySelector(".add_text p");
-        const add_button = document.querySelector(".board"); //result와 연결해야함
+        const add_delete5 = document.querySelector(".add_con");
+        const add_button = document.querySelector(".board");
         add_button.addEventListener("click", () => {
             const add_content = document.createElement("div");
             add_content.className = "add_content";
@@ -103,25 +109,22 @@
             add_title.textContent = "키워드";
             add_content.appendChild(add_bg);
             add_bg.appendChild(add_title);
-            document.querySelector(".add_container").appendChild(add_content);
 
-            const addContainer = document.querySelector(".add");
+            const addContainer = document.querySelector(".add_container");
+            addContainer.appendChild(add_content);
 
-            if (addContainer) {
-                addContainer.appendChild(add_content);
-                const addContents =
-                    addContainer.querySelectorAll(".add_content");
-                if (addContents.length % 3 === 0) {
-                    const lineBreak = document.createElement("br");
-                    addContainer.appendChild(lineBreak);
-                }
-
-                if (add_delete1 && add_delete2 && add_delete3 && add_delete4) {
-                    add_delete1.remove();
-                    add_delete2.remove();
-                    add_delete3.remove();
-                    add_delete4.remove();
-                }
+            if (
+                add_delete1 &&
+                add_delete2 &&
+                add_delete3 &&
+                add_delete4 &&
+                add_delete5
+            ) {
+                add_delete1.remove();
+                add_delete2.remove();
+                add_delete3.remove();
+                add_delete4.remove();
+                add_delete5.remove();
             }
         });
     </script>
