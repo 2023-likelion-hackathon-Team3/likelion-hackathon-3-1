@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>캡처된 이미지</title>
+    <title>Image Upload</title>
 </head>
 <body>
-    <h1>캡처된 이미지</h1>
-    <img src="{{ capture_path }}" alt="Captured Image">
+    <h1>이미지 업로드</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">업로드</button>
+    </form>
 </body>
 </html>

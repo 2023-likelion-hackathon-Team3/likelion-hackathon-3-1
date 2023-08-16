@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Captured Image Crop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+</head>
+<body>
+  <h2>Captured Image Crop</h2>
+  <img id="capturedImage" src="{{ captured_data_url }}" alt="Captured Image">
+  
+  <div>
+    <button id="cropButton">Crop Image</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script>
+    const capturedImage = document.getElementById('capturedImage');
+    const cropButton = document.getElementById('cropButton');
+
+    let cropper;
+
+    capturedImage.onload = function () {
+      cropper = new Cropper(capturedImage, {
+        aspectRatio: 1, // You can adjust the aspect ratio as needed
+        viewMode: 2,    // You can change the view mode as needed
+      });
+    };
+
+    cropButton.addEventListener('click', function () {
+      const croppedCanvas = cropper.getCroppedCanvas();
+      const croppedImage = croppedCanvas.toDataURL('image/jpeg');
+
+      const formData = new FormData();
+      formData.append('cropped_photo_data', croppedImage);
+
+      fetch('/camera/save_cropped_photo/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+          // Redirect back to the webcam capture page
+          window.location.href = '/camera/webcam_view/';
+        } else {
+          alert('Error saving cropped photo.');
+        }
+      });
+    });
+
+    // Add your code here to go back to the webcam capture page if needed
+
+  </script>
+</body>
+</html>
