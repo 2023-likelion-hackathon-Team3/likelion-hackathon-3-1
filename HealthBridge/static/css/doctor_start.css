@@ -1,0 +1,73 @@
+#bg {
+    position: fixed;
+    z-index: -20;
+    left: 0;
+    top: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -1.3px;
+}
+
+#logo {
+    width: 157px;
+    position: fixed;
+    z-index: 3;
+    top: 295px;
+    left: 116.5px;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.btns {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 258px;
+    height: 85px;
+    z-index: 3;
+    bottom: 40px;
+    left: 66px;
+}
+
+#login {
+    width: 258px;
+    height: 35px;
+    border-radius: 20px;
+    background: #d9d9d9;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.1s;
+}
+
+#signup {
+    width: 258px;
+    height: 35px;
+    border-radius: 20px;
+    background: #d9d9d9;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.2s;
+}

@@ -60,3 +60,6 @@ def set_password(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'login.html')
+
+def start(request):
+    return render(request, 'start.html')
