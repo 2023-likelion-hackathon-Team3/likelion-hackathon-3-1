@@ -6,8 +6,8 @@ body {
 }
 
 body {
-    background-image: url(/img/doctor_main.png);
     background-repeat: no-repeat;
+    background-image: url('{% static "img/doctor_main.png" %}');
 }
 
 #back {

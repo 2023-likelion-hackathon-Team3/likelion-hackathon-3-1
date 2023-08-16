@@ -3,28 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/doctor_result.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
-            rel="stylesheet"
-        />
+        {% load static %}
+        <link href="{% static 'css/doctor_result' %}" rel="stylesheet" />
         <title>게시글 보기</title>
     </head>
     <body>
-        <a href="./main.html"><img src="./img/doctor_back.png" id="back" /></a>
+        <a href="{% static 'doctor_main' %}"
+            ><img src="{% static 'img/doctor_back.png' %}" id="back"
+        /></a>
         <div class="titleBox">
-            <img src="./img/doctor_Q.png" />
+            <img src="{% static 'img/doctor_Q.png' %}" />
             <div class="title">망고가 암 치료에 도움이 될까요?</div>
         </div>
         <div class="content">
             망고를 먹고 암을 완치했다는 글을 봤는데 진짜인지 아닌지
             모르겠네요... 망고가 어떤 효능이 있는건가요?
         </div>
-        <img src="./img/doctor_connect.png" id="connect" />
-        <a href="{{의사 정보}}" class="doctor">
-            <img src="./img/doctor_img.png" id="doctor_img" /><span
+        <img src="{% static 'img/doctor_connect.png' %}" id="connect" />
+        <a href="{% static 'doctor_info' %}" class="doctor">
+            <img src="{% static 'img/doctor_img.png' %}" id="doctor_img" /><span
                 id="doctor_name"
                 >김덕성 의사</span
             >
