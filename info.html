@@ -3,15 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/info.css" rel="stylesheet" />
+    <link href="{% static 'css/info.css' %}" rel="stylesheet" />
     <title>맞춤형 건강 정보</title>
   </head>
   <body>
     <div id="container">
-      <img id="bg" src="./img/bg_main.png" />
-      <a href=""><img id="back" src="./img/back.png" /></a>
-      <a href="" id="info">맞춤형 건강정보</a>
-      <a href="" id="quiz">건강퀴즈 O/X</a>
+      <img id="bg" src="{% static 'img/bg_main.png' %}" />
+      <a href="{% url 'HealthBridge:home' %}"
+        ><img id="back" src="{% static 'img/back.png' %}"
+      /></a>
+      <a href="{% url '' %}" id="info">맞춤형 건강정보</a>
+      <a href="{% url 'Quiz:' %}" id="quiz">건강퀴즈 O/X</a>
       <div id="line"></div>
       <div id="box"></div>
       <div id="checkbox-container">
@@ -66,27 +68,27 @@
       </div>
       <div id="card">
         <div id="card-item">
-          <img src="./img/card1.png" alt="" />
+          <img src="{% static 'img/card1.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 1편</span>
         </div>
         <div id="card-item">
-          <img id="" src="./img/card2.png" alt="" />
+          <img id="" src="{% static 'img/card2.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 2편</span>
         </div>
         <div id="card-item">
-          <img id="" src="./img/card3.png" alt="" />
+          <img id="" src="{% static 'img/card3.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 3편</span>
         </div>
         <div id="card-item">
-          <img id="" src="./img/card4.png" alt="" />
+          <img id="" src="{% static 'img/card4.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 4편</span>
         </div>
         <div id="card-item">
-          <img id="" src="./img/card5.png" alt="" />
+          <img id="" src="{% static 'img/card5.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 5편</span>
         </div>
         <div id="card-item">
-          <img id="" src="./img/card6.png" alt="" />
+          <img id="" src="{% static 'img/card6.png' %}" alt="" />
           <span>여성이 병원에서 겪는 일들 6편</span>
         </div>
       </div>
@@ -94,32 +96,38 @@
       <!-- nav -->
       <div class="nav">
         <div class="nav_main">
-          <a href=""><img src="./img/home.png" alt="home" /></a>
+          <a href="{% url 'HealthBridge:home' %}">
+            <img src="{% static 'img/home.png' %}" alt="home"
+          /></a>
           <p>홈</p>
         </div>
 
         <div class="nav_info">
-          <a href=""><img src="./img/report_b.png" alt="report" /></a>
+          <a href="{% url '' %}"
+            ><img src="{% static 'img/report_b.png' %}" alt="report"
+          /></a>
           <p>건강정보</p>
         </div>
 
-        <a href=""><img src="./img/plus.png" alt="plus" id="add" /></a>
+        <a href="{% url 'HBapp:keyword_add' %}"
+          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
+        /></a>
 
         <div class="nav_board">
           <a href="{% url 'board:board-main' %}"
-            ><img src="./img/board.png" alt="board"
+            ><img src="{% static 'img/board.png' %}" alt="board"
           /></a>
           <p>질문게시판</p>
         </div>
 
         <div class="nav_my">
           <a href="{% url 'mypage:my' %}"
-            ><img src="./img/my.png" alt="my"
+            ><img src="{% static 'img/my.png' %}" alt="my"
           /></a>
           <p>내 정보</p>
         </div>
       </div>
-      <img src="./img/nav.svg" id="nav" />
+      <img src="{% static 'img/nav.svg' %}" id="nav" />
     </div>
     <script>
       function toggleCheckbox(input) {
