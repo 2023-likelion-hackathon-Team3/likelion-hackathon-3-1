@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/index.css" rel="stylesheet" />
+        <link href="{% static 'css/index.css' %}" rel="stylesheet" />
         <title>Main</title>
     </head>
     <body>
@@ -92,7 +92,7 @@
         const add_delete3 = document.querySelector(".add_text");
         const add_delete4 = document.querySelector(".add_text p");
         const add_delete5 = document.querySelector(".add_con");
-        const add_button = document.querySelector(".board");
+        const add_button = document.querySelector(""); //result랑 연결해야함
         add_button.addEventListener("click", () => {
             const add_content = document.createElement("div");
             add_content.className = "add_content";
