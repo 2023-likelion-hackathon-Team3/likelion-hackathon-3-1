@@ -9,18 +9,21 @@
         <title>Main</title>
     </head>
     <body>
-        <img src="./img/bg_main.png" id="bg" />
-        <a href=""
-            ><img src="./img/logo_purple2.png" alt="logo_purple2" id="logo"
+        <img src="{% static 'img/bg_main.png' %}" id="bg" />
+        <a href="{% url 'explain' %}"
+            ><img
+                src="{% static 'img/logo_purple2.png' %}"
+                alt="logo_purple2"
+                id="logo"
         /></a>
         <div class="content">
             <div class="add">
                 <h3>내 건강 등록하기</h3>
                 <div class="add_container">
                     <div class="add_con">
-                        <a href="#" class="add_link">
+                        <a href="{% url 'HBapp:add' %}" class="add_link">
                             <img
-                                src="./img/plus2.svg"
+                                src="{% static 'img/plus2.svg' %}"
                                 alt="add"
                                 class="add_img"
                         /></a>
@@ -37,15 +40,29 @@
                 <h3>오늘의 건강 정보</h3>
                 <p>맞춤형 건강정보를 얻고 퀴즈도 풀어보세요!</p>
                 <div class="info_img">
-                    <a href=""><img src="img/image14.png" alt="info_img1" /></a>
-                    <a href=""><img src="img/image14.png" alt="info_img2" /></a>
-                    <a href=""><img src="img/image14.png" alt="info_img3" /></a>
+                    <a href="{% url '' %}"
+                        ><img
+                            src="{% static 'img/card1.png' %}"
+                            alt="info_img1"
+                    /></a>
+                    <a href="{% url '' %}"
+                        ><img
+                            src="{% static 'img/card4.png' %}"
+                            alt="info_img2"
+                    /></a>
+                    <a href="{% url '' %}"
+                        ><img
+                            src="{% static 'img/card6.png' %}"
+                            alt="info_img3"
+                    /></a>
                 </div>
             </div>
             <div class="board">
                 <h3>건강 질문하기</h3>
                 <div class="board_container">
-                    <a href=""><img src="./img/qa.svg" alt="board" /></a>
+                    <a href="{% url 'board:write' %}"
+                        ><img src="{% static 'img/qa.svg' %}" alt="board"
+                    /></a>
                     <div class="board_text">
                         <p>
                             내 건강에 대해 질문하고 <br />
@@ -57,34 +74,38 @@
         </div>
         <div class="nav">
             <div class="nav_main">
-                <a href="{% url 'index' %}"
-                    ><img src="./img/home_purple.svg" alt="home"
+                <a href="{% url 'HBapp:index' %}"
+                    ><img src="{% static 'img/home_purple.svg' %}" alt="home"
                 /></a>
                 <p>홈</p>
             </div>
 
             <div class="nav_info">
-                <a href=""><img src="./img/report.png" alt="report" /></a>
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
                 <p>건강정보</p>
             </div>
 
-            <a href=""><img src="./img/plus.png" alt="plus" id="nav_add" /></a>
+            <a href="{% url 'HBapp:add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
 
             <div class="nav_board">
                 <a href="{% url 'board:board-main' %}"
-                    ><img src="./img/board.png" alt="board"
+                    ><img src="{% static 'img/board.png' %}" alt="board"
                 /></a>
                 <p>질문게시판</p>
             </div>
 
             <div class="nav_my">
                 <a href="{% url 'mypage:my' %}"
-                    ><img src="./img/my.png" alt="my"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
                 /></a>
                 <p>내 정보</p>
             </div>
         </div>
-        <img src="./img/nav.svg" id="nav" />
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
     </body>
     <script>
         const add_delete1 = document.querySelector(".add_link");
