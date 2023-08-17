@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/scan.css" rel="stylesheet" />
-    <title>scan</title>
+    <link href="./css/crop.css" rel="stylesheet" />
+    <title>crop</title>
 </head>
 <body>
-    <div id="webcam-container">
+    <!-- <div id="webcam-container">
         <video id="webcam" autoplay playsinline></video>
-    </div>
+    </div> -->
     
     <div>
-        <canvas id="croppedCanvas"></canvas>
+        <!-- <canvas id="croppedCanvas"></canvas> -->
         <div id="crop-area" style="width: 390px; height: 300px; border: 2px solid red;"><canvas id="canvas"></canvas></div>
         <button id="crop">Crop</button>
     </div>
@@ -20,11 +20,12 @@
     <!--캠나브바-->
     <div class="camnav">
         <div class="camnav_back">
-        <a href="./scan_explain.html"><img src="./img/cam_back.png" alt="back" /></a>
+        <a href="./cam.html"><img src="./img/cam_back.png" alt="back" /></a>
         </div>
 
-        <div class="camnav_capture">
-            <button id="capture"><img src="./img/cam_button.png" alt="capture" /></button>
+        <div class="camnav_capture"> <!--div class="camnav_crop"-->
+            <!-- <button id="capture"><img src="./img/cam_button.png" alt="capture" /></button> -->
+            <button id="crop"><img src="./img/crop.png" alt="crop" /></button>
         </div>
 
         <div class="camnav_gallery">

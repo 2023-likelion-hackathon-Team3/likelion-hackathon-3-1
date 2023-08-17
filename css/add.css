@@ -148,6 +148,7 @@ p {
   top: 784px;
   left: 29px;
 }
+
 .nav_info {
   display: flex;
   flex-direction: column;
@@ -181,6 +182,9 @@ p {
   font-size: small;
 }
 
-.nav_board p {
-  color: #525fe1;
+#nav_X {
+  position: fixed;
+  z-index: 1;
+  top: 734px;
+  left: 160px;
 }
