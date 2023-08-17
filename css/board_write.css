@@ -67,7 +67,7 @@ input[type="text"].styled-input::placeholder {
     text-indent: 5em;
 }
 
-#photo {
+#photo-btn {
     width: 300px;
     height: 43px;
     border-radius: 20px;
@@ -78,6 +78,15 @@ input[type="text"].styled-input::placeholder {
     background-repeat: no-repeat;
     background-position: center;
     margin: 0px 0px 20px 0px;
+}
+
+#photo {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
 }
 
 #submit {
