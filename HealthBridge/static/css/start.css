@@ -82,12 +82,12 @@ body {
     font-weight: 400;
     padding: 10.5px;
     box-sizing: border-box;
-    background-image: url(/img/kakao_logo.png);
     background-repeat: no-repeat;
     background-position: 15px 9px;
     background-size: 20px;
     animation: fadeInUp 2s;
     animation-delay: 0s;
+    background-image: url("/static/img/kakao_logo.png");
 }
 
 #login {

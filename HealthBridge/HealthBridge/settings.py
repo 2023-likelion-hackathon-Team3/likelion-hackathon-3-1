@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.auth0",
     "cameraapp",
     "doctor",
+    "explain",
 ]
 # LOGIN_REDIRECT_URL = "/"
 SITE_ID = 3

@@ -32,6 +32,7 @@ urlpatterns = [
     path("authaccounts/", include("allauth.urls")),
     path("camera/", include("cameraapp.urls", namespace="cameraapp")),
     path("doctor/", include("doctor.urls", namespace="doctor")),
+    path("explain/", include("explain.urls", namespace="explain")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

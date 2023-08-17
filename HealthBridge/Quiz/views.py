@@ -11,16 +11,22 @@ import os
 def quiz(request):
     quizzes = Quiz.objects.all()
     context = {'quizzes': quizzes}
+    if 'search_nouns' in request.GET:
+        search_nouns = request.GET.getlist('search_nouns')
+        request.session['previous_nouns'] = search_nouns
     return render(request, 'quiz.html', context)
 
 def answer(request, quiz_id):
     quiz = Quiz.objects.get(pk=quiz_id)
-    return render(request, 'answer.html', {'quiz':quiz})
+    search_nouns = request.session.get('search_nouns', [])
+    return render(request, 'answer.html', {'quiz':quiz, 'search_nouns':search_nouns})
 
 def searchView(request):
     search = request.GET.get('search', '')
     
     search_nouns = extract_nouns_from_query(search)
+    
+    request.session['previous_nouns'] = search_nouns
     
     query = Q()
     for noun in search_nouns:
