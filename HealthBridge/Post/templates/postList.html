@@ -16,7 +16,9 @@
       <a href="{% url 'post:postList' %}" id="info">맞춤형 건강정보</a>
       <a href="{% url 'quiz:quiz' %}" id="quiz">건강퀴즈 O/X</a>
       <div id="line"></div>
+      {% if user_tags != None %}
       <div id="box"></div>
+      {% endif %}
       {% if user.is_authenticated and user_tags.exists %}
           {% for t in user_tags.iterator %}
             <div id="checkbox-container">
@@ -40,7 +42,6 @@
           </div>
           {% endfor %}
       {% endif %}
-
       <!-- nav -->
       <div class="nav">
         <div class="nav_main">
