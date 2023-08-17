@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/info_result.css' %}" rel="stylesheet" />
+    <title>맞춤형 건강 정보</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="bg" src="{% static 'img/bg_main.png' %}" />
+      <a href="{% url 'home' %}"
+        ><img id="back" src="{% static 'img/back.png' %}"
+      /></a>
+      <a href="{% url 'post:postList' %}" id="info">맞춤형 건강정보</a>
+      <a href="{% url 'quiz:quiz' %}" id="quiz">건강퀴즈 O/X</a>
+      <div id="line"></div>
+      <div id="box"></div>
+      {% if user.is_authenticated and user_tags.exists %}
+      {% for t in user_tags.iterator %}
+        <div id="checkbox-container">
+              <input
+                type="radio"
+                name="category"
+                id="category_{{t}}"
+                class="checkbox-input"
+                onclick="toggleCheckbox(this)"
+              />
+              <label for="category_{{t}}" class="checkbox-label"><a href="{{t.get_absolute_url }}">{{t}}</a></label>
+        </div>
+        
+      {% endfor %}
+    </div>
+    {% endif %}
+      </div>
+      <div id="card">
+        <div id="card-img">
+          <img id="card1" src="{{ post.head_image.url}}" alt="" />
+        </div>
+        <div id="card-item">
+          <img
+            id="arrow_left"
+            src="{% static 'img/arrow_left.png' %}"
+            alt=""
+            onclick="showPrevCard()"
+          />
+          <img
+            id="share"
+            src="{% static 'img/share.png' %}"
+            alt=""
+            onclick="clip()"
+          />
+          <img
+            id="arrow_right"
+            src="{% static 'img/arrow_right.png' %}"
+            alt=""
+            onclick="showNextCard()"
+          />
+        </div>
+      </div>
+
+      <!-- nav -->
+      <div class="nav">
+        <div class="nav_main">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'img/home.png' %}" alt="home"
+          /></a>
+          <p>홈</p>
+        </div>
+
+        <div class="nav_info">
+          <a href="{% url 'post:postList' %}"
+            ><img src="{% static 'img/report_b.png' %}" alt="report"
+          /></a>
+          <p>건강정보</p>
+        </div>
+
+        <a href="{% url 'HBapp:keyword_add' %}"
+          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
+        /></a>
+
+        <div class="nav_board">
+          <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/board.png' %}" alt="board"
+          /></a>
+          <p>질문게시판</p>
+        </div>
+
+        <div class="nav_my">
+          <a href="{% url 'mypage:my' %}"
+            ><img src="{% static 'img/my.png' %}" alt="my"
+          /></a>
+          <p>내 정보</p>
+        </div>
+      </div>
+      <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </div>
+    <script>
+      // 키워드 선택
+      function toggleCheckbox(input) {
+        var checkboxes = document.querySelectorAll(".checkbox-input");
+        checkboxes.forEach(function (checkbox) {
+          checkbox.parentNode.classList.remove("selected");
+        });
+
+        if (input.checked) {
+          input.parentNode.classList.add("selected");
+        }
+      }
+
+      // 카드뉴스
+      let currentCard = 1;
+      const totalCards = 8;
+
+      function showCard(cardNumber) {
+        // 모든 카드 이미지 숨기기
+        const cardImages = document.querySelectorAll("#card-img img");
+        cardImages.forEach((img) => {
+          img.style.display = "none";
+        });
+
+        // 선택한 카드 이미지 보이기
+        const selectedCard = document.getElementById(`card${cardNumber}`);
+        selectedCard.style.display = "block";
+      }
+
+      function showPrevCard() {
+        currentCard = currentCard - 1 || totalCards;
+        showCard(currentCard);
+      }
+
+      function showNextCard() {
+        currentCard = (currentCard + 1) % totalCards || totalCards;
+        showCard(currentCard);
+      }
+
+      showCard(currentCard);
+
+      // 링크 복사 기능
+      function clip() {
+        var url = "";
+        var textarea = document.createElement("textarea");
+        document.body.appendChild(textarea);
+        url = "window.location.href";
+        textarea.value = url;
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("링크가 복사 되었습니다. 필요하신 곳에 붙여넣기 하세요!");
+      }
+    </script>
+  </body>
+</html>
