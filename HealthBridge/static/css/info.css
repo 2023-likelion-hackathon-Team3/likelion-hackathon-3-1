@@ -136,14 +136,15 @@ p {
   flex-wrap: wrap;
   top: 253px;
   margin-left: 48px;
+  justify-content: space-between;
 }
 
 #card-item {
-  width: 137px;
+  width: calc(50% - 11.5px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 23px;
+  margin-right: 0;
   margin-bottom: 30px;
 }
 
