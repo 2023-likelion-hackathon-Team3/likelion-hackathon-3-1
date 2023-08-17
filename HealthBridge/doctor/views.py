@@ -118,3 +118,6 @@ def map_view(request, id):
             "myuser": myuser,
         },
     )
+
+def doctor_start(request):
+    return render(request, "doctor_start.html")

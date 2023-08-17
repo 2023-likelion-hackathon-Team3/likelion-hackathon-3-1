@@ -18,7 +18,7 @@ def quiz(request):
 
 def answer(request, quiz_id):
     quiz = Quiz.objects.get(pk=quiz_id)
-    search_nouns = request.session.get('search_nouns', [])
+    search_nouns = request.session.get('search_nouns', []) #이거 아직 안됨
     return render(request, 'answer.html', {'quiz':quiz, 'search_nouns':search_nouns})
 
 def searchView(request):
