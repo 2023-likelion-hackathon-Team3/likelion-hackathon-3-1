@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="{% static 'css/my.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/my2.css' %}" rel="stylesheet" />
         <title>My</title>
     </head>
     <body>
@@ -23,7 +23,7 @@
                 <h3>나의 건강 키워드</h3>
                 <div class="add_container">
                     <div class="add_content">
-                        <div class="add_bg">
+                        <div class="add_bg" id="add_bg">
                             <div class="add_title">키워드</div>
                         </div>
                     </div>
@@ -75,7 +75,9 @@
             const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
             const randomColor =
                 colors[Math.floor(Math.random() * colors.length)];
-            add_bg.style.backgroundColor = randomColor;
+
+            const addBgElement = document.getElementById("add_bg");
+            addBgElement.style.backgroundColor = randomColor;
         </script>
     </body>
 </html>
