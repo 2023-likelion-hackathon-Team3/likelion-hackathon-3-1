@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/doctor_info.css' %}" rel="stylesheet" />
+        <title>의사 정보 보기</title>
+    </head>
+    <body>
+        <div class="doctor_box">
+            <div class="doctor_info">
+                <img src="{% static 'img/doctor_img.png' %}" id="doctor_img" />
+                <div class="doctor_text">
+                    <div id="doctor_name">{{doctor.doctor_user}}</div>
+                    <div id="doctor_hospital">{{doctor.hospital}}</div>
+                </div>
+            </div>
+            <div class="doctor_intro">
+                <!--소개글이 있다면 소개글이 보이게, 아니라면 작성하세요 문구-->
+                <!--나라면 수정할 수 있도록 만들기-->
+                <form action="{% url 'doctor:doctor-info' doctor.id %}" method="POST">
+                    {% csrf_token %}
+                    <!--내가 이 의사인데, 글이 없다면-->
+                    {% if doctor.introduction is None and request.user == doctor.doctor_user %}
+                    <input type="text" placeholder="소개 글을 작성하세요" name="introduction", id="introduction">
+                    <!--내가 의사인데 글이 있다면-->
+                    {% elif doctor.introduction and request.user == doctor.doctor_user %}
+                    <input type="text" value="{{doctor.introduction}}"  name="introduction">
+                    {% elif doctor.introduction is None %}
+                    소개 글을 작성하지 않았습니다.
+                    {% else %}
+                    {{doctor.introduction}}
+                    {% endif %}
+                
+                    {% if request.user == doctor.doctor_user %}
+                    <input type="submit" value="등록">
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <img src="{% static 'img/connect.png' %}" id="connect" />
+        <div class="doctor_hos">
+            <div id="doctor_hos_name">{{doctor.hospital}}</div>
+            <div id="doctor_hos_loca">{{address}}</div>
+            <div id="doctor_hos_tel">{{telephone}}</div>
+            <div id="map" style="width: 100%; height: 445px;"></div>
+        </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HBapp:index' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url 'post:postList' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+
+        <script>
+            function initMap() {
+                var mapOptions = {
+                    center: {lat: 37.5665, lng: 126.9780}, // 서울의 중심 좌표
+                    zoom: 18, // 초기 줌 레벨
+                };
+                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    
+                var hospitalAddress = '{{ address|escapejs }}'; // Django 주소 변수를 가져오기
+                var hospitalName = '{{ hospital_name|escapejs }}'; // Django 병원 이름 변수를 가져오기
+    
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': hospitalAddress }, function(results, status) {
+                    if (status === 'OK') {
+                        var hospitalLocation = results[0].geometry.location;
+                        var marker = new google.maps.Marker({
+                            position: hospitalLocation,
+                            map: map,
+                            title: hospitalAddress
+                        });
+    
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: '<strong>' + hospitalName + '</strong><br>' + hospitalAddress
+                        });
+    
+                        marker.addListener('click', function() {
+                            infoWindow.open(map, marker);
+                        });
+    
+                        map.setCenter(hospitalLocation); // 마커가 있는 위치로 지도 중심 이동
+                    } else {
+                        console.error('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ context.GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+    </body>
+</html>

@@ -1,17 +1,45 @@
-<h1>내 정보 수정</h1>
-{% if error_message %}
-  <p style="color: red;">{{ error_message }}</p>
-{% endif %}
-
-<form method="POST" action="{% url 'mypage:fix' %}">
-    {% csrf_token %}
-    <br>
-    <input type="text" name="new_username" value="" placeholder="아이디 | username">
-    <br>
-    <br>
-    <input type="password" name="new_password" value="" placeholder="비밀번호 | password">
-    <br>
-    <br>
-    <input type="password" name="new_password2" value="" placeholder="비밀번호 확인 | password">
-    <input type="submit" value="저장하기" >
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/fix.css' %}" rel="stylesheet" />
+    <title>Fix</title>
+  </head>
+  <body>
+    <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+    <a href="{% url 'mypage:my' %}">
+      <img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <div class="content">
+      <h3>내 정보 수정하기</h3>
+      <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+    </div>
+    <form method="POST" action="{% url 'mypage:fix' %}">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="new_username"
+        value=""
+        placeholder="아이디 | username"
+        id="username"
+      />
+      <input
+        type="password"
+        name="new_password"
+        value=""
+        placeholder="비밀번호 | password"
+        id="password"
+      />
+      <input
+        type="password"
+        name="new_password2"
+        value=""
+        placeholder="비밀번호 확인 | password"
+        id="password2"
+      />
+      <input type="submit" value="저장하기" id="submit" />
+    </form>
+  </body>
+</html>

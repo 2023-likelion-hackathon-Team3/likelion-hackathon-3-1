@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -1.3px;
+}
+
+#back {
+    position: fixed;
+    z-index: 3;
+    width: 41px;
+    height: 40px;
+    top: 20px;
+    left: 25px;
+}
+
+#bg {
+    position: fixed;
+    z-index: -20;
+    top: 0px;
+    left: 0px;
+}
+
+.box {
+    width: 290px;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 200px;
+    left: 50px;
+}
+
+#title {
+    color: #414141;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 45px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#userid {
+    width: 258px;
+    height: 45px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 6px 5px 13px -1px rgba(248, 111, 3, 0.6);
+    border: none;
+    margin-bottom: 35px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+#password {
+    width: 258px;
+    height: 45px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 6px 5px 13px -1px rgba(248, 111, 3, 0.6);
+    border: none;
+    margin-bottom: 35px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+#password2 {
+    width: 258px;
+    height: 45px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 6px 5px 13px -1px rgba(248, 111, 3, 0.6);
+    border: none;
+    margin-bottom: 35px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+input[type="text"].styled-input::placeholder {
+    color: #414141;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#submit {
+    width: 258px;
+    height: 45px;
+    border-radius: 100px;
+    background: #525fe1;
+    box-shadow: 6px 5px 13px -1px rgba(248, 111, 3, 0.6);
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+#line {
+    width: 290px;
+    height: 0.3px;
+    background: #fff;
+    margin-bottom: 40px;
+}
+
+#kakao {
+    width: 258px;
+    height: 36px;
+    border-radius: 20px;
+    background: #fee500;
+    color: #423630;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: 15px 9px;
+    background-size: 20px;
+    background-image: url("/static/img/kakao_logo.png");
+}

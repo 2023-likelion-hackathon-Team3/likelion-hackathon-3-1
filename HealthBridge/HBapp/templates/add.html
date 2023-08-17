@@ -3,8 +3,12 @@
 
 <form action="{% url 'HBapp:keyword_add' %}" method="post">
     {% csrf_token %}
-    {% for tag in tags %}
-        <input type="checkbox" name="tags" value="{{ tag.name }}"> {{ tag.name }}<br>
-    {% endfor %}
+    {% for tag in all_tags %}
+    {% if tag in user_tags %}
+        <input type="checkbox" name="addTag" value="{{ tag.pk }}" checked>{{ tag.name }}<br>
+    {% else %}
+        <input type="checkbox" name="addTag" value="{{ tag.pk }}">{{ tag.name }}<br>
+    {% endif %}
+{% endfor %}
     <input type="submit" value="저장">
 </form>

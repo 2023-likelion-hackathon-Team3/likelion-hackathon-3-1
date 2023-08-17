@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    letter-spacing: -1.3px;
+    background-image: url("/static/img/doctor_main.png");
+}
+
+a {
+    text-decoration: none;
+}
+
+#pageName {
+    color: #414141;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 105px 25px 25px 25px;
+}
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.post {
+    border-radius: 20px;
+    background: #c9eeff;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    margin: 10px 30px;
+    padding: 15px;
+}
+
+.title {
+    color: #414141;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0px 10px 0px;
+}
+
+.user {
+    color: #414141;
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.bottom {
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.time {
+    color: #414141;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.answer {
+    color: #f33232;
+    text-align: right;
+    font-size: 15px;
+    font-weight: 900;
+}

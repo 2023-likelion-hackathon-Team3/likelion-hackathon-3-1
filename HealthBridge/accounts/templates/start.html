@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}{% load socialaccount %}
+        <link href="{% static 'css/start.css' %}" rel="stylesheet" />
+        <title>Health Bridge</title>
+    </head>
+    <body>
+        <img src="{% static 'img/startAni.png' %}" id="bg" />
+        <div class="logo">
+            <img src="{% static 'img/logo_white.png' %}" id="logo_white" /><img
+                src="{% static 'img/Health Bridge.png' %}"
+                id="logo_text"
+            />
+        </div>
+        <div class="btns">
+            <a id="kakao" href="{% provider_login_url 'kakao' %}">카카오톡으로 간편 로그인</a>
+            <a id="login" href="{% url 'accounts:login' %}">로그인</a>
+            <a id="signup" href="{% url 'accounts:signup' %}">회원가입</a>
+        </div>
+    </body>
+</html>

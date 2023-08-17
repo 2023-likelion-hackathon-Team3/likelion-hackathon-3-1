@@ -1,0 +1,121 @@
+#bg {
+    position: fixed;
+    z-index: -20;
+    right: 0;
+    top: -10px;
+    height: 860px;
+    overflow: hidden;
+    animation: waveAnimation 20s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes waveAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(73%);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -1.3px;
+}
+
+.logo {
+    width: 138px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+    top: 295px;
+    left: 126px;
+}
+
+#logo_white {
+    width: 117.074px;
+    height: 96px;
+    margin-bottom: 20px;
+}
+
+#logo_text {
+    width: 138px;
+    height: 61px;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.btns {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 258px;
+    height: 135px;
+    z-index: 3;
+    bottom: 40px;
+    left: 66px;
+}
+
+#kakao {
+    width: 258px;
+    height: 35px;
+    border-radius: 20px;
+    background: #fee500;
+    color: #423630;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: 15px 9px;
+    background-size: 20px;
+    animation: fadeInUp 2s;
+    animation-delay: 0s;
+    background-image: url("/static/img/kakao_logo.png");
+}
+
+#login {
+    width: 258px;
+    height: 35px;
+    border-radius: 20px;
+    background: #d9d9d9;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.1s;
+}
+
+#signup {
+    width: 258px;
+    height: 35px;
+    border-radius: 20px;
+    background: #d9d9d9;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10.5px;
+    box-sizing: border-box;
+    animation: fadeInUp 2s;
+    animation-delay: 0.2s;
+}

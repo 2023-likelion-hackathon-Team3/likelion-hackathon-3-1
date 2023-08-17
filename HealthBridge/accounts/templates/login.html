@@ -1,18 +1,50 @@
-<h1>로그인</h1>
-<form action="{% url 'accounts:login' %}" method="POST">
-    {% csrf_token %}
-    <br>
-    <input type="text" name="username" value="" placeholder="아이디를 입력하세요">
-    <br>
-    <br>
-    <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
-    <br>
-    <br>
-    <input type="submit" type="submit" value="Login">
-</form>
-<a href="{% url 'accounts:signup' %}" method="POST">회원가입</a>
-{% if error %}
-<script>
-    alert("{{ error }}");
-</script>
-{% endif %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}{% load socialaccount %}
+        <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+        <title>로그인</title>
+    </head>
+  <body>
+    <!--배경-->
+    <img src="{% static 'img/bg_login.png' %}" id="bg" />
+    <!--뒤로가기 버튼-->
+    <a href="{% url 'accounts:start' %}"
+      ><img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <section class="box">
+      <h1 id="title">어서오세요</h1>
+      <img src="{% static 'img/logo_purple2.png' %}" id="logo" />
+      <form action="{% url 'accounts:login' %}" method="POST" class="form">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="username"
+          value=""
+          placeholder="아이디"
+          id="username"
+        />
+        <input
+          type="password"
+          name="password"
+          value=""
+          placeholder="비밀번호"
+          id="password"
+        />
+        <input type="submit" type="submit" value="로그인" id="submit" />
+      </form>
+      <hr id="line" />
+      <a id="kakao" href="{% provider_login_url 'kakao' %}"
+        >카카오톡으로 간편 로그인</a
+      >
+    </section>
+    <!--<a href="{% url 'accounts:signup' %}" method="POST">회원가입</a>-->
+        {% if error %}
+        <script>
+            alert("{{ error }}");
+        </script>
+        {% endif %}
+  </body>
+</html>

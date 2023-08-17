@@ -4,16 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('board', '0003_alter_board_hb_user'),
-        ('accounts', '0005_alter_myuser_tags'),
+        ("accounts", "0005_alter_myuser_tags"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='myuser',
-            name='questions',
-            field=models.ManyToManyField(blank=True, to='board.board'),
+            model_name="myuser",
+            name="questions",
+            field=models.ManyToManyField(blank=True, to="board.board"),
         ),
     ]

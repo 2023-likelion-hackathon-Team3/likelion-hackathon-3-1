@@ -1,0 +1,43 @@
+<!-- HTML 파일 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Capture</title>
+</head>
+<body>
+    <h2>Webcam Capture</h2>
+    <video id="webcam" autoplay></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <button id="captureButton">Capture Photo</button>
+    <script>
+        const video = document.getElementById('webcam');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('captureButton');
+        
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => video.srcObject = stream)
+            .catch(error => console.error('Error accessing webcam:', error));
+        captureButton.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const capturedDataUrl = canvas.toDataURL('image/jpeg');
+            const form = new FormData();
+            form.append('capturedDataUrl', capturedDataUrl);
+            fetch('/camera/webcam_capture/', {
+                method: 'POST',
+                body: form,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                // 페이지 이동
+                window.location.href = '/camera/crop';
+            });
+        });
+    </script>
+</body>
+</html>

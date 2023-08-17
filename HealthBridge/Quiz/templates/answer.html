@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/quiz2.css' %}" rel="stylesheet" />
+        <title>건강퀴즈 O/X</title>
+    </head>
+    <body>
+        <div id="container">
+        <img id="bg" src="{% static 'img/bg_main.png' %}" />
+        <a href="{% url 'HBapp:index' %}">
+            <img id="back" src="{% static 'img/back.png' %}"
+        /></a>
+        <a href="{% url 'HBapp:index' %}" id="info">맞춤형 건강정보</a>
+        <a href="{% url 'quiz:quiz' %}" id="quiz">건강퀴즈 O/X</a>
+        <div id="line"></div>
+        <form method="GET" action="{% url 'quiz:search' %}">
+            <input id="serach-box" name="search" type="text" placeholder="퀴즈를 검색하세요." />
+        </form>
+        <img class="search" src="{% static 'img/search.png' %}" alt="search" />
+
+        {% if search_nouns %}
+            {% for noun in search_nouns %}
+                <div id="tag">{{ noun }}</div>
+            {% endfor %}
+        {% endif %} <!-- 이거 아직 안됨 ...으유 (answer에 키워드 띄우기)-->
+
+        <img class="abox" src="{% static 'img/Abox.png' %}" alt="Abox" />
+        <p id="question">
+            {{ quiz.explanation }}
+        </p>
+        <div id="newquiz"><a href="{% url 'quiz:quiz' %}">다른 퀴즈 풀기</a></div>
+
+        <!-- nav -->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HBapp:index' %}">
+                    <img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+    
+            <div class="nav_info">
+                <a href="{% url 'post:postList' %}"
+                    ><img src="{% static 'img/report_b.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+    
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
+            /></a>
+    
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+    
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+            <img src="{% static 'img/nav.svg' %}" id="nav" />
+        </div>
+        <script>
+        function toggleImage(boxType, newImagePath, originalImagePath) {
+            var image = document.querySelector("." + boxType);
+            var currentImagePath = image.getAttribute("src");
+
+            if (currentImagePath === originalImagePath) {
+            // 이미지가 원래 이미지인 경우, 다른 이미지로 변경
+            image.src = newImagePath; // 새로운 이미지로 변경
+            } else {
+            // 이미지가 다른 이미지인 경우, 원래 이미지로 변경
+            image.src = originalImagePath; // 원래 이미지로 변경
+            }
+        }
+        </script>
+    </body>
+</html>
+
+<!-- <p>{{ quiz.explanation }}</p>
+<br>
+<a href="{% url 'quiz:quiz'%}">다른 퀴즈 풀기</a> -->

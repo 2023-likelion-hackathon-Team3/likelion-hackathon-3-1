@@ -1,8 +1,36 @@
-<h1>비밀번호 확인</h1>
-<form action="{% url 'mypage:check' %}" method="POST">
-    {% csrf_token %}
-    <br>
-    <input type="password" name="password" value="" placeholder="비밀번호">
-    <br><br>
-    <input type="submit" type="submit" value="정보 수정하러 가기">
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/check.css' %}" rel="stylesheet" />
+    <title>Check</title>
+  </head>
+  <body>
+    <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+    <a href="{% url 'mypage:my' %}">
+      <img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <div class="content">
+      <img src="{% static 'img/lock.png' %}" alt="lock" />
+      <h3>비밀번호 확인</h3>
+    </div>
+    <form action="{% url 'mypage:check' %}" method="POST">
+        {% csrf_token %}
+        <input
+            type="password"
+            name="password"
+            value=""
+            placeholder="비밀번호"
+            id="password"
+        />
+        <input
+            type="submit"
+            type="submit"
+            value="정보 수정하러 가기"
+            id="submit"
+        />
+    </form>
+  </body>
+</html>

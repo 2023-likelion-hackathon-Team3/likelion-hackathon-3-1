@@ -1,4 +1,100 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link href="{% static 'css/info.css' %}" rel="stylesheet" />
+    <title>맞춤형 건강 정보</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="bg" src="{% static 'img/bg_main.png' %}" />
+      <a href="{% url 'HBapp:index' %}"
+        ><img id="back" src="{% static 'img/back.png' %}"
+      /></a>
+      <a href="{% url 'post:postList' %}" id="info">맞춤형 건강정보</a>
+      <a href="{% url 'quiz:quiz' %}" id="quiz">건강퀴즈 O/X</a>
+      <div id="line"></div>
+      {% if user_tags != None %}
+      <div id="box"></div>
+      {% endif %}
+      {% if user.is_authenticated and user_tags.exists %}
+          {% for t in user_tags.iterator %}
+            <div id="checkbox-container">
+                  <input
+                    type="radio"
+                    name="category"
+                    id="category_{{t}}"
+                    class="checkbox-input"
+                    onclick="toggleCheckbox(this)"
+                  />
+                  <label for="category_{{t}}" class="checkbox-label"><a href="{{t.get_absolute_url }}">{{t}}</a></label>
+            </div>
+          {% endfor %}
+      {% else %}
+        {% for t in tags %}
+          <div id="card">
+            <div id="card-item">
+              <img src="{% static 'img/card1.png' %}" alt="" />
+              <span> <a href="{{t.get_absolute_url }}">{{t}}</a></span>
+            </div>
+          </div>
+          {% endfor %}
+      {% endif %}
+      <!-- nav -->
+      <div class="nav">
+        <div class="nav_main">
+          <a href="{% url 'HBapp:index' %}">
+            <img src="{% static 'img/home.png' %}" alt="home"
+          /></a>
+          <p>홈</p>
+        </div>
+
+        <div class="nav_info">
+          <a href="{% url 'post:postList' %}"
+            ><img src="{% static 'img/report_b.png' %}" alt="report"
+          /></a>
+          <p>건강정보</p>
+        </div>
+
+        <a href="{% url 'HBapp:keyword_add' %}"
+          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
+        /></a>
+
+        <div class="nav_board">
+          <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/board.png' %}" alt="board"
+          /></a>
+          <p>질문게시판</p>
+        </div>
+
+        <div class="nav_my">
+          <a href="{% url 'mypage:my' %}"
+            ><img src="{% static 'img/my.png' %}" alt="my"
+          /></a>
+          <p>내 정보</p>
+        </div>
+      </div>
+      <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </div>
+    <script>
+      function toggleCheckbox(input) {
+        var checkboxes = document.querySelectorAll(".checkbox-input");
+        checkboxes.forEach(function (checkbox) {
+          checkbox.parentNode.classList.remove("selected");
+        });
+
+        if (input.checked) {
+          input.parentNode.classList.add("selected");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -6,16 +102,19 @@
   <title>Document</title>
 </head>
 <body>
-  <a href="{% url 'accounts:login'%}">로그인</a>
-  <!--여기까지는 사용자 태그-->
-  {% if user.is_authenticated and user_tags.exists %}
+  <a href="{% url 'post:postList'%}">맞춤형 건강 정보</a>
+  <a href="{% url 'quiz:quiz'%}">건강퀴즈 o/x</a>
+  <br><br>
+  <a href="{% url 'accounts:login'%}">로그인</a> -->
+  <!-- 여기까지는 사용자 태그-->
+  <!-- {% if user.is_authenticated and user_tags.exists %}
     {% for t in user_tags.iterator %}
       <a href="{{t.get_absolute_url }}">{{t}}</a>
-    {% endfor %}
+    {% endfor %}  -->
   
 
     <!--여기부터는 게시글-->
-  {% else %}
+  <!-- {% else %}
     모든 태그: {% for t in tags %}
       <a href="{{t.get_absolute_url }}">{{t}}</a>
     {% endfor %}
@@ -39,4 +138,4 @@
   <p>아직 게시물이 없습니다.</p>
   {% endif %}
 </body>
-</html>
+</html> -->

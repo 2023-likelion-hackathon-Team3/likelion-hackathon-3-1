@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webcam Capture and Crop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+</head>
+<body>
+  <h2>Webcam Capture and Crop</h2>
+  <video id="webcam" autoplay></video>
+  <canvas id="canvas" style="display: none;"></canvas>
+  
+  <div>
+    <button id="captureButton">Capture Photo</button>
+  </div>
+  
+  <input type="file" id="imageInput" style="display: none;">
+  <img id="image" src="" alt="Image to Crop" style="display: none;">
+
+  <div>
+    <button id="cropButton" style="display: none;">Crop Image</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <script>
+    const video = document.getElementById('webcam');
+    const canvas = document.getElementById('canvas');
+    const captureButton = document.getElementById('captureButton');
+    const imageInput = document.getElementById('imageInput');
+    const image = document.getElementById('image');
+    const cropButton = document.getElementById('cropButton');
+
+    let cropper;
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => video.srcObject = stream)
+      .catch(error => console.error('Error accessing webcam:', error));
+
+    captureButton.addEventListener('click', () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const capturedDataUrl = canvas.toDataURL('image/jpeg');
+      image.src = capturedDataUrl;
+      image.style.display = 'block';
+      cropButton.style.display = 'block';
+      video.style.display = 'none'; // Hide the video element
+
+      if (cropper) {
+        cropper.destroy();
+      }
+      cropper = new Cropper(image, {
+        aspectRatio: 1, // You can adjust the aspect ratio as needed
+        viewMode: 2,    // You can change the view mode as needed
+      });
+    });
+
+    imageInput.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        image.src = e.target.result;
+        image.style.display = 'block';
+        cropButton.style.display = 'block';
+        video.style.display = 'none'; // Hide the video element
+
+        if (cropper) {
+          cropper.destroy();
+        }
+        cropper = new Cropper(image, {
+          aspectRatio: 1, // You can adjust the aspect ratio as needed
+          viewMode: 2,    // You can change the view mode as needed
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    cropButton.addEventListener('click', function () {
+      const croppedCanvas = cropper.getCroppedCanvas();
+      const croppedImage = croppedCanvas.toDataURL('image/jpeg');
+
+      const formData = new FormData();
+      formData.append('cropped_photo_data', croppedImage);
+
+      fetch('/camera/save_cropped_photo/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+        } else {
+          alert('Error saving cropped photo.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

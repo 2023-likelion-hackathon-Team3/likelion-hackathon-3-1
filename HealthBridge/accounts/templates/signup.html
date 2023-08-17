@@ -1,21 +1,54 @@
-<body>    
-    <h1>회원가입</h1>    
-    <form method="POST" action="{% url 'accounts:signup' %}">
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}{% load socialaccount %}
+        <link href="{% static 'css/signup.css' %}" rel="stylesheet" />
+        <title>회원가입</title>
+    </head>
+  <body>
+    <!--배경-->
+    <img src="{% static 'img/bg_login.png' %}" id="bg" />
+    <!--뒤로가기 버튼-->
+    <a href="{% url 'accounts:start' %}"
+      ><img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <section class="box">
+      <h1 id="title">회원가입</h1>
+      <form action="{% url 'accounts:signup' %}" method="POST" class="form">
         {% csrf_token %}
-        <br>
-        <input type="text" name="userid" value="" placeholder="아이디를 입력하세요">
-        <br>
-        <br>
-        <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요">
-        <br>
-        <br>
-        <input type="password" name="password2" value="" placeholder="비밀번호를 다시 한 번 입력하세요">
-        <input type="submit" value="가입" >
-    </form>
-    <script>
-        var error = "{{ error }}";
-        if (error) {
-            alert(error);
-        }
-    </script>
-</body>
+        <input
+          type="text"
+          name="userid"
+          value=""
+          placeholder="아이디"
+          id="userid"
+        />
+        <input
+          type="password"
+          name="password"
+          value=""
+          placeholder="비밀번호"
+          id="password"
+        />
+        <input
+          type="password"
+          name="password2"
+          value=""
+          placeholder="비밀번호 확인"
+          id="password2"
+        />
+        <input type="submit" type="submit" value="회원가입" id="submit" />
+      </form>
+      <hr id="line" />
+      <a id="kakao" href="{% provider_login_url 'kakao' %}">카카오톡으로 간편 로그인</a>
+    </section>
+        <script>
+            var error = "{{ error }}";
+            if (error) {
+                alert(error);
+            }
+        </script>
+  </body>
+</html>

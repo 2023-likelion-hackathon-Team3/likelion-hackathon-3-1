@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/img/bg_main.png");
+    background-repeat: no-repeat;
+    letter-spacing: -1.3px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#back {
+    width: 41px;
+    height: 40px;
+    margin: 20px 25px;
+}
+
+#pageName {
+    color: #414141;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 25px;
+}
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 120px;
+}
+
+.post {
+    border-radius: 20px;
+    background: #ffd4b8;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    margin: 10px 30px;
+    padding: 15px;
+}
+
+.title {
+    color: #414141;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px 0px 10px 0px;
+}
+
+.user {
+    color: #414141;
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.bottom {
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.time {
+    color: #414141;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.answer {
+    color: #f33232;
+    text-align: right;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+#write {
+    position: fixed;
+    bottom: 90px;
+    right: 15px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}
+
+/*나브바 고정*/
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    top: 80px;
+    left: 0px;
+    position: relative;
+    z-index: 3;
+    letter-spacing: 0;
+}
+
+#nav_add {
+    position: fixed;
+    top: 734px;
+    left: 160px;
+    z-index: 2;
+}
+
+#nav {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    z-index: 2;
+}
+
+.nav_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    left: 29px;
+}
+.nav_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 782px;
+    left: 95px;
+}
+
+.nav_board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 783px;
+    right: 95px;
+}
+
+.nav_my {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    right: 29px;
+}
+
+.nav p {
+    color: #ffffff;
+    margin-top: 2px;
+    font-size: small;
+}
+
+.nav_board p {
+    color: #525fe1;
+}

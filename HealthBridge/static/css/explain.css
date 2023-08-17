@@ -1,0 +1,280 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#bg {
+    position: absolute;
+    z-index: -20;
+    top: 0px;
+    left: 0px;
+}
+
+#logo {
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 35px;
+    right: 26px;
+}
+
+h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #414141;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    display: inline-flex;
+}
+
+p {
+    display: inline-flex;
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.add,
+.info,
+.board {
+    margin-top: 50px;
+    margin-left: 20px;
+    align-items: center;
+    max-width: 323px;
+}
+
+.add {
+    margin-top: 150px;
+}
+
+.board {
+    margin-bottom: 120px;
+}
+
+.add_content {
+    width: 323px;
+    height: 210px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_content a {
+    margin-top: 32px;
+    display: flex;
+}
+
+.add_text {
+    width: 323px;
+    height: 68px;
+    border-radius: 0px 0px 20px 20px;
+    background: #ffd4b8;
+    margin-top: 30px;
+}
+
+.add_text p {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.info_img {
+    display: flex;
+    overflow-x: auto;
+}
+
+.info_img img {
+    margin: 10px 5px;
+}
+
+.board_content {
+    width: 323px;
+    height: 210px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board_content a {
+    margin-top: 30px;
+    display: flex;
+}
+
+.board_text {
+    width: 323px;
+    height: 68px;
+    border-radius: 0px 0px 20px 20px;
+    background: #b5bbfb;
+    margin-top: 30px;
+}
+
+.board_text p {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    top: 80px;
+    left: 0px;
+    position: relative;
+    z-index: 3;
+}
+
+#nav_add {
+    position: fixed;
+    top: 734px;
+    left: 160px;
+    z-index: 2;
+}
+
+#nav {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    z-index: 2;
+}
+
+.nav_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    left: 29px;
+}
+.nav_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 782px;
+    left: 95px;
+}
+
+.nav_board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 783px;
+    right: 95px;
+}
+
+.nav_my {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    right: 29px;
+}
+
+.nav p {
+    color: #ffffff;
+    margin-top: 2px;
+    font-size: small;
+}
+
+.nav_main p {
+    color: #525fe1;
+}
+
+.explain {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+}
+
+.black {
+    width: 390px;
+    height: 1112px;
+    background-color: black;
+    opacity: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#ex6,
+#ex7 {
+    display: none;
+}
+
+#ex1 {
+    z-index: 5;
+    position: fixed;
+    top: 0px;
+    left: 138px;
+}
+
+#ex2 {
+    z-index: 5;
+    position: fixed;
+    top: 314px;
+    left: 28px;
+}
+
+#ex3 {
+    z-index: 5;
+    position: fixed;
+    top: 590px;
+    left: 110px;
+}
+
+#ex4 {
+    z-index: 5;
+    position: fixed;
+    top: 440px;
+    left: 181px;
+}
+
+#ex5 {
+    z-index: 5;
+    position: fixed;
+    top: 593px;
+    left: 261px;
+}
+
+#ex6 {
+    z-index: 5;
+    position: fixed;
+    top: 144px;
+    left: 86px;
+}
+
+#ex7 {
+    z-index: 5;
+    position: fixed;
+    top: 445px;
+    left: 206px;
+}
+
+#check {
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    cursor: pointer;
+}

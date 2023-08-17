@@ -1,19 +1,108 @@
-{% if user.is_authenticated %}
-    {{ user.username }}
-    <a href="{% url 'mypage:check' %}">수정</a>
-{% else %}
-    <p>로그인하지 않음</p>
-{% endif %}
-<br><br><br>
-<h2>나의 건강 키워드</h2>
-    <a href="{% url 'mypage:addTag' %}">수정</a>
-    {% for t in tags.iterator %}
-    <span>{{ t }}</span>
-    {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/my.css' %}" rel="stylesheet" />
+        <title>My</title>
+    </head>
+    <body>
+        <img src="{% static 'img/bg_main.png' %}" id="bg" />
+        <div class="content">
+            <div class="profile">
+                {% if user.is_authenticated %}
+                    {% if myuser.image %}
+                        <img src="{{myuser.image.url}}" id="profile_img" alt="프로필 사진">
+                    {% else %}
+                        <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+                    {% endif %}
+                {% endif %}
+                <div class="profile_fix">
+                    <p>{{user.username}}</p>
+                    <a href="{% url 'mypage:check' %}">
+                        <img src="{% static 'img/pencil.png' %}" alt="fix"
+                    /></a>
+                </div>
+            </div>
 
-<br><br><br>
-<h2>내 질문과 답변</h2>
-    {% for question in questions %}
-    <a href="{% url 'board:board-detail' question.pk %}">{{ question.title }}</a>
-    <br>
-    {% endfor %}
+            <div class="add">
+                <h3>나의 건강 키워드</h3>
+                <div class="add_container">
+                    <!-- tag에 데이터 있을 경우 -->
+                    {% if tags.exists %}
+                        {% for t in tags.iterator %}
+                            <div class="add_content">
+                                <div class="add_bg" id="add_bg">
+                                    <div class="add_title">{{t}}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- tag에 데이터 없을 경우 -->
+                        <a href="{% url 'HBapp:keyword_add' %}" class="add_link"
+                            ><div class="add_btn">내 건강 키워드 등록하기</div>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="board">
+                <h3>나의 질문과 답변</h3>
+                {% if questions %}
+                    {% for question in questions %}
+                    <a href="{% url 'board:board-detail' question.pk %}" class="board_link"
+                        ><div class="board_btn">{{question.title}}</div></a
+                    >
+                    {% endfor %}
+                {% else %}
+                    <a href="{% url 'board:board-write' %}" class="board_link"
+                        ><div class="board_btn">질문하러 가기</div></a
+                    >
+                {% endif %}
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HBapp:index' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url 'post:postList' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my_purple.svg' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script>
+            const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
+            const addBgElements = document.querySelectorAll(".add_bg");
+            addBgElements.forEach(element => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                element.style.backgroundColor = randomColor;
+            });
+        </script>
+    </body>
+</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash, authenticate
 from django.contrib import auth
 
 # Create your views here.
@@ -29,9 +30,36 @@ def signup(request):
 
         if request.POST['password'] == request.POST['password2']:
             user = User.objects.create_user(username=request.POST['userid'], password=request.POST['password'])
-            auth.login(request, user)
-            return render(request, 'login.html')
+            
+            user = authenticate(request, username=userid, password=password, backend='django.contrib.auth.backends.ModelBackend')
+            if user is not None:
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                auth.login(request, user)
+                return render(request, 'login.html')
+            else:
+                # 사용자 인증에 실패한 경우에 대한 처리
+                return render(request, 'signup.html')
         else:
             return render(request, 'signup.html', {'error': '비밀번호가 일치하지 않습니다.'})
         
     return render(request, 'signup.html')
+
+@login_required
+def set_password(request):
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        request.user.set_password(new_password)
+        request.user.save()
+
+        # 세션 인증 업데이트
+        update_session_auth_hash(request, request.user)
+
+        return redirect('HBapp:index')  # 로그인 후 리다이렉트할 페이지
+    return render(request, 'set_password.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'login.html')
+
+def start(request):
+    return render(request, 'start.html')

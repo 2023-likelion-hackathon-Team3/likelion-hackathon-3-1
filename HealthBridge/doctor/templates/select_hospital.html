@@ -1,0 +1,46 @@
+<!-- <select name="hospital" required>
+    {% for hospital in hospitals %}
+        <option value="{{ hospital.id }}">{{ hospital.hospital_name }}</option>
+    {% endfor %}
+</select><br>
+
+{% comment %} <form method="post" action="{% url 'doctor:select_hospital' %}">
+    {% csrf_token %}
+    <select name="hospital" required>
+        {% for hospital in hospitals %}
+            <option value="{{ hospital.id }}">{{ hospital.hospital_name }}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">저장</button>
+</form> {% endcomment %} -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chosen Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.min.css">
+</head>
+<body>
+    <form method="post" action="{% url 'doctor:select_hospital' %}">
+        {% csrf_token %}
+        <select id="id_hospital" name="hospital" class="chosen-select">
+            <option value="">병원 이름 | 병원 주소</option>
+            {% for hospital in hospitals %}
+            <option value="{{ hospital.id }}">{{ hospital.hospital_name }}  {{ hospital.address }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.chosen-select').chosen({
+                search_contains: true,  // 부분 일치 검색
+            });
+        });
+    </script>
+</body>
+</html>

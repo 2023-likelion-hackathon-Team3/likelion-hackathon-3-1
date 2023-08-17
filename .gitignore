@@ -172,4 +172,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+<<<<<<< HEAD
+# End of https://www.toptal.com/developers/gitignore/api/django
+=======
 # End of https://www.toptal.com/developers/gitignore/api/django.DS_Store
+>>>>>>> a6e63beb5a22f0d86e781434f0b56fb28dc413c5

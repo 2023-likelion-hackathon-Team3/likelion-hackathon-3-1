@@ -1,20 +1,89 @@
-<h1>건강 관련 질문 게시판</h1>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/board.css' %}" rel="stylesheet" />
+        <title>건강 질문 게시판</title>
+    </head>
+    <body>
+    
 
-<h2> 질문 목록 </h2>
-{% for question in question_list %}
-    <a href="{% url 'board:board-detail' question.pk %}">{{question.title}}</a>
-    <br>
-    {{ question.hb_user.username }}
-    <br>
-    {{ question.created_at|timesince|cut:", " }}전
-    <span style="margin-left: 70px;">
-        {% if question.answer.strip == '' %}
-        답변 대기
-        {% else %}
-        답변 완료
-        {% endif %}
-    </span>
-    <br><br>
-{% endfor %}
+        <!--뒤로가기 버튼-->
+        <a href="{% url 'home' %}"
+            ><img src="{% static 'img/back.png' %}" id="back"
+        /></a>
+        <!--페이지 제목-->
+        <div id="pageName">건강 질문 게시판</div>
+        <!--게시글-->
+        
+        <section class="postBox">
+            {% for question in question_list %}
+            <a class="post" href="{% url 'board:board-detail' question.pk %}">
+                <div class="title">{{question.title}}</div>
+                <div class="user">{{ question.hb_user.username }}</div>
+                <div class="bottom">
+                    <span class="time">{{ question.created_at |timesince|cut:", " }} 전</span>
+                    <span class ="answer" style="margin-left: 70px;">
+                            {% if question.answer == False %}
+                            • 답변 대기
+                            {% else %}
+                            <span style="color: green;">• 답변 완료</span>
+                            {% endif %}
+                    </span>
+                </div>
+            </a>
+            {% endfor %}
+        </section>
+        
+        <!--글쓰기 버튼-->
+        <a href="{% url 'board:board-write' %}"
+            ><img src="{% static 'img/write.png' %}" id="write"
+        /></a>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
 
-<a href="{% url 'board:board-write' %}">새 질문 등록</a>
+            <div class="nav_info">
+                <a href="{% url 'post:postList' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+            
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script>
+            let answer = document.getElementsByClassName("answer");
+
+            if (answer == "답변 완료된 상태") {
+                answer.innerHtml = "• 답변 완료";
+                answer.style.color = "#035956";
+            }
+        </script>
+    </body>
+</html>

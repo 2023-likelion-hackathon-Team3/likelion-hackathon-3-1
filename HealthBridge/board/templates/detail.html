@@ -1,10 +1,54 @@
+<head>
+    {% if request.user.is_staff %}
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+    {% endif %}
+</head>
+
+<body>
 <h1>건강 관련 질문 게시판</h1>
 
+{% if list.hb_user == request.user %}
+수정 및 삭제?
+{% endif %}
 <p>제목: {{list.title}}</p>
+{% if list.image %}
+<P><img src="{{ list.image.url }}"></P>
+{% endif %}
+
 <p>내용: {{list.content}}</p>
+
 <br><br><br>
-<p>전문가 답변: {{list.answer}}</p>
-<br><br><br>
+
+{% if list.answer == True %}
+        {% if answer.board_list == list %}
+            <p><a href="{% url 'doctor:doctor-info' answer.doctor.id %}">{{ answer.doctor }} 의사</a></p>
+            답변: {{ answer.answer }}
+        {% endif %}
+{% endif %}
+
+{% if list.answer == True %}
+{{answer.doctor_user}}
+            {% if request.user == doctor %}
+                <a href="{% url 'board:answer-update' list.pk answer.id%}">수정</a>
+                <a href="{% url 'board:answer-delete' list.pk answer.id%}">삭제</a>
+            {% endif %}
+        <br><br><br>
+{% endif %}
+
+{% if user.is_staff == True and list.answer == False %}
+<form action="{% url 'board:board-detail' list.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="answer" placeholder="내용을 입력해주세요.">
+    <br><br>
+    <input type="submit" value="등록" name="submit">
+</form>
+
+{% endif %}
+
 
 {% with prev_list=list.get_previous_by_created_at %}
 {% if prev_list %}
@@ -17,3 +61,4 @@
 <p>다음 글: <a href="{% url 'board:board-detail' next_list.pk %}">{{ next_list.title }}</a></p>
 {% endif %}
 {% endwith %}
+</body>
