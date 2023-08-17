@@ -28,7 +28,10 @@
                 id="content"
                 placeholder="내용을 입력해주세요."
             />
-            <input type="submit" name="photo" id="photo" value="" />
+            <label class="photo-label">
+                <div id="photo-btn"></div>
+                <input type="file" name="photo" id="photo" value="" />
+            </label>
             <input type="submit" value="등록" name="submit" id="submit" />
         </form>
         <!--나브바-->
@@ -66,5 +69,13 @@
             </div>
         </div>
         <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script src="{% static 'path/to/jquery-3.6.0.min.js' %}"></script>
+        <script>
+            $("#photo").on("change", function () {
+                var fileName = $("#photo").val();
+                $("#photo-btn").text(fileName);
+                $("#photo-btn").css("background-image", "none");
+            });
+        </script>
     </body>
 </html>

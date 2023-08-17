@@ -52,6 +52,34 @@ body {
     transform: rotate(360deg); 
   }
 }
+
+.photo-label {
+
+}
+
+#photo-btn {
+    width: 300px;
+    height: 43px;
+    border-radius: 20px;
+    border: none;
+    background: #525fe1;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    background-image: url('./img/camera.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0px 0px 20px 0px;
+}
+
+#photo {
+  position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+
 </style>
 </head>
         <title>Wave</title>
@@ -61,6 +89,17 @@ body {
                 <div class="wave"></div>
                 <div class="wave_2"></div>
             </div>
-
+            <label class="photo-label">
+              <div id="photo-btn"></div>
+            <input type="file" name="photo" id="photo" value="" />
+            </label>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+            $("#photo").on('change',function(){
+              var fileName = $("#photo").val();
+              $("#photo-btn").text(fileName);
+              $("#photo-btn").css("background-image", "none");
+            });
+            </script>
     </body>
 </html>

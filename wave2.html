@@ -1,98 +1,315 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/start2.css" rel="stylesheet" />
-        <!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-    margin: 0;
-}
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                letter-spacing: -1.3px;
+            }
 
-.wrap {    
-  width: 390px;
-  height: 800px;
-  overflow: hidden; 
-  background: #ffa41b;
-  transform: translate3d(0, 0, 0);
-  position: fixed;
-    z-index: -3;
-}
+            body {
+                background-repeat: no-repeat;
+                background-image: url("./img/bg_main.png");
+                height: 100vh;
+            }
 
-.wave {
-  width: 650px;  
-  height: 650px;
-  position: fixed;
-    z-index: -3;
-  top: 60%;     
-  left: -100px;  
-  border-radius: 43%; 
-  animation: drift 8s infinite linear;
-  background: #525fe1;  
-}
+            #back {
+                width: 41px;
+                height: 40px;
+                margin: 20px 25px;
+            }
 
-.wave_2 {
-  width: 650px;  
-  height: 650px;
-  position: absolute;
-  top: 65%;     
-  left: -100px;  
-  border-radius: 43%; 
-  animation: drift 8s infinite linear;
-  background: #ffffff;  
-}
+            .titleBox {
+                display: flex;
+                flex-direction: row;
+                margin: 35px 0px 15px 0px;
+            }
 
-.wave_reverse {
-  width: 650px;  
-  height: 650px;
-  position: absolute;
-  top: -70%;     
-  right: -100px;  
-  border-radius: 43%; 
-  animation: drift_re 8s infinite linear;
-  background: #525fe1;
-}
+            #board_q {
+                width: 47px;
+                height: 64px;
+            }
 
-.wave_reverse2 {
-  width: 650px;  
-  height: 650px;
-  position: absolute;
-  top: -75%;     
-  right: -100px;  
-  border-radius: 43%; 
-  animation: drift_re 8s infinite linear;
-  background: #ffffff;
-}
+            .title {
+                color: #414141;
+                font-size: 22px;
+                font-weight: 600;
+                height: 25px;
+                margin: 30px 0px 0px 15px;
+            }
 
-@keyframes drift_re {
-  100% { 
-    transform: rotate(-360deg); 
-  }
-}
+            .content {
+                width: 342px;
+                border-radius: 20px;
+                border: 3px solid #f86f03;
+                background: #fff;
+                box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+                color: #414141;
+                font-size: 15px;
+                font-weight: 600;
+                margin: 0px 24px 0px 24px;
+                padding: 10px 20px 10px 20px;
+                box-sizing: border-box;
+            }
 
-@keyframes drift {
-    0% {
-    transform: rotate(0deg);
-  }
-  100% { 
-    transform: rotate(360deg); 
-  }
-}
-</style>
-</head>
-        <title>Wave</title>
+            #connect {
+                width: 25px;
+                margin-left: 45px;
+            }
+
+            .doctor {
+                display: flex;
+                flex-direction: row;
+                text-decoration: none;
+                margin: 5px 60px 10px 60px;
+            }
+
+            #doctor_img {
+                width: 42px;
+                height: 42px;
+            }
+
+            #doctor_name {
+                color: #414141;
+                font-size: 15px;
+                font-weight: 800;
+                margin-left: 10px;
+                box-sizing: border-box;
+                padding-top: 10px;
+            }
+
+            .answer {
+                width: 342px;
+                border-radius: 30px;
+                background: #525fe1;
+                box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+                color: #ffffff;
+                font-size: 15px;
+                font-weight: 600;
+                margin: 0px 24px 0px 24px;
+                padding: 25px 20px;
+                box-sizing: border-box;
+            }
+
+            .prev {
+                width: 290px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: #414141;
+                font-size: 12px;
+                font-weight: 600;
+                position: fixed;
+                bottom: 180px;
+                left: 50px;
+            }
+
+            #prev_text {
+                padding: 10px;
+            }
+
+            #prev_post {
+                width: 237px;
+                height: 34px;
+                border-radius: 30px;
+                background: #d9d9d9;
+                box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+                padding: 10px 40px 10px 20px;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #414141;
+            }
+
+            .next {
+                width: 290px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: #414141;
+                font-size: 12px;
+                font-weight: 600;
+                position: fixed;
+                bottom: 130px;
+                left: 50px;
+            }
+
+            #next_text {
+                padding: 10px;
+            }
+
+            #next_post {
+                width: 237px;
+                height: 34px;
+                border-radius: 30px;
+                background: #d9d9d9;
+                box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+                padding: 10px 40px 10px 20px;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #414141;
+            }
+
+            /*나브바 고정*/
+
+            .nav {
+                display: flex;
+                justify-content: space-around;
+                top: 80px;
+                left: 0px;
+                position: relative;
+                z-index: 3;
+                letter-spacing: 0;
+            }
+
+            #nav_add {
+                position: fixed;
+                top: 734px;
+                left: 160px;
+                z-index: 2;
+            }
+
+            #nav {
+                position: fixed;
+                bottom: 0px;
+                left: 0;
+                z-index: 2;
+            }
+
+            .nav_main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 784px;
+                left: 29px;
+            }
+            .nav_info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 782px;
+                left: 95px;
+            }
+
+            .nav_board {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 783px;
+                right: 95px;
+            }
+
+            .nav_my {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 784px;
+                right: 29px;
+            }
+
+            .nav p {
+                color: #ffffff;
+                margin-top: 2px;
+                font-size: small;
+            }
+
+            .nav_board p {
+                color: #525fe1;
+            }
+        </style>
+        <title>게시글 보기</title>
     </head>
     <body>
-            <div class="wrap">
-                <div class="wave_reverse"></div>
-                <div class="wave_reverse2"></div>
-                <div class="wave"></div>
-                <div class="wave_2"></div>
+        <a href="{% url 'board:board-main' %}"
+            ><img src="./img/back.png" id="back"
+        /></a>
+        <div class="titleBox">
+            <img src="./img/Q.png" />
+            <div class="title">망고가 암 치료에 도움이 될까요?</div>
+        </div>
+        <div class="content">
+            망고를 먹고 암을 완치했다는 글을 봤는데 진짜인지 아닌지
+            모르겠네요... 망고가 어떤 효능이 있는건가요?
+        </div>
+        <img src="./img/connect.png" id="connect" />
+        <a href="{% static 'doctor_info' %}" class="doctor">
+            <img src="./img/doctor_img.png" id="doctor_img" /><span
+                id="doctor_name"
+                >김덕성 의사</span
+            >
+        </a>
+        <div class="answer">
+            망고가 많은 질병에 도움을 주는 것은 사실입니다. 풍부한 영양소를 갖고
+            있기 때문이죠. 하지만 이는 예방에 조금 도움이 될 뿐, 어떠한 질병을
+            완치하게 만들지는 못합니다.망고가 많은 질병에 도움을 주는 것은
+            사실입니다. 풍부한 영양소를 갖고 있기 때문이죠. 하지만 이는 예방에
+            조금 도움이 될 뿐, 어떠한 질병을 완치하게 만들지는 못합니다.망고가
+            많은 질병에 도움을 주는 것은 사실입니다. 풍부한 영양소를 갖고 있기
+            때문이죠. 하지만 이는 예방에 조금 도움이 될 뿐, 어떠한 질병을
+            완치하게 만들지는 못합니다.망고가 많은 질병에 도움을 주는 것은
+            사실입니다. 풍부한 영양소를 갖고 있기 때문이죠. 하지만 이는 예방에
+            조금 도움이 될 뿐, 어떠한 질병을 완치하게 만들지는 못합니다.망고가
+            많은 질병에 도움을 주는 것은 사실입니다. 풍부한 영양소를 갖고 있기
+            때문이죠. 하지만 이는 예방에 조금 도움이 될 뿐, 어떠한 질병을
+            완치하게 만들지는 못합니다.망고가 많은 질병에 도움을 주는 것은
+            사실입니다. 풍부한 영양소를 갖고 있기 때문이죠. 하지만 이는 예방에
+            조금 도움이 될 뿐, 어떠한 질병을 완치하게 만들지는 못합니다.망고가
+            많은 질병에 도움을 주는 것은 사실입니다. 풍부한 영양소를 갖고 있기
+            때문이죠. 하지만 이는 예방에 조금 도움이 될 뿐, 어떠한 질병을
+            완치하게 만들지는 못합니다.
+        </div>
+        <div class="prev">
+            <span id="prev_text">이전</span>
+            <a href="{{이전 포스트}}" id="prev_post"
+                >관절이 걱정되는데, 필라테스 ...</a
+            >
+        </div>
+        <div class="next">
+            <span id="next_text">다음</span>
+            <a href="{{다음 포스트}}" id="next_post"
+                >모기 물린 곳에 침바르면 ...</a
+            >
+        </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="./img/home.png" alt="home"
+                /></a>
+                <p>홈</p>
             </div>
 
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="./img/plus.png" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="./img/nav.svg" id="nav" />
     </body>
 </html>
-
