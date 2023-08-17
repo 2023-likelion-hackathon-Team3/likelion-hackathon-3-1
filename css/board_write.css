@@ -78,6 +78,8 @@ input[type="text"].styled-input::placeholder {
     background-repeat: no-repeat;
     background-position: center;
     margin: 0px 0px 20px 0px;
+    color: #ffffff;
+    text-align: center;
 }
 
 #photo {
