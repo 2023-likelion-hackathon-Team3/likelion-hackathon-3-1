@@ -5,27 +5,28 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {% load static %}
+        {%load static %}
         <link href="{% static 'css/explain.css' %}" rel="stylesheet" />
         <title>explain</title>
     </head>
     <body>
         <div class="explain">
             <div class="black"></div>
-            <div class="explain_img">
-                <img src="{% static 'img/explain1.png' %}" id="ex1" />
-                <img src="{% static 'img/explain2.png' %}" id="ex2" />
-                <img src="{% static 'img/explain3.png' %}" id="ex3" />
-                <img src="{% static 'img/explain4.png' %}" id="ex4" />
-                <img src="{% static 'img/explain5.png' %}" id="ex5" />
-                <img src="{% static 'img/explain6.png' %}" id="ex6" />
-                <img src="{% static 'img/explain7.png' %}" id="ex7" />
-                <a href="{% url 'HBapp:index' %}"
-                    ><img
-                        src="{% static 'img/check.png' %}"
-                        alt="check"
-                        id="check"
-                /></a>
+                <div class="explain_img">
+                    <a href="{% url 'HBapp:index' %}"
+                        ><img
+                            src="{% static 'img/check.png' %}"
+                            alt="check"
+                            id="check"
+                    /></a>
+                    <img src="{% static 'img/explain1.png' %}" id="ex1" />
+                    <img src="{% static 'img/explain2.png' %}" id="ex2" />
+                    <img src="{% static 'img/explain3.png' %}" id="ex3" />
+                    <img src="{% static 'img/explain4.png' %}" id="ex4" />
+                    <img src="{% static 'img/explain5.png' %}" id="ex5" />
+                    <img src="{% static 'img/explain6.png' %}" id="ex6" />
+                    <img src="{% static 'img/explain7.png' %}" id="ex7" />
+                </div>
             </div>
         </div>
         <img src="{% static 'img/bg_main.png' %}" id="bg" />
