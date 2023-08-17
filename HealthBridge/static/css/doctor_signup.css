@@ -109,7 +109,7 @@ body {
     box-sizing: border-box;
 }
 
-#hospital {
+#id_hospital {
     width: 258px;
     height: 45px;
     border-radius: 10px;
@@ -119,6 +119,17 @@ body {
     margin-bottom: 35px;
     padding-left: 10px;
     box-sizing: border-box;
+    color: lightslategray;
+    font-size: 13.5px;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#id_hospital option {
+    font-size: 12px;
+    outline: none;
 }
 
 input[type="text"].styled-input::placeholder {

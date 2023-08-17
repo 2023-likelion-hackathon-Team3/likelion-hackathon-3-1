@@ -58,11 +58,17 @@
                     id="doctornum"
                 />
                 <select id="id_hospital" name="hospital" class="chosen-select">
-                    <option value="">병원 이름 | 병원 주소</option>
+                    <option value="0" selected>병원 정보 찾기</option>
                     {% for hospital in hospitals %}
                     <option value="{{ hospital.id }}">{{ hospital.hospital_name }}  {{ hospital.address }}</option>
                     {% endfor %}
                 </select>
+                <!-- <select id="id_hospital" name="hospital" class="chosen-select">
+                    <option value="">병원 이름 | 병원 주소</option>
+                    {% for hospital in hospitals %}
+                    <option value="{{ hospital.id }}">{{ hospital.hospital_name }}  {{ hospital.address }}</option>
+                    {% endfor %}
+                </select> -->
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
                 <script>
