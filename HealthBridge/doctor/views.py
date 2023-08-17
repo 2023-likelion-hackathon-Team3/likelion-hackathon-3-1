@@ -99,6 +99,7 @@ def map_view(request, id):
     doctor = Doctor.objects.get(pk=id)
     myuser = MyUser.objects.get(pk=id)
     address = doctor.hospital.address
+    telephone = doctor.hospital.telephone
     hospital_name = doctor.hospital.hospital_name
 
     if request.method == "POST":
@@ -116,6 +117,7 @@ def map_view(request, id):
             "hospital_name": hospital_name,
             "doctor": doctor,
             "myuser": myuser,
+            "telephone":telephone,
         },
     )
 
