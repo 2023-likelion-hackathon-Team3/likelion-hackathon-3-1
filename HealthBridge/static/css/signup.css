@@ -122,8 +122,8 @@ input[type="text"].styled-input::placeholder {
     font-weight: 400;
     padding: 10.5px;
     box-sizing: border-box;
-    background-image: url(/img/kakao_logo.png);
     background-repeat: no-repeat;
     background-position: 15px 9px;
     background-size: 20px;
+    background-image: url("/static/img/kakao_logo.png");
 }
