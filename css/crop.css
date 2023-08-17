@@ -13,23 +13,6 @@ p {
   margin: 0;
 }
 
-#webcam-container {
-  width: 390px;
-  height: 250px;
-  overflow: hidden;
-}
-
-#webcam {
-  width: 100%;
-  height: 100%;
-}
-
-#crop-area {
-  width: 100%;
-  height: 100%;
-  overflow: fit;
-}
-
 /*나브바 고정*/
 .camnav {
   display: flex;
@@ -49,7 +32,7 @@ p {
   margin-right: 30px;
 }
 
-#crop {
+#cropButton {
   border: none;
   background-color: transparent;
   padding: 0;
