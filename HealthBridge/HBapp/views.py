@@ -98,3 +98,9 @@ def keyword_add(request):
             "all_tags": all_tags,
         },
     )
+    
+def scan(request):
+    return render(request, "scan.html")
+
+def scan_explain(request):
+    return render(request, "scan_explain.html")
