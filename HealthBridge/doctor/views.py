@@ -66,7 +66,7 @@ def doctor_login(request):
 
 
 def doctor_main(request):
-    question_list = Board.objects.all()
+    question_list = Board.objects.all().order_by("-pk")
     return render(request, "doctor_main.html", {"question_list": question_list})
 
 
@@ -99,7 +99,6 @@ def map_view(request, id):
     doctor = Doctor.objects.get(pk=id)
     myuser = MyUser.objects.get(pk=id)
     address = doctor.hospital.address
-    telephone = doctor.hospital.telephone
     hospital_name = doctor.hospital.hospital_name
 
     if request.method == "POST":
@@ -117,9 +116,9 @@ def map_view(request, id):
             "hospital_name": hospital_name,
             "doctor": doctor,
             "myuser": myuser,
-            "telephone":telephone,
         },
     )
 
-def doctor_start(request):
+
+def doctor(request):
     return render(request, "doctor_start.html")
