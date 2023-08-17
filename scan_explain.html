@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/scan_explain.css" rel="stylesheet" />
-        <title>scan_explain</title>
-    </head>
-    <body>
-        <div id="container">
-            <img id="bg" src="./img/scan_explain.png"/>
-            <a href="scan.html"><img src="./img/check.png" alt="check" id="check"/></a>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/scan_explain.css' %}" rel="stylesheet" />
+    <title>scan_explain</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="bg" src="{% static 'img/scan_explain.png' %}" />
+      <a href="{% url '' %}"
+        ><img src="{% static 'img/check.png' %}" alt="check" id="check"
+      /></a>
+    </div>
 
-        <script>
-        </script>
-    </body>
+    <script></script>
+  </body>
 </html>
