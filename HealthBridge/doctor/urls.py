@@ -11,4 +11,5 @@ urlpatterns = [
     path("main/", views.doctor_main, name="doctor_main"),
     path("result/<int:id>/", views.doctor_result, name="doctor_result"),
     path("info/<int:id>/", views.map_view, name="doctor-info"),
+    path("start/", views.doctor_start, name="doctor_start"),
 ]

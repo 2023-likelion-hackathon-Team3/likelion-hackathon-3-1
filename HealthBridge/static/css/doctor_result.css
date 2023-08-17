@@ -6,7 +6,7 @@ body {
 }
 
 body {
-    background-image: url(/img/doctor_main.png);
+    background-image: url("/static/img/doctor_main.png");
     background-repeat: no-repeat;
 }
 
@@ -84,6 +84,19 @@ body {
     color: #ffffff;
 }
 
+.has_answer {
+    width: 342px;
+    border-radius: 30px;
+    background: #a7f;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 24px 0px 24px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+}
+
 #doctor_answer {
     width: 342px;
     height: 131px;
@@ -126,7 +139,7 @@ input[type="text"]::placeholder {
     color: #414141;
     font-size: 12px;
     font-weight: 600;
-    margin: 0px 50px 10px 50px;
+    margin: 100px 50px 10px 50px;
 }
 
 #prev_text {
