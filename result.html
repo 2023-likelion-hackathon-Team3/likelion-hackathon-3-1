@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./css/result.css" rel="stylesheet" />
-        <title>result</title>
-    </head>
-    <body>
-        <img src="img/bg_basic.png" id="bg" />
-        <a href="./scan_explain.html"><img src="img/back.png" id="back"/></a>
-        <a href="./my.html"><img src="./img/check.png" id="check"/></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/result.css' %}" rel="stylesheet" />
+    <title>result</title>
+  </head>
+  <body>
+    <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+    <a href="{% url '' %}"
+      ><img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <a href="{% url '' %}"
+      ><img src="{% static 'img/check.png' %}" id="check"
+    /></a>
 
-        <div class="content">
-            <h3 id="text">건강검진 결과표를 분석한 결과</h3>
-            <img src="img/Rectangle.png" id="profile_img" />
-            <p id="title">나의 건강 키워드</p>
-        </div>
+    <div class="content">
+      <h3 id="text">건강검진 결과표를 분석한 결과</h3>
+      <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+      <p id="title">나의 건강 키워드</p>
+    </div>
 
-        <div class="text-container">
-            <p class="floating-text">Text 1</p>
-            <p class="floating-text">Text 2</p>
-            <p class="floating-text">Text 3</p>
-        </div>
+    <div class="text-container">
+      <p class="floating-text">Text 1</p>
+      <p class="floating-text">Text 2</p>
+      <p class="floating-text">Text 3</p>
+    </div>
 
-        <!-- "#FFA41B", "#035956", "#F86F03", "#525FE1" -->
-        <script>
-        </script>
-    </body>
+    <!-- "#FFA41B", "#035956", "#F86F03", "#525FE1" -->
+    <script></script>
+  </body>
+</html>
