@@ -1,0 +1,27 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    display: inline-flex;
+    margin: 0;
+}
+
+#container {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    top: -10px;
+    left: -10px;
+    margin: 0px auto;
+}
+
+#check {
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    cursor: pointer;
+}

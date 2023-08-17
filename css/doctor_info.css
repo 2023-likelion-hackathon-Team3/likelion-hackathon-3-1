@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-image: url('{% static "img/bg_main.png" %}');
+}
+
+#back {
+    width: 41px;
+    height: 40px;
+    margin: 20px 25px;
+}
+
+.doctor_box {
+    width: 350px;
+    border-radius: 20px;
+    border: none;
+    background: #525fe1;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 25px 20px 0px 20px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor_info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+#doctor_img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.doctor_text {
+    display: flex;
+    flex-direction: column;
+}
+
+#doctor_name {
+    color: #fff;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#doctor_hospital {
+    color: #fff;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.doctor_intro {
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#connect {
+    width: 25px;
+    margin-left: 45px;
+}
+
+.doctor_hos {
+    width: 330px;
+    margin: 10px 30px;
+}
+
+#doctor_hos_name {
+    color: #525fe1;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 3px;
+}
+
+#doctor_hos_loca {
+    color: #414141;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 3px;
+}
+
+#doctor_hos_tel {
+    color: #414141;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+
+#doctor_hos_map {
+    width: 330px;
+    height: 325px;
+}
+
+/*나브바 고정*/
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    top: 80px;
+    left: 0px;
+    position: relative;
+    z-index: 3;
+}
+
+#nav_add {
+    position: fixed;
+    top: 734px;
+    left: 160px;
+    z-index: 2;
+}
+
+#nav {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    z-index: 2;
+}
+
+.nav_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    left: 29px;
+}
+.nav_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 782px;
+    left: 95px;
+}
+
+.nav_board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 783px;
+    right: 95px;
+}
+
+.nav_my {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 784px;
+    right: 29px;
+}
+
+.nav p {
+    color: #ffffff;
+    margin-top: 2px;
+    font-size: small;
+}
+
+.nav_board p {
+    color: #525fe1;
+}

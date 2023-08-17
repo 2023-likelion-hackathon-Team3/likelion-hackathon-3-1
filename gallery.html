@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/gallery.css' %}" rel="stylesheet" />
+    <title>gallery</title>
+  </head>
+  <body>
+    <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+    <a href="{% url '' %}">
+      <img src="{% static 'img/back.png' %}" id="back"
+    /></a>
+    <div class="select">
+      <input type="submit" value="파일 선택하기" id="select" />
+      <p>선택된 파일 없음</p>
+    </div>
+    <div class="submit">
+      <input type="submit" value="등록하기" id="submit" />
+    </div>
+  </body>
+</html>

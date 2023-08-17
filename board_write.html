@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/board_write.css' %}" rel="stylesheet" />
+        <title>새 글 작성하기</title>
+    </head>
+    <body>
+        <!--배경-->
+        <img src="{% static 'img/bg_main.png' %}" id="bg" />
+        <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/back.png' %}" id="back"
+        /></a>
+        <div id="pageName">새 글 작성하기</div>
+        <form action="{% url 'board:board-write' %}" method="post" class="form">
+            <!--{% csrf_token %}-->
+            <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="제목을 입력해주세요."
+            />
+            <input
+                type="text"
+                name="content"
+                id="content"
+                placeholder="내용을 입력해주세요."
+            />
+            <label class="photo-label">
+                <div id="photo-btn"></div>
+                <input type="file" name="photo" id="photo" value="" />
+            </label>
+            <input type="submit" value="등록" name="submit" id="submit" />
+        </form>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script src="{% static 'path/to/jquery-3.6.0.min.js' %}"></script>
+        <script>
+            $("#photo").on("change", function () {
+                var fileName = $("#photo").val();
+                $("#photo-btn").text(fileName);
+                $("#photo-btn").css("background-image", "none");
+            });
+        </script>
+    </body>
+</html>

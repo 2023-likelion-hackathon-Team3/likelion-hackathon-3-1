@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/board_result.css' %}" rel="stylesheet" />
+        <title>게시글 보기</title>
+    </head>
+    <body>
+        <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/back.png' %}" id="back"
+        /></a>
+        <div class="titleBox">
+            <img src="{% static 'img/Q.png' %}" />
+            <div class="title">망고가 암 치료에 도움이 될까요?</div>
+        </div>
+        <div class="content">
+            망고를 먹고 암을 완치했다는 글을 봤는데 진짜인지 아닌지
+            모르겠네요... 망고가 어떤 효능이 있는건가요?
+        </div>
+        <img src="{% static 'img/connect.png' %}" id="connect" />
+        <a href="{% static 'doctor_info' %}" class="doctor">
+            <img src="{% static 'img/doctor_img.png' %}" id="doctor_img" /><span
+                id="doctor_name"
+                >김덕성 의사</span
+            >
+        </a>
+        <div class="answer">
+            망고가 많은 질병에 도움을 주는 것은 사실입니다. 풍부한 영양소를 갖고
+            있기 때문이죠. 하지만 이는 예방에 조금 도움이 될 뿐, 어떠한 질병을
+            완치하게 만들지는 못합니다.
+        </div>
+        <div class="prev">
+            <span id="prev_text">이전</span>
+            <a href="{{이전 포스트}}" id="prev_post"
+                >관절이 걱정되는데, 필라테스 ...</a
+            >
+        </div>
+        <div class="next">
+            <span id="next_text">다음</span>
+            <a href="{{다음 포스트}}" id="next_post"
+                >모기 물린 곳에 침바르면 ...</a
+            >
+        </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </body>
+</html>

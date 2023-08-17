@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/doctor_info.css' %}" rel="stylesheet" />
+        <title>의사 정보 보기</title>
+    </head>
+    <body>
+        <a href="{% url 'board_result' %}"
+            ><img src="{% static 'img/doctor_back.png' %}" id="back"
+        /></a>
+        <div class="doctor_box">
+            <div class="doctor_info">
+                <img src="{% static 'img/doctor_img.png' %}" id="doctor_img" />
+                <div class="doctor_text">
+                    <div id="doctor_name">김덕성 의사</div>
+                    <div id="doctor_hospital">멋쟁이사자처럼병원</div>
+                </div>
+            </div>
+            <div class="doctor_intro">
+                답변에 의문이 있으시거나 더 자세한 상담이 필요하신 경우, 아래의
+                병원으로 문의 부탁드립니다. ^^
+            </div>
+        </div>
+        <img src="{% static 'img/connect.png' %}" id="connect" />
+        <div class="doctor_hos">
+            <div id="doctor_hos_name">멋쟁이사자처럼병원</div>
+            <div id="doctor_hos_loca">서울특별시 목동 양재대로33길 135</div>
+            <div id="doctor_hos_tel">02-123-3456</div>
+            <div id="doctor_hos_map"></div>
+        </div>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'index' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url 'info' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </body>
+</html>

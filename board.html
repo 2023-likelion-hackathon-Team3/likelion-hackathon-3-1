@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link href="{% static 'css/board.css' %}" rel="stylesheet" />
+        <title>건강 질문 게시판</title>
+    </head>
+    <body>
+        <!--뒤로가기 버튼-->
+        <a href="{% url 'HealthBridge:home' %}"
+            ><img src="{% static 'img/back.png' %}" id="back"
+        /></a>
+        <!--페이지 제목-->
+        <div id="pageName">건강 질문 게시판</div>
+        <!--게시글-->
+        <section class="postBox">
+            <a class="post" href="{% static 'board_result' %}">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </a>
+            <a class="post" href="{% static 'board_result' %}">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </a>
+            <a class="post" href="{% static 'board_result' %}">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </a>
+            <a class="post" href="{% static 'board_result' %}">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </a>
+            <a class="post" href="{% static 'board_result' %}">
+                <div class="title">망고가 암 예방에 도움이 될까요?</div>
+                <div class="user">김멋사</div>
+                <div class="bottom">
+                    <span class="time">1시간전</span
+                    ><span class="answer">• 답변 대기</span>
+                </div>
+            </a>
+        </section>
+        <!--글쓰기 버튼-->
+        <a href="{% url 'board: board-write' %}"
+            ><img src="{% static 'img/write.png' %}" id="write"
+        /></a>
+        <!--나브바-->
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board_purple.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my.png' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script>
+            let answer = document.getElementsByClassName("answer");
+
+            if (answer == "답변 완료된 상태") {
+                answer.innerHtml = "• 답변 완료";
+                answer.style.color = "#035956";
+            }
+        </script>
+    </body>
+</html>

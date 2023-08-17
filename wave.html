@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./css/start2.css" rel="stylesheet" />
+        <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+}
+
+.wrap {    
+  width: 390px;
+  height: 700px;
+  position: relative;
+  overflow: hidden; 
+  background: #ffa41b;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave {
+  width: 650px;  
+  height: 650px;
+  position: absolute;
+  top: 60%;     
+  left: -100px;  
+  border-radius: 43%; 
+  animation: drift 8s infinite linear;
+  background: #525fe1;  
+}
+
+.wave_2 {
+  width: 650px;  
+  height: 650px;
+  position: absolute;
+  top: 65%;     
+  left: -100px;  
+  border-radius: 43%; 
+  animation: drift 8s infinite linear;
+  background: #ffffff;  
+}
+
+
+@keyframes drift {
+    0% {
+    transform: rotate(0deg);
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+.photo-label {
+
+}
+
+#photo-btn {
+    width: 300px;
+    height: 43px;
+    border-radius: 20px;
+    border: none;
+    background: #525fe1;
+    box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    background-image: url('./img/camera.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0px 0px 20px 0px;
+    color: #ffffff;
+    text-align: center;
+}
+
+#photo {
+  position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+
+</style>
+</head>
+        <title>Wave</title>
+    </head>
+    <body>
+            <div class="wrap">
+                <div class="wave"></div>
+                <div class="wave_2"></div>
+            </div>
+            <label class="photo-label">
+              <div id="photo-btn"></div>
+            <input type="file" name="photo" id="photo" value="" />
+            </label>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+            $("#photo").on('change',function(){
+              var fileName = $("#photo").val();
+              $("#photo-btn").text(fileName);
+              $("#photo-btn").css("background-image", "none");
+            });
+            </script>
+    </body>
+</html>

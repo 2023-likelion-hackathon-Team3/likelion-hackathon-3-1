@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'css/my.css' %}" rel="stylesheet" />
+        <title>My</title>
+    </head>
+    <body>
+        <img src="{% static 'img/bg_main.png' %}" id="bg" />
+        <div class="content">
+            <div class="profile">
+                <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+                <div class="profile_fix">
+                    <p>user name</p>
+                    <a href="{% url 'mypage:check' %}">
+                        <img src="{% static 'img/pencil.png' %}" alt="fix"
+                    /></a>
+                </div>
+            </div>
+
+            <div class="add">
+                <h3>나의 건강 키워드</h3>
+                <div class="add_container">
+                    <a href="{% url 'HBapp:keyword_add' %}" class="add_link"
+                        ><div class="add_btn">내 건강 키워드 등록하기</div>
+                    </a>
+                </div>
+            </div>
+            <div class="board">
+                <h3>나의 질문과 답변</h3>
+                <a href="{% url 'board: board-write' %}" class="board_link"
+                    ><div class="board_btn">질문하러 가기</div></a
+                >
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my_purple.svg' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script>
+            const board_delete1 = document.querySelector(".board_link");
+            const board_delete2 = document.querySelector(".board_btn");
+            const board_button = document.querySelector(""); //board_write의 작성버튼이랑 연결해야함
+            board_button.addEventListener("click", () => {
+                const board_content = document.createElement("div");
+                board_content.className = "board_content";
+                const title = document.createElement("div");
+                title.className = "title";
+                title.textContent = "제목";
+                const date = document.createElement("div");
+                date.className = "date";
+                date.textContent = "날짜";
+                board_content.appendChild(title);
+                board_content.appendChild(date);
+                document.querySelector(".board").appendChild(board_content);
+
+                if (board_delete1 && board_delete2) {
+                    board_delete1.remove();
+                    board_delete2.remove();
+                }
+            });
+
+            const add_delete1 = document.querySelector(".add_link");
+            const add_delete2 = document.querySelector(".add_btn");
+            const add_button = document.querySelector(""); //result의 check와 연결해야함
+            add_button.addEventListener("click", () => {
+                const add_content = document.createElement("div");
+                add_content.className = "add_content";
+                const add_bg = document.createElement("div");
+                add_bg.className = "add_bg";
+
+                const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
+                const randomColor =
+                    colors[Math.floor(Math.random() * colors.length)];
+                add_bg.style.backgroundColor = randomColor;
+
+                const add_title = document.createElement("div");
+                add_title.className = "add_title";
+                add_title.textContent = "키워드";
+                add_content.appendChild(add_bg);
+                add_bg.appendChild(add_title);
+                document
+                    .querySelector(".add_container")
+                    .appendChild(add_content);
+
+                const addContainer = document.querySelector(".add");
+
+                if (addContainer) {
+                    addContainer.appendChild(add_content);
+                    const addContents =
+                        addContainer.querySelectorAll(".add_content");
+                    if (addContents.length % 3 === 0) {
+                        const lineBreak = document.createElement("br");
+                        addContainer.appendChild(lineBreak);
+                    }
+
+                    if (add_delete1 && add_delete2) {
+                        add_delete1.remove();
+                        add_delete2.remove();
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

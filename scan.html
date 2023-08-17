@@ -1,0 +1,66 @@
+<!-- HTML 파일 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link href="{% static 'css/scan.css' %}" rel="stylesheet" />
+    <title>Scan</title>
+</head>
+<body>
+    <video id="webcam" autoplay></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <!--웹캠나브바-->
+    <div class="camnav">
+        <div class="camnav_back">
+            <a href="{% url 'scan_explain' %}">
+                <img src="{% static 'img/cam_back' %}" alt="back" />
+            </a>
+        </div>
+
+        <div class="camnav_capture">
+            <button id="captureButton">
+                <img src="{% static 'img/cam_button' %}" alt="capture" />
+            </button>
+        </div>
+
+        <div class="camnav_gallery">
+            <a href="{% url 'upload' %}">
+                <img src="{% static 'img/gallery' %}" alt="gallery" /></a>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('webcam');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('captureButton');
+        
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => video.srcObject = stream)
+            .catch(error => console.error('Error accessing webcam:', error));
+        captureButton.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const capturedDataUrl = canvas.toDataURL('image/jpeg');
+            const form = new FormData();
+            form.append('capturedDataUrl', capturedDataUrl);
+            fetch('/camera/webcam_capture/', {
+                method: 'POST',
+                body: form,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                // 페이지 이동
+                window.location.href = '/camera/crop';
+            });
+        });
+    </script>
+</body>
+</html>

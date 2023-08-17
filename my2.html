@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'css/my2.css' %}" rel="stylesheet" />
+        <title>My</title>
+    </head>
+    <body>
+        <img src="{% static 'img/bg_main.png' %}" id="bg" />
+        <div class="content">
+            <div class="profile">
+                <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+                <div class="profile_fix">
+                    <p>user name</p>
+                    <a href="{% url 'mypage:check' %}">
+                        <img src="{% static 'img/pencil.png' %}" alt="fix"
+                    /></a>
+                </div>
+            </div>
+
+            <div class="add">
+                <h3>나의 건강 키워드</h3>
+                <div class="add_container">
+                    <div class="add_content">
+                        <div class="add_bg" id="add_bg">
+                            <div class="add_title">키워드</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="board">
+                <h3>나의 질문과 답변</h3>
+                <div class="board_content">
+                    <div class="title">제목</div>
+                    <div class="date">날짜</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav_main">
+                <a href="{% url 'HealthBridge:home' %}"
+                    ><img src="{% static 'img/home.png' %}" alt="home"
+                /></a>
+                <p>홈</p>
+            </div>
+
+            <div class="nav_info">
+                <a href="{% url '' %}"
+                    ><img src="{% static 'img/report.png' %}" alt="report"
+                /></a>
+                <p>건강정보</p>
+            </div>
+
+            <a href="{% url 'HBapp:keyword_add' %}"
+                ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+            /></a>
+
+            <div class="nav_board">
+                <a href="{% url 'board:board-main' %}"
+                    ><img src="{% static 'img/board.png' %}" alt="board"
+                /></a>
+                <p>질문게시판</p>
+            </div>
+
+            <div class="nav_my">
+                <a href="{% url 'mypage:my' %}"
+                    ><img src="{% static 'img/my_purple.svg' %}" alt="my"
+                /></a>
+                <p>내 정보</p>
+            </div>
+        </div>
+        <img src="{% static 'img/nav.svg' %}" id="nav" />
+        <script>
+            const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
+            const randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            const addBgElement = document.getElementById("add_bg");
+            addBgElement.style.backgroundColor = randomColor;
+        </script>
+    </body>
+</html>

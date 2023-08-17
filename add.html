@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/add.css' %}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>내 건강 등록하기</title>
+  </head>
+  <body>
+    <div id="container">
+      <img src="{% static 'img/bg_main.png' %}" id="bg"/>
+      <a href="{% url ':home' %}"><img id="back" src="{% static 'img/back.png' %}"/></a>
+      <a href="{% url 'HBapp:keyword_add' %}" id="select">직접 키워드 선택</a>
+      <a href="{% url '' %}" id="scan">스캔하기</a>
+      <div id="line"></div>
+
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_남성"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_남성" class="checkbox-label">남성</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_여성"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_여성" class="checkbox-label">여성</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_시력"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_시력" class="checkbox-label">시력</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_청력"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_청력" class="checkbox-label">청력</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_피부질환"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_피부질환" class="checkbox-label">피부질환</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_비만"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_비만" class="checkbox-label">비만</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_혈압"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_혈압" class="checkbox-label">혈압</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_당뇨"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_당뇨" class="checkbox-label">당뇨</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_빈혈"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_빈혈" class="checkbox-label">빈혈</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_신장질환"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_신장질환" class="checkbox-label">신장질환</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_정신건강"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_정신건강" class="checkbox-label">정신건강</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_소화기관"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_소화기관" class="checkbox-label">소화기관</label>
+      </div>
+      <div id="checkbox-container">
+        <input
+          type="checkbox"
+          name="group"
+          id="group_요단백"
+          class="checkbox-input"
+          onclick="toggleCheckbox(this)"
+        />
+        <label for="group_요단백" class="checkbox-label">요단백</label>
+      </div>
+    </div>
+
+      <!-- nav -->
+      <div class="nav">
+        <div class="nav_main">
+          <a href="{% url ':home' %}">
+            <img src="{% static 'img/home.png' %}" alt="home" /></a>
+          <p>홈</p>
+        </div>
+
+        <div class="nav_info">
+          <a href="{% url 'post:postList' %}">
+            <img src="{% static 'img/report.png' %}" alt="report" /></a>
+          <p>건강정보</p>
+        </div>
+
+        <a href="{% url 'HBapp:keyword_add' %}">
+          <img src="{% static 'img/nav_X.png' %}" alt="nav_X" id="nav_X" /></a> <!--이미지 변경-->
+
+        <div class="nav_board">
+          <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/board_purple.png' %}" alt="board"
+          /></a>
+          <p>질문게시판</p>
+        </div>
+
+        <div class="nav_my">
+          <a href="{% url 'mypage:my' %}"
+            ><img src="{% static 'img/my.png' %}" alt="my"
+          /></a>
+          <p>내 정보</p>
+        </div>
+      </div>
+      <img src="./img/nav.svg" id="nav" />
+    </div>
+
+    <script>
+      function toggleCheckbox(input) {
+        var checkboxes = document.querySelectorAll(".checkbox-input");
+        checkboxes.forEach(function (checkbox) {
+          checkbox.parentNode.classList.remove("selected");
+        });
+
+        if (input.checked) {
+          input.parentNode.classList.add("selected");
+        }
+      }
+    </script>
+  </body>
+</html>

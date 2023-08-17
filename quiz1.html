@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/quiz1.css' %}" rel="stylesheet" />
+    <title>건강퀴즈 O/X</title>
+  </head>
+  <body>
+    <div id="container">
+      <img id="bg" src="{% static 'img/bg_main.png' %}" />
+      <a href="{% url 'HealthBridge:home' %}">
+        <img id="back" src="{% static 'img/back.png' %}"
+      /></a>
+      <a href="{% url '' %}" id="info">맞춤형 건강정보</a>
+      <a href="{% url 'Quiz:' %}" id="quiz">건강퀴즈 O/X</a>
+      <div id="line"></div>
+      <input type="text" id="serach-box" />
+      <img class="search" src="{% static 'img/search.png' %}" alt="search" />
+      <div id="tag">망고</div>
+      <div id="tag">암</div>
+      <div id="tag">완치</div>
+      <img class="qbox" src="{% static 'img/Qbox.png' %}" alt="Qbox" />
+      <p id="question">
+        망고가 <br />
+        암 예방에 <br />도움이 될까요?
+      </p>
+      <img
+        class="obox"
+        src="{% static 'img/O.png' %}"
+        alt=""
+        onclick="toggleImage('obox', './img/O_clicked.png', './img/O.png')"
+      />
+      <img
+        class="xbox"
+        src="{% static 'img/X.png' %}"
+        alt=""
+        onclick="toggleImage('xbox', './img/X_clicked.png', './img/X.png')"
+      />
+
+      <!-- nav -->
+      <div class="nav">
+        <div class="nav_main">
+          <a href="{% url 'HealthBridge:home' %}">
+            <img src="{% static 'img/home.png' %}" alt="home"
+          /></a>
+          <p>홈</p>
+        </div>
+
+        <div class="nav_info">
+          <a href=""
+            ><img src="{% static 'img/report_b.png' %}" alt="report"
+          /></a>
+          <p>건강정보</p>
+        </div>
+
+        <a href="{% url 'HBapp:keyword_add' %}"
+          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
+        /></a>
+
+        <div class="nav_board">
+          <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/board.png' %}" alt="board"
+          /></a>
+          <p>질문게시판</p>
+        </div>
+
+        <div class="nav_my">
+          <a href="{% url 'mypage:my' %}"
+            ><img src="{% static 'img/my.png' %}" alt="my"
+          /></a>
+          <p>내 정보</p>
+        </div>
+      </div>
+      <img src="{% static 'img/nav.svg' %}" id="nav" />
+    </div>
+    <script>
+      function toggleImage(boxType, newImagePath, originalImagePath) {
+        var image = document.querySelector("." + boxType);
+        var currentImagePath = image.getAttribute("src");
+
+        if (currentImagePath === originalImagePath) {
+          // 이미지가 원래 이미지인 경우, 다른 이미지로 변경
+          image.src = newImagePath; // 새로운 이미지로 변경
+        } else {
+          // 이미지가 다른 이미지인 경우, 원래 이미지로 변경
+          image.src = originalImagePath; // 원래 이미지로 변경
+        }
+      }
+
+      // function startTimer() {
+      //   setTimeout(function () {
+      //     // 5초 후에 quiz2.html 페이지로 이동
+      //     window.location.href = "./quiz2.html";
+      //   }, 5000); // 5초를 밀리초로 변환
+      // }
+    </script>
+  </body>
+</html>
