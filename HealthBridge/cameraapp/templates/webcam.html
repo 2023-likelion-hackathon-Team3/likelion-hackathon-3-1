@@ -9,7 +9,7 @@
     <title>Scan</title>
 </head>
 <body>
-    <div style="height: 844px; overflow: hidden;">
+    <div style="width: 390px; height: 844px; overflow: hidden;">
         <video id="webcam" autoplay></video>
         <canvas id="canvas" style="display: none;"></canvas>
 
@@ -43,9 +43,9 @@
             .then(stream => video.srcObject = stream)
             .catch(error => console.error('Error accessing webcam:', error));
         captureButton.addEventListener('click', () => {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.width = video.videoWidth = 390;
+            canvas.height = video.videoHeight = 750;
+            canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
             const capturedDataUrl = canvas.toDataURL('image/jpeg');
             const form = new FormData();
             form.append('capturedDataUrl', capturedDataUrl);
