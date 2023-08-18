@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cropper.js Example</title>
+  <title>Crop</title>
+  {% load static %}
+  <link href="{% static 'css/crop.css' %}" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
 </head>
 <body>
-  <img id="image" alt="Captured Photo">
+    <img id="image" alt="Captured Photo">
+    <!--크롭나브바-->
+    <div class="camnav">
+        <div class="camnav_back">
+            <a href="{% url 'cameraapp:scan_explain' %}">
+                <img src="{% static 'img/cam_back.png' %}" alt="back" /></a>
+        </div>
 
-  <div>
-    <button id="cropButton">Crop Image</button>
-  </div>
+        <div class="camnav_capture">
+            <button id="cropButton">
+                <img src="{% static 'img/crop.png' %}" alt="crop" /></button>
+        </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const image = document.getElementById('image');
-        const cropButton = document.getElementById('cropButton');
+        <div class="camnav_gallery">
+            <a href="{% url 'cameraapp:upload' %}">
+                <img src="{% static 'img/gallery.png' %}" alt="gallery" /></a>
+        </div>
+    </div>
 
-        let cropper;
-        image.src = "/media/captured_photo.jpg"
-            if (cropper) {
-                cropper.destroy();
-            }
-            cropper = new Cropper(image, {
-                aspectRatio: 1, // You can adjust the aspect ratio as needed
-                viewMode: 2,    // You can change the view mode as needed
+    <div>
+        <button id="cropButton">Crop Image</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const image = document.getElementById('image');
+            const cropButton = document.getElementById('cropButton');
+
+            let cropper;
+            image.src = "/media/captured_photo.jpg"
+                if (cropper) {
+                    cropper.destroy();
+                }
+                cropper = new Cropper(image, {
+                    aspectRatio: 1, // You can adjust the aspect ratio as needed
+                    viewMode: 2,    // You can change the view mode as needed
+                });
+
+            cropButton.addEventListener('click', function () {
+                const croppedCanvas = cropper.getCroppedCanvas();
+                const croppedImage = croppedCanvas.toDataURL('image/jpeg');
+
+                // You can do something with the cropped image here
+                const formData = new FormData();
+                    formData.append('cropped_photo_data', croppedImage);
+
+                    fetch('/camera/save_cropped_photo/', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
+                        },
+                    })
+                    .then(
+                        window.location.href = '/camera/result'
+                    )
+                });
+                
             });
-
-        cropButton.addEventListener('click', function () {
-            const croppedCanvas = cropper.getCroppedCanvas();
-            const croppedImage = croppedCanvas.toDataURL('image/jpeg');
-
-            // You can do something with the cropped image here
-            const formData = new FormData();
-                formData.append('cropped_photo_data', croppedImage);
-
-                fetch('/camera/save_cropped_photo/', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRFToken': '{{ csrf_token }}', // Ensure to include the CSRF token
-                    },
-                })
-                .then(
-                    window.location.href = '/camera/result'
-                )
-            });
-            
-        });
-
-  </script>
+    </script>
 </body>
 </html>
