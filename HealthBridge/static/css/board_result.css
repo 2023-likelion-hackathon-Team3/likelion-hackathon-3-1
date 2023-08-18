@@ -149,12 +149,11 @@ body {
     left: 0px;
     position: relative;
     z-index: 3;
-    letter-spacing: 0;
 }
 
 #nav_add {
     position: fixed;
-    top: 734px;
+    bottom: 40px;
     left: 160px;
     z-index: 2;
 }
@@ -162,7 +161,7 @@ body {
 #nav {
     position: fixed;
     bottom: 0px;
-    left: 0;
+    left: 0px;
     z-index: 2;
 }
 
@@ -171,15 +170,15 @@ body {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    left: 29px;
+    bottom: 10px;
+    left: 25px;
 }
 .nav_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 782px;
+    bottom: 10px;
     left: 95px;
 }
 
@@ -188,8 +187,8 @@ body {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 783px;
-    right: 95px;
+    bottom: 10px;
+    left: 240px;
 }
 
 .nav_my {
@@ -197,8 +196,8 @@ body {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    right: 29px;
+    bottom: 10px;
+    left: 330px;
 }
 
 .nav p {
