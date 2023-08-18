@@ -213,7 +213,7 @@ p {
 
 .black {
     width: 390px;
-    height: 1112px;
+    height: 100%;
     background-color: black;
     opacity: 50%;
     position: fixed;
@@ -237,28 +237,28 @@ p {
 #ex2 {
     z-index: 5;
     position: fixed;
-    top: 245px;
+    bottom: 20px;
     left: 28px;
 }
 
 #ex3 {
     z-index: 5;
     position: fixed;
-    top: 500px;
+    bottom: 70px;
     left: 110px;
 }
 
 #ex4 {
     z-index: 5;
     position: fixed;
-    top: 380px;
+    bottom: 20px;
     left: 181px;
 }
 
 #ex5 {
     z-index: 5;
     position: fixed;
-    top: 525px;
+    bottom: 20px;
     left: 261px;
 }
 
