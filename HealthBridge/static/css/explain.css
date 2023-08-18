@@ -15,7 +15,7 @@ a {
     height: 53px;
     position: absolute;
     top: 35px;
-    right: 26px;
+    left: 300px;
 }
 
 h3 {
@@ -40,10 +40,9 @@ p {
 .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: 100%;
     overflow-y: auto;
-    position: relative;
+    margin-left: 20px;
 }
 
 .add,
@@ -70,7 +69,7 @@ p {
     border-radius: 20px;
     box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
 }
@@ -78,6 +77,9 @@ p {
 .add_content a {
     margin-top: 32px;
     display: flex;
+}
+.add h3 {
+    margin-bottom: 10px;
 }
 
 .add_text {
@@ -109,7 +111,7 @@ p {
     border-radius: 20px;
     box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
 }
@@ -117,6 +119,9 @@ p {
 .board_content a {
     margin-top: 30px;
     display: flex;
+}
+.board h3 {
+    margin-bottom: 10px;
 }
 
 .board_text {
@@ -143,7 +148,7 @@ p {
 
 #nav_add {
     position: fixed;
-    top: 734px;
+    bottom: 40px;
     left: 160px;
     z-index: 2;
 }
@@ -151,7 +156,7 @@ p {
 #nav {
     position: fixed;
     bottom: 0px;
-    left: 0;
+    left: 0px;
     z-index: 2;
 }
 
@@ -160,15 +165,15 @@ p {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    left: 29px;
+    bottom: 10px;
+    left: 25px;
 }
 .nav_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 782px;
+    bottom: 10px;
     left: 95px;
 }
 
@@ -177,8 +182,8 @@ p {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 783px;
-    right: 95px;
+    bottom: 10px;
+    left: 240px;
 }
 
 .nav_my {
@@ -186,8 +191,8 @@ p {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    right: 29px;
+    bottom: 10px;
+    left: 330px;
 }
 
 .nav p {
@@ -217,7 +222,8 @@ p {
 }
 
 #ex6,
-#ex7 {
+#ex7,
+#check {
     display: none;
 }
 
@@ -231,28 +237,28 @@ p {
 #ex2 {
     z-index: 5;
     position: fixed;
-    top: 314px;
+    top: 245px;
     left: 28px;
 }
 
 #ex3 {
     z-index: 5;
     position: fixed;
-    top: 590px;
+    top: 500px;
     left: 110px;
 }
 
 #ex4 {
     z-index: 5;
     position: fixed;
-    top: 440px;
+    top: 380px;
     left: 181px;
 }
 
 #ex5 {
     z-index: 5;
     position: fixed;
-    top: 593px;
+    top: 525px;
     left: 261px;
 }
 
@@ -266,15 +272,15 @@ p {
 #ex7 {
     z-index: 5;
     position: fixed;
-    top: 445px;
+    top: 400px;
     left: 206px;
 }
 
 #check {
+    z-index: 5;
     width: 53px;
     height: 53px;
-    position: absolute;
+    position: fixed;
     top: 35px;
-    right: 25px;
-    cursor: pointer;
+    left: 25px;
 }
