@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
     <link href="{% static 'css/scan_explain.css' %}" rel="stylesheet" />
     <title>scan_explain</title>
   </head>
   <body>
     <div id="container">
       <img id="bg" src="{% static 'img/scan_explain.png' %}" />
-      <a href="{% url '' %}"
+      <a href="{% url 'cameraapp:scan_explain' %}"
         ><img src="{% static 'img/check.png' %}" alt="check" id="check"
       /></a>
     </div>
