@@ -2,13 +2,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webcam Capture</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link href="{% static 'css/scan.css' %}" rel="stylesheet" />
+    <title>Scan</title>
 </head>
 <body>
-    <h2>Webcam Capture</h2>
     <video id="webcam" autoplay></video>
     <canvas id="canvas" style="display: none;"></canvas>
-    <button id="captureButton">Capture Photo</button>
+
+    <!--웹캠나브바-->
+    <div class="camnav">
+        <div class="camnav_back">
+            <a href="{% url 'cameraapp:scan_explain' %}">
+                <img src="{% static '/img/cam_back.png' %}" alt="back" />
+            </a>
+        </div>
+
+        <div class="camnav_capture">
+            <button id="captureButton">
+                <img src="{% static 'img/cam_button.png' %}" alt="capture" />
+            </button>
+        </div>
+
+        <div class="camnav_gallery">
+            <a href="{% url 'HBapp:text_extraction' %}">
+                <img src="{% static 'img/gallery.png' %}" alt="gallery" /></a>
+        </div>
+    </div>
+
     <script>
         const video = document.getElementById('webcam');
         const canvas = document.getElementById('canvas');
@@ -41,3 +64,4 @@
     </script>
 </body>
 </html>
+

@@ -216,3 +216,6 @@ def text_extraction1(request):
             },
         )
     return render(request, "upload.html")
+
+def scan_explain(request):
+    return render(request, "scan_explain.html")
