@@ -8,6 +8,8 @@ body {
 body {
     background-image: url("/static/img/doctor_main.png");
     background-repeat: no-repeat;
+    width: 390px;
+    height: 844px;
 }
 
 #back {
