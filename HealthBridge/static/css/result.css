@@ -1,86 +1,83 @@
 body {
-    width: 390px;
-    height: 844px;
-    margin: 0;
+  width: 390px;
+  height: 844px;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 #bg {
-    position: fixed;
-    z-index: -20;
-    top: 0px;
-    left: 0px;
+  position: fixed;
+  z-index: -20;
+  top: 0px;
+  left: 0px;
 }
 
 #back {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 30px;
-    top: 30px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 30px;
+  top: 30px;
 }
 
 #check {
-    position: absolute;
-    width: 53px;
-    height: 53px;
-    top: 35px;
-    right: 25px;
-    cursor: pointer;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  top: 35px;
+  left: 320px;
+  cursor: pointer;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
-    margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin-top: 120px;
 }
 
 #profile_img {
-    width: 80px;
+  width: 80px;
 }
 
 #title {
-    background-color: #D9D9D9;
-    padding: 12px;
-    border-radius: 20px;
+  background-color: #D9D9D9;
+  padding: 12px;
+  border-radius: 20px;
 }
-  
+
 .floating_container {
-  position: absolute;
-  bottom: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: floatUp 3s linear forwards;
+width: 100%;
+height: 200px;
 }
 
 .floating_bg {
-  width: 140px;
-  height: 50px;
-  border-radius: 30px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+width: 140px;
+height: 50px;
+border-radius: 30px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .floating_title {
-  font-size: 24px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+font-size: 24px;
+text-align: center;
+color: white;
+font-weight: bold;
+padding: 10px 20px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-@keyframes floatUp {
-  0% {
-    transform: translateX(-50%) translateY(100%);
-  }
-
-  100% {
-    transform: translateX(-50%) translateY(0%);
-  }
+.floating_content {
+display: flex;
+justify-content: space-around;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 20px;
+align-items: center;
+padding: 20px 0px;
+flex-direction: column;
 }

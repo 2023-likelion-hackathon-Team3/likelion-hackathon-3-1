@@ -53,7 +53,9 @@
               <a href="{% url 'post:postDetail' p.pk %}"></a>
             {% endfor %}
           {% else %}
-          <p>아직 게시물이 없습니다.</p>
+          <div id="text_none">
+            <p>아직 게시물이 없습니다.</p>
+          </div>
           {% endif %}
       {% endif %}
       <!-- nav -->
@@ -72,9 +74,15 @@
           <p>건강정보</p>
         </div>
 
-        <a href="{% url 'HBapp:keyword_add' %}"
-          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
-        /></a>
+        <div id="nav_add">
+          <a href="{% url 'HBapp:keyword_add' %}"
+            ><img src="{% static 'img/plus.png' %}" alt="plus" 
+          /></a>
+        </div>
+      
+        <!-- <a href="{% url 'HBapp:keyword_add' %}"
+          ><img src="{% static 'img/plus.png' %}" alt="plus" id="nav_add"
+        /></a> -->
 
         <div class="nav_board">
           <a href="{% url 'board:board-main' %}"
@@ -101,6 +109,8 @@
 
         if (input.checked) {
           input.parentNode.classList.add("selected");
+        }  else {
+          input.parentNode.classList.remove("selected");
         }
       }
     </script>

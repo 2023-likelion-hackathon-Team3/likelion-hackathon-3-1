@@ -22,9 +22,9 @@
             <img src="{{user.image.url}}" width="300px" alt="image">
         {% else %}
             <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
+            <p id="title">나의 건강 키워드</p>
         {% endif %}
         <div class="add">
-            <p id="title">나의 건강 키워드</p>
                 <div class="floating_container">
                     {% for tag in update_tags.values %}
                         <div class="floating_content">
@@ -38,19 +38,14 @@
     </div>
 
     <script>
-      const floatingContainer = document.querySelector('.floating_container');
-
-      floatingContainer.addEventListener('animationend', () => {
-        floatingContainer.style.animation = 'none';
-      });
-
-      const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
-      const randomColor =
-          colors[Math.floor(Math.random() * colors.length)];
-
-      const addBgElement = document.getElementById("floating_bg");
-      addBgElement.style.backgroundColor = randomColor;
-    </script>
+        const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
+        const addBgElements = document.querySelectorAll(".floating_bg");
+        addBgElements.forEach(element => {
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          element.style.backgroundColor = randomColor;
+        });
+      </script>
+  
   </body>
 </html>
 

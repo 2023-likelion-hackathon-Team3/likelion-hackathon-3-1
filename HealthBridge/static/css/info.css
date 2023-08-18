@@ -21,7 +21,7 @@ p {
 }
 
 #bg {
-  position: fixed;
+  position: absolute;
   z-index: -20;
   top: 0px;
   left: 0px;
@@ -119,6 +119,7 @@ p {
   display: inline-flex;
   align-items: center;
   margin-bottom: 10px;
+  top: 45px;
   background-color: #f86f03;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 20px;
@@ -132,21 +133,23 @@ p {
   overflow-y: auto;
   max-height: 400px;
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
+  flex-wrap: wrap; 
   top: 253px;
-  margin-left: 48px;
+  margin-left: 38px;
   justify-content: space-between;
 }
 
 #card-item {
-  width: calc(50% - 11.5px);
+  width: 137px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 0;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
+
 
 #card-item img {
   position: relative;
@@ -160,6 +163,12 @@ p {
   font-size: 12px;
 }
 
+#text_none {
+  position: relative;
+  top: 342px;
+  margin-left: 115px;
+}
+
 /* nav */
 .nav {
   display: flex;
@@ -168,20 +177,19 @@ p {
   left: 0px;
   position: relative;
   z-index: 3;
-  background-color: #ffa41b;
 }
 
-#add {
+#nav_add {
   position: fixed;
-  top: 734px;
+  bottom: 40px;
   left: 160px;
   z-index: 2;
 }
 
 #nav {
   position: fixed;
-  top: 765px;
-  left: 0;
+  bottom: 0px;
+  left: 0px;
   z-index: 2;
 }
 
@@ -190,15 +198,15 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 784px;
-  left: 29px;
+  bottom: 10px;
+  left: 25px;
 }
 .nav_info {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 782px;
+  bottom: 10px;
   left: 95px;
 }
 
@@ -207,8 +215,8 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 783px;
-  right: 95px;
+  bottom: 10px;
+  left: 240px;
 }
 
 .nav_my {
@@ -216,12 +224,14 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 784px;
-  right: 29px;
+  bottom: 10px;
+  left: 330px;
 }
 
 .nav p {
   color: #ffffff;
+  margin-top: 2px;
+  font-size: small;
 }
 
 .nav_info p {
