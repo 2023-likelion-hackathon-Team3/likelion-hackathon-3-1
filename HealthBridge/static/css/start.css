@@ -1,27 +1,77 @@
-#bg {
-    position: fixed;
-    z-index: -20;
-    right: 0;
-    top: -10px;
-    height: 860px;
-    overflow: hidden;
-    animation: waveAnimation 20s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes waveAnimation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(73%);
-    }
-}
-
 body {
     margin: 0;
     padding: 0;
     letter-spacing: -1.3px;
+}
+
+.wrap {
+    width: 390px;
+    height: 800px;
+    top: 80px;
+    overflow: hidden;
+    background: #ffa41b;
+    transform: translate3d(0, 0, 0);
+    position: fixed;
+    z-index: -3;
+}
+
+.wave {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: 60%;
+    left: -100px;
+    border-radius: 43%;
+    animation: drift 8s infinite linear;
+    background: #525fe1;
+}
+
+.wave_2 {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: 65%;
+    left: -100px;
+    border-radius: 43%;
+    animation: drift 8s infinite linear;
+    background: #ffffff;
+}
+
+.wave_reverse {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: -65%;
+    right: -100px;
+    border-radius: 43%;
+    animation: drift_re 8s infinite linear;
+    background: #f86f03;
+}
+
+.wave_reverse2 {
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: -70%;
+    right: -100px;
+    border-radius: 43%;
+    animation: drift_re 8s infinite linear;
+    background: #ffffff;
+}
+
+@keyframes drift_re {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes drift {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .logo {

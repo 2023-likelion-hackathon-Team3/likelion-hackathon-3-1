@@ -1,4 +1,109 @@
-<a href="{% url 'HBapp:keyword_add' %}">직접키워드 선택</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <link href="{% static 'css/add.css' %}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>내 건강 등록하기</title>
+  </head>
+  <body>
+    <div id="container">
+      <img src="{% static 'img/bg_main.png' %}" id="bg"/>
+      <a href="{% url 'HBapp:index' %}"><img id="back" src="{% static 'img/back.png' %}"/></a>
+      <a href="{% url 'HBapp:keyword_add' %}" id="select">직접 키워드 선택</a>
+      <a href="{% url 'cameraapp:save_webcam_photo' %}" id="scan">스캔하기</a>
+      <div id="line"></div>
+
+    <form action="{% url 'HBapp:keyword_add' %}" method="post">
+        {% csrf_token %}
+        {% for tag in all_tags %}
+            {% if tag in user_tags %}
+                <div id="checkbox-container">
+                    <input
+                    type="checkbox"
+                    id="group_{{tag}}"
+                    name="addTag"
+                    class="checkbox-input"
+                    value="{{ tag.pk }}"
+                    onclick="toggleCheckbox(this)"
+                    />
+                    <label for="group_{{tag}}" class="checkbox-label">{{tag.name}}</label>
+                </div>
+            {% else %}
+            <div id="checkbox-container">
+                <input
+                type="checkbox"
+                name="addTag"
+                id="group_{{tag}}"
+                class="checkbox-input"
+                value="{{ tag.pk }}"
+                onclick="toggleCheckbox(this)"
+                />
+                <label for="group_{{tag}}" class="checkbox-label">{{tag.name}}</label>
+            </div>
+            {% endif %}
+        {% endfor %}
+        <input type="submit" value="저장">
+    </form>
+
+      <!-- nav -->
+      <div class="nav">
+        <div class="nav_main">
+          <a href="{% url 'HBapp:index' %}">
+            <img src="{% static 'img/home.png' %}" alt="home" /></a>
+          <p>홈</p>
+        </div>
+
+        <div class="nav_info">
+          <a href="{% url 'post:postList' %}">
+            <img src="{% static 'img/report.png' %}" alt="report" /></a>
+          <p>건강정보</p>
+        </div>
+
+        <a href="{% url 'HBapp:keyword_add' %}">
+          <img src="{% static 'img/nav_X.png' %}" alt="nav_X" id="nav_X" /></a> <!--이미지 변경-->
+
+        <div class="nav_board">
+          <a href="{% url 'board:board-main' %}"
+            ><img src="{% static 'img/board_purple.png' %}" alt="board"
+          /></a>
+          <p>질문게시판</p>
+        </div>
+
+        <div class="nav_my">
+          <a href="{% url 'mypage:my' %}"
+            ><img src="{% static 'img/my.png' %}" alt="my"
+          /></a>
+          <p>내 정보</p>
+        </div>
+      </div>
+      <img src="./img/nav.svg" id="nav" />
+    </div>
+
+    <script>
+      function toggleCheckbox(input) {
+        var checkboxes = document.querySelectorAll(".checkbox-input");
+        checkboxes.forEach(function (checkbox) {
+          checkbox.parentNode.classList.remove("selected");
+        });
+
+        if (input.checked) {
+          input.parentNode.classList.add("selected");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- <a href="{% url 'HBapp:keyword_add' %}">직접키워드 선택</a>
 <a href="{% url 'cameraapp:save_webcam_photo' %}">스캔하기</a>
 
 <form action="{% url 'HBapp:keyword_add' %}" method="post">
@@ -11,4 +116,4 @@
     {% endif %}
 {% endfor %}
     <input type="submit" value="저장">
-</form>
+</form> -->
