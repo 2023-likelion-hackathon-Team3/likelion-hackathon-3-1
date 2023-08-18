@@ -65,6 +65,6 @@ def tag_page(request, slug):
 
     return render(
         request,
-        "tag.html",
+        "info_tag.html",
         {"posts": posts, "tag": tag, "tags": tags, "user_tags": user_tags},
     )

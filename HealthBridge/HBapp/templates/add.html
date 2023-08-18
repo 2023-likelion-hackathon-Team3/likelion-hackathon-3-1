@@ -1,5 +1,5 @@
 <a href="{% url 'HBapp:keyword_add' %}">직접키워드 선택</a>
-<a href="{% url 'HBapp:text_extraction' %}">스캔하기</a>
+<a href="{% url 'cameraapp:save_webcam_photo' %}">스캔하기</a>
 
 <form action="{% url 'HBapp:keyword_add' %}" method="post">
     {% csrf_token %}
