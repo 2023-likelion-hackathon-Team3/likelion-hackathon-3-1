@@ -15,7 +15,6 @@
   </head>
   <body>
     <div id="container">
-      <img src="{% static 'img/bg_main.png' %}" id="bg"/>
       <a href="{% url 'HBapp:index' %}"><img id="back" src="{% static 'img/back.png' %}"/></a>
       <a href="{% url 'HBapp:keyword_add' %}" id="select">직접 키워드 선택</a>
       <a href="{% url 'cameraapp:save_webcam_photo' %}" id="scan">스캔하기</a>
@@ -50,7 +49,7 @@
             </div>
             {% endif %}
         {% endfor %}
-        <input type="submit" value="저장">
+        <input type="submit" value="" id="check" />
     </form>
 
       <!-- nav -->
@@ -72,7 +71,7 @@
 
         <div class="nav_board">
           <a href="{% url 'board:board-main' %}"
-            ><img src="{% static 'img/board_purple.png' %}" alt="board"
+            ><img src="{% static 'img/board.png' %}" alt="board"
           /></a>
           <p>질문게시판</p>
         </div>
@@ -84,7 +83,7 @@
           <p>내 정보</p>
         </div>
       </div>
-      <img src="./img/nav.svg" id="nav" />
+      <img src="{% static 'img/nav.svg' %}" id="nav" />
     </div>
 
     <script>

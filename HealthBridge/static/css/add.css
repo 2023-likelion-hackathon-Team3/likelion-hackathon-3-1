@@ -2,6 +2,8 @@ body {
   width: 390px;
   height: 844px;
   margin: 0;
+  background-image: url("/static/img/bg_main.png");
+  background-repeat: no-repeat;
 }
 
 a {
@@ -33,6 +35,20 @@ p {
   height: 40px;
   left: 30px;
   top: 30px;
+}
+
+#check {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 35px;
+  right: 25px;
+  cursor: pointer;
+  background-image: url("/static/img/check.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: none;
 }
 
 #select {
@@ -115,8 +131,6 @@ p {
   margin: 0;
 }
 
-/*나브바 고정*/
-
 .nav {
   display: flex;
   justify-content: space-around;
@@ -126,7 +140,7 @@ p {
   z-index: 3;
 }
 
-#nav_add {
+#nav_X {
   position: fixed;
   bottom: 40px;
   left: 160px;

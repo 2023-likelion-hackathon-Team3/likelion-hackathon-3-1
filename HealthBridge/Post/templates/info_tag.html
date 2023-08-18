@@ -54,7 +54,9 @@
         <a href="{% url 'post:postDetail' p.pk %}"></a>
       {% endfor %}
     {% else %}
-    <p>아직 게시물이 없습니다.</p>
+    <div id="text_none">
+      <p>아직 게시물이 없습니다.</p>
+    </div>    
     {% endif %}
       <!-- nav -->
       <div class="nav">
@@ -72,9 +74,11 @@
           <p>건강정보</p>
         </div>
 
-        <a href="{% url 'HBapp:keyword_add' %}"
-          ><img src="{% static 'img/plus.png' %}" alt="plus" id="add"
-        /></a>
+        <div id="nav_add">
+          <a href="{% url 'HBapp:keyword_add' %}"
+            ><img src="{% static 'img/plus.png' %}" alt="plus" 
+          /></a>
+        </div>
 
         <div class="nav_board">
           <a href="{% url 'board:board-main' %}"
@@ -106,50 +110,3 @@
     </script>
   </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <a href="{% url 'post:postList'%}">맞춤형 건강 정보</a>
-  <a href="{% url 'quiz:quiz'%}">건강퀴즈 o/x</a>
-  <br><br>
-  <a href="{% url 'accounts:login'%}">로그인</a> -->
-  <!-- 여기까지는 사용자 태그-->
-  <!-- {% if user.is_authenticated and user_tags.exists %}
-    {% for t in user_tags.iterator %}
-      <a href="{{t.get_absolute_url }}">{{t}}</a>
-    {% endfor %}  -->
-  
-
-    <!--여기부터는 게시글-->
-  <!-- {% else %}
-    모든 태그: {% for t in tags %}
-      <a href="{{t.get_absolute_url }}">{{t}}</a>
-    {% endfor %}
-  {% endif %}
-  <br/>
-  <br/>
-  <br/>
-
-
-  
-  {% if posts.exists %}
-    {% for p in posts %}
-      {% if p.tags.exists %} {{p.pk}}글의 태그:
-        {% for tag in p.tags.iterator %}
-          <a href="{{tag.get_absolute_url }}">{{tag}}</a>
-        {% endfor %}
-      {% endif %}
-      <a href="{% url 'post:postDetail' p.pk %}"><p>{{p.pk}}-{{p.title}}</p></a>
-    {% endfor %}
-  {% else %}
-  <p>아직 게시물이 없습니다.</p>
-  {% endif %}
-</body>
-</html> -->
