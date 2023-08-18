@@ -21,10 +21,15 @@ a {
 .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: 100%;
     overflow-y: auto;
     margin-top: 238px;
+    margin-left: 115px;
+}
+.content img {
+    width: 42.186px;
+    height: 53.353px;
+    margin-left: 45px;
 }
 
 h3 {
@@ -47,8 +52,8 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 0;
+    margin-left: 50px;
 }
 
 #password {

@@ -1,9 +1,9 @@
 body {
-    width: 390px;
-    height: 844px;
-    margin: 0;
-  }
-  
+  width: 390px;
+  height: 844px;
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -128,7 +128,7 @@ p {
 
 #nav_add {
   position: fixed;
-  top: 734px;
+  bottom: 40px;
   left: 160px;
   z-index: 2;
 }
@@ -136,7 +136,7 @@ p {
 #nav {
   position: fixed;
   bottom: 0px;
-  left: 0;
+  left: 0px;
   z-index: 2;
 }
 
@@ -145,15 +145,15 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 784px;
-  left: 29px;
+  bottom: 10px;
+  left: 25px;
 }
 .nav_info {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 782px;
+  bottom: 10px;
   left: 95px;
 }
 
@@ -162,8 +162,8 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 783px;
-  right: 95px;
+  bottom: 10px;
+  left: 240px;
 }
 
 .nav_my {
@@ -171,16 +171,12 @@ p {
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 784px;
-  right: 29px;
+  bottom: 10px;
+  left: 330px;
 }
 
 .nav p {
   color: #ffffff;
   margin-top: 2px;
   font-size: small;
-}
-
-.nav_board p {
-  color: #525fe1;
 }
