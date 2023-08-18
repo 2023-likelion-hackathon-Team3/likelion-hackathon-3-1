@@ -9,68 +9,50 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-from django.core.exceptions import ImproperlyConfigured
+
 from pathlib import Path
 import os
-import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-7+(q15#kg5zm%sx4osl11xqj5&0m1584exz$$--s2n6do+*8$s"
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
-secret_file = BASE_DIR / "secrets.json"
-with open(secret_file) as file:
-    secrets = json.loads(file.read())
-
-
-def get_secret(setting, secrets_dict=secrets):
-    try:
-        return secrets_dict[setting]
-    except:
-        error_msg = f"Set the {setting} environment variable"
-        raise ImproperlyConfigured(error_msg)
-
-
-SECRET_KEY = get_secret("SECRET_KEY")
-print(f'SECRET_KEY = {get_secret("SECRET_KEY")}')
 # Application definition
 
-DJANGO_APPS = [
+INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-]
-
-PROJECT_APPS = [
     "HBapp",
     "accounts",
     "board",
     "mypage",
     "Post",
     "Quiz",
-    "cameraapp",
-    "doctor",
-    "explain",
-]
-
-THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.kakao",
     "allauth.socialaccount.providers.auth0",
+    "cameraapp",
+    "doctor",
+    "explain",
 ]
-
-INSTALLED_APPS = []
 # LOGIN_REDIRECT_URL = "/"
 SITE_ID = 3
 LOGIN_REDIRECT_URL = "accounts:set_password"
@@ -113,6 +95,14 @@ WSGI_APPLICATION = "HealthBridge.wsgi.application"
 
 
 # Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 
 # Password validation
@@ -150,7 +140,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -164,9 +156,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 GOOGLE_CLOUD_DOCUMENT_AI_API_KEY = "AIzaSyAkJA2jmINMwar5RtFJlGV9bCVm8P4tM3Q"
 
 # 인증 정보가 있는 서비스 계정의 JSON 키 파일 경로
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = (
-    BASE_DIR / "herethon-5-392807-0d6795b69421.json"
-)
+os.environ[
+    "GOOGLE_APPLICATION_CREDENTIALS"
+] = "C:/LEEKYUMIN/likelion/2023 hackathon/likelion-hackathon-3/HealthBridge/herethon-5-392807-0d6795b69421.json"  # 자신의 경로로
 
 
 AUTHENTICATION_BACKENDS = [
