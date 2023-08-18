@@ -2,25 +2,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webcam Capture</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link href="{% static 'css/scan.css' %}" rel="stylesheet" />
+    <title>Scan</title>
 </head>
 <body>
-    <h2>Webcam Capture</h2>
-    <video id="webcam" autoplay></video>
-    <canvas id="canvas" style="display: none;"></canvas>
-    <button id="captureButton">Capture Photo</button>
+    <div style="width: 390px; height: 844px; overflow: hidden;">
+        <video id="webcam" autoplay></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+
+        <!--웹캠나브바-->
+        <div class="camnav">
+            <div class="camnav_back">
+                <a href="{% url 'cameraapp:scan_explain' %}">
+                    <img src="{% static '/img/cam_back.png' %}" alt="back" />
+                </a>
+            </div>
+
+            <div class="camnav_capture">
+                <button id="captureButton">
+                    <img src="{% static 'img/cam_button.png' %}" alt="capture" />
+                </button>
+            </div>
+
+            <div class="camnav_gallery">
+                <a href="{% url 'cameraapp:upload' %}">
+                    <img src="{% static 'img/gallery.png' %}" alt="gallery" /></a>
+            </div>
+        </div>
+    </div>
     <script>
         const video = document.getElementById('webcam');
         const canvas = document.getElementById('canvas');
+        const div = document.getElementById('div');
+        video.height = 750;
         const captureButton = document.getElementById('captureButton');
-        
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => video.srcObject = stream)
             .catch(error => console.error('Error accessing webcam:', error));
         captureButton.addEventListener('click', () => {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.width = video.videoWidth = 390;
+            canvas.height = video.videoHeight = 750;
+            canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
             const capturedDataUrl = canvas.toDataURL('image/jpeg');
             const form = new FormData();
             form.append('capturedDataUrl', capturedDataUrl);
@@ -41,3 +66,4 @@
     </script>
 </body>
 </html>
+

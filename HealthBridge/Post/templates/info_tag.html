@@ -32,30 +32,30 @@
                   <label for="category_{{t}}" class="checkbox-label"><a href="{{t.get_absolute_url }}">{{t}}</a></label>
             </div>
           {% endfor %}
-      {% else %}
-            {% if posts.exists %}
-            {% for p in posts %}
-              {% if p.tags.exists %}
-                {% for tag in p.tags.iterator %}
-                <div id="card">
-                  <div id="card-item">
-                    <a href="{% url 'post:postDetail' p.pk %}">
-                    <img src="{{ p.head_image.url }}" alt="" /></a>
-                    <a href="{% url 'post:postDetail' p.pk %}">
-                      {{p.title}}
-                    </a>
-                    <!-- <span> <a href="{{tag.get_absolute_url }}">{{tag}}</a></span> -->
-                  </div>
-                </div>
-                {% endfor %}
-              {% endif %}
-              <!--p.tags가 user.tags에도 있어야 함-->
-              <a href="{% url 'post:postDetail' p.pk %}"></a>
-            {% endfor %}
-          {% else %}
-          <p>아직 게시물이 없습니다.</p>
-          {% endif %}
       {% endif %}
+
+      {% if posts.exists %}
+      {% for p in posts %}
+        {% if p.tags.exists %}
+          {% for tag in p.tags.iterator %}
+          <div id="card">
+            <div id="card-item">
+              <a href="{% url 'post:postDetail' p.pk %}">
+              <img src="{{ p.head_image.url }}" alt="" /></a>
+              <a href="{% url 'post:postDetail' p.pk %}">
+                {{p.title}}
+              </a>
+              <!-- <span> <a href="{{tag.get_absolute_url }}">{{tag}}</a></span> -->
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+        <!--p.tags가 user.tags에도 있어야 함-->
+        <a href="{% url 'post:postDetail' p.pk %}"></a>
+      {% endfor %}
+    {% else %}
+    <p>아직 게시물이 없습니다.</p>
+    {% endif %}
       <!-- nav -->
       <div class="nav">
         <div class="nav_main">

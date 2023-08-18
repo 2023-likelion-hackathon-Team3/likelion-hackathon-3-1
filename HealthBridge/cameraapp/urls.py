@@ -13,6 +13,7 @@ urlpatterns = [
     path("result/", views.text_extraction, name="result"),
     path("upload/", views.text_extraction1, name="upload"),
     path("webcam_capture/", views.save_webcam_photo, name="save_webcam_photo"),
+    path("scan_explain/", views.scan_explain, name="scan_explain"),
     # path("webcam_view/", views.webcam_capture_view, name="webcam_view"),
     # path("captured_image/",views.captured_image_crop_view,name="captured_image_crop",),
 ]
