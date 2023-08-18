@@ -3,47 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %}
-    <link href="{% static 'css/result.css' %}" rel="stylesheet" />
+    <!-- {% load static %} -->
+    <!-- <link href="{% static 'css/result.css' %}" rel="stylesheet" /> -->
+    <link href="css/result.css" rel="stylesheet" />
     <title>Result</title>
   </head>
   <body>
-    <img src="{% static 'img/bg_basic.png' %}" id="bg" />
+    <!-- <img src="{% static 'img/bg_basic.png' %}" id="bg" />
     <a href="{% url 'scan_explain' %}"
       ><img src="{% static 'img/back.png' %}" id="back"
+    /></a> -->
+    <img src="./img/bg_basic.png" id="bg" />
+    <a href="./scan_explain.html"
+      ><img src="./img/back.png" id="back"
     /></a>
-    <a href="{% url 'HBapp:index' %}"
+
+    <!-- <a href="{% url 'HBapp:index' %}"
       ><img src="{% static 'img/check.png' %}" id="check"
+    /></a> -->
+    <a href="./index.html"
+      ><img src="./img/check.png" id="check"
     /></a>
 
     <div class="content">
       <h3 id="text">건강검진 결과표를 분석한 결과</h3>
-      <img src="{% static 'img/Rectangle.png' %}" id="profile_img" />
-      <div class="add">
-        <p id="title">나의 건강 키워드</p>
-        <div class="floating_container">
-            <div class="floating_content">
-                <div class="floating_bg" id="floating_bg">
-                    <div class="floating_title">키워드</div>
-                </div>
-            </div>
-        </div>
+      <!-- <img src="{% static 'img/Rectangle.png' %}" id="profile_img" /> -->
+      <img src="./img/Rectangle.png" id="profile_img" />
+      <p id="title">나의 건강 키워드</p>
     </div>
+
+    <div class="add">
+      <div class="floating_container">
+          <div class="floating_content">
+              <div class="floating_bg" id="floating_bg">
+                  <div class="floating_title">키워드</div>
+              </div>
+          </div>
+          <br>
+          <div class="floating_content">
+            <div class="floating_bg" id="floating_bg">
+                <div class="floating_title">키워드</div>
+            </div>
+          </div>
+          <div class="floating_content">
+            <div class="floating_bg" id="floating_bg">
+                <div class="floating_title">키워드</div>
+            </div>
+          </div>
+      </div>
     </div>
 
     <script>
-      const floatingContainer = document.querySelector('.floating_container');
-
-      floatingContainer.addEventListener('animationend', () => {
-        floatingContainer.style.animation = 'none';
-      });
-
       const colors = ["#FFA41B", "#035956", "#F86F03", "#525FE1"];
-      const randomColor =
-          colors[Math.floor(Math.random() * colors.length)];
-
-      const addBgElement = document.getElementById("floating_bg");
-      addBgElement.style.backgroundColor = randomColor;
+      const addBgElements = document.querySelectorAll(".floating_bg");
+      addBgElements.forEach(element => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        element.style.backgroundColor = randomColor;
+      });
     </script>
   </body>
 </html>

@@ -4,6 +4,8 @@ body {
     background-image: url("/static/img/bg_main.png");
     background-repeat: no-repeat;
     letter-spacing: -1.3px;
+    width: 390px;
+    height: 844px;
 }
 
 a {
@@ -28,6 +30,7 @@ a {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 120px;
+    text-decoration: none;
 }
 
 .post {
@@ -75,7 +78,7 @@ a {
 #write {
     position: fixed;
     bottom: 90px;
-    right: 15px;
+    left: 330px;
     width: 75px;
     height: 75px;
     cursor: pointer;
