@@ -9,34 +9,36 @@
     <title>Scan</title>
 </head>
 <body>
-    <video id="webcam" autoplay></video>
-    <canvas id="canvas" style="display: none;"></canvas>
+    <div style="height: 844px; overflow: hidden;">
+        <video id="webcam" autoplay></video>
+        <canvas id="canvas" style="display: none;"></canvas>
 
-    <!--웹캠나브바-->
-    <div class="camnav">
-        <div class="camnav_back">
-            <a href="{% url 'cameraapp:scan_explain' %}">
-                <img src="{% static '/img/cam_back.png' %}" alt="back" />
-            </a>
-        </div>
+        <!--웹캠나브바-->
+        <div class="camnav">
+            <div class="camnav_back">
+                <a href="{% url 'cameraapp:scan_explain' %}">
+                    <img src="{% static '/img/cam_back.png' %}" alt="back" />
+                </a>
+            </div>
 
-        <div class="camnav_capture">
-            <button id="captureButton">
-                <img src="{% static 'img/cam_button.png' %}" alt="capture" />
-            </button>
-        </div>
+            <div class="camnav_capture">
+                <button id="captureButton">
+                    <img src="{% static 'img/cam_button.png' %}" alt="capture" />
+                </button>
+            </div>
 
-        <div class="camnav_gallery">
-            <a href="{% url 'cameraapp:upload' %}">
-                <img src="{% static 'img/gallery.png' %}" alt="gallery" /></a>
+            <div class="camnav_gallery">
+                <a href="{% url 'cameraapp:upload' %}">
+                    <img src="{% static 'img/gallery.png' %}" alt="gallery" /></a>
+            </div>
         </div>
     </div>
-
     <script>
         const video = document.getElementById('webcam');
         const canvas = document.getElementById('canvas');
+        const div = document.getElementById('div');
+        video.height = 750;
         const captureButton = document.getElementById('captureButton');
-        
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => video.srcObject = stream)
             .catch(error => console.error('Error accessing webcam:', error));
