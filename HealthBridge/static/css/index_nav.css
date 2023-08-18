@@ -9,6 +9,10 @@ a {
     top: 0px;
     left: 0px;
 }
+p {
+    display: inline-flex;
+    margin: 0;
+}
 
 .nav {
     display: flex;
@@ -21,15 +25,15 @@ a {
 
 #nav_add {
     position: fixed;
-    top: 734px;
+    bottom: 40px;
     left: 160px;
     z-index: 2;
 }
 
 #nav {
     position: fixed;
-    top: 765px;
-    left: 0;
+    bottom: 0px;
+    left: 0px;
     z-index: 2;
 }
 
@@ -38,15 +42,15 @@ a {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    left: 29px;
+    bottom: 10px;
+    left: 25px;
 }
 .nav_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 782px;
+    bottom: 10px;
     left: 95px;
 }
 
@@ -55,8 +59,8 @@ a {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 783px;
-    right: 95px;
+    bottom: 10px;
+    left: 240px;
 }
 
 .nav_my {
@@ -64,19 +68,16 @@ a {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 784px;
-    right: 29px;
+    bottom: 10px;
+    left: 330px;
 }
 
 .nav p {
     color: #ffffff;
+    margin-top: 2px;
+    font-size: small;
 }
 
 .nav_main p {
     color: #525fe1;
-}
-
-p {
-    display: inline-flex;
-    margin: 0;
 }
