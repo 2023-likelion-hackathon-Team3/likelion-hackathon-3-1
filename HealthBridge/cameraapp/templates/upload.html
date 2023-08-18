@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Image Upload</title>
-</head>
-<body>
-    <h1>이미지 업로드</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">업로드</button>
-    </form>
-</body>
-</html>
-
-<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -28,16 +13,31 @@
         <img src="{% static 'img/back.png' %}" id="back"
         /></a>
         <div class="select">
-            <form method="post" enctype="multipart/form-data" id=select>
+            <form method="post" enctype="multipart/form-data" id="select">
                 {% csrf_token %}
                 <input type="file" name="image" accept="image/*" required>
-                <button type="submit">업로드</button>
-            </form> -->
-            <!-- <input type="submit" value="파일 선택하기" id="select" />
-            <p>선택된 파일 없음</p> -->
-        <!-- </div>
-        <div class="submit">
-            <input type="submit" value="등록하기" id="submit" />
+                <div class="submit">
+                    <button type="submit" id="submit">업로드</button>
+                </div>
+            </form>
+            {% if not image_file %}
+                <p>선택된 파일 없음</p>
+            {% endif %}
         </div>
     </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>이미지 업로드</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">업로드</button>
+    </form>
+</body>
 </html> -->
